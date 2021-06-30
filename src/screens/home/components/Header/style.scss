@@ -1,0 +1,46 @@
+.home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+  width: 100%;
+  margin-bottom: 21px;
+
+  &-top {
+    margin-bottom: 25px;
+    align-items: center;
+    @extend .text;
+    font-size: 0.875rem;
+    font-weight: 200;
+    img {
+      margin-right: 10px;
+    }
+    strong {
+      font-weight: 600;
+      margin-right: 5px;
+    }
+    p {
+      background: -webkit-linear-gradient(180deg, #ffc843 0%, #43c7ff 100%);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+      margin-right: 5px;
+    }
+  }
+  &-bottom {
+    border-radius: 15px;
+
+    background: #f6f7fb;
+    width: 100%;
+    height: 67px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-right: 5px;
+  }
+}

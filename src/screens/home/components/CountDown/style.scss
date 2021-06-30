@@ -1,0 +1,48 @@
+.countdown {
+  align-items: center;
+  background: #f0f1f4;
+  height: 100%;
+  padding: 0px 10px 0px 20px;
+  border-radius: 50px;
+  width: 340px;
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 80px;
+    &::after {
+      position: absolute;
+      right: 0px;
+      top: 3px;
+      content: ":";
+      color: #ffc843;
+      font-size: 0.875rem;
+    }
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+  &-time {
+    font-size: 1.375rem;
+    @extend .text;
+    margin-bottom: 5px;
+    font-weight: 300;
+    width: 100%;
+    text-align: center;
+  }
+  &-text {
+    font-size: 0.625rem;
+    letter-spacing: 0.006rem;
+    color: #92929d;
+  }
+  &-title {
+    @extend .text;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    width: 70px;
+  }
+}

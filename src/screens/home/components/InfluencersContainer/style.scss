@@ -1,0 +1,54 @@
+.influencers {
+  background: #e2e2e2;
+  margin-bottom: 11px;
+  transition: 0.15s all;
+  max-height: 0px;
+  overflow: hidden;
+  &-flex {
+    background: #eeeeee;
+    width: fit-content;
+    overflow: auto;
+    max-width: 100%;
+  }
+  &-join {
+    margin-left: auto;
+    background: #ffc542;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 75px;
+    transition: 0.2s all;
+    .flex {
+      align-items: center;
+      width: 100%;
+      justify-content: center;
+    }
+    .influencers-join-link {
+      margin-bottom: 0px;
+      padding-left: 10px;
+      opacity: 1;
+      transition: 0.2s all;
+      a {
+        @extend .text;
+        font-weight: 600;
+        font-size: 0.625rem;
+      }
+    }
+    &-active {
+      min-width: 220px;
+    }
+    p {
+      font-size: 0.625rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+      @extend .text;
+    }
+    img {
+      width: 15px;
+      height: 15px;
+      object-fit: contain;
+    }
+  }
+}
