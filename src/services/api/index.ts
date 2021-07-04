@@ -3,8 +3,7 @@ class Api {
     try {
       const response = await fetch(url);
       const res = await response.json();
-      const parsed = JSON.parse(res);
-      return parsed;
+      return res;
     } catch (error) {
       console.log(error);
       return null;
