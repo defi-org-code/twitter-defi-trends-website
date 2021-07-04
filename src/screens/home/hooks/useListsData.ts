@@ -3,45 +3,50 @@ import {
   GET_TWEETS_API_URL,
   INTERVAL_DELAY_SECONDS,
 } from "../constants/index";
-import { useState, useEffect, useRef } from "react";
-import api from "../../../services/api";
+import { useState, useEffect } from "react";
 import { IDatasets } from "../types";
 import { normalizeEntities } from "../utils";
+import dataGenerator from "../../../services/data-generator";
+import useInterval from "../hooks/useInterval";
+import useFetch from "../hooks/useFetch";
 
-const useListsData = (): [IDatasets | null, boolean, boolean] => {
+const useListsData = (
+  url: string,
+  windowInView: boolean
+): [IDatasets | null, boolean, boolean, (newUrl: string) => void] => {
+  const [endpointUrl, setEndpointUrl] = useState(url);
+  const [data, error, loading, fetchData] = useFetch(endpointUrl, true);
+
+  const [clear, set, reset] = useInterval(fetchData, INTERVAL_DELAY_SECONDS);
+
   const [dataSets, setDatasets] = useState<any>(null);
-  const [isError, setIsError] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  let t = useRef<any>(null);
 
-  const getData = async () => {
-    const result = await api.get(GET_TWEETS_API_URL);
-    setIsLoading(false);
-    // const result = await dataGenerator.createDatasets(4);
-    if (!result) {
-      return setIsError(true);
+  useEffect(() => {
+    if (!windowInView) {
+      clear();
+      return;
     }
-    const normalized = normalizeEntities(result, API_ITEMS_LIMIT);
-    setDatasets(normalized);
-  };
+    set();
+  }, [windowInView]);
 
-  const setDatasetsInterval = () => {
-    const interval = setInterval(() => {
-      getData();
-    }, INTERVAL_DELAY_SECONDS * 1000);
-    t.current = interval;
+  const setNewEndpointUrl = (newUrl: string) => {
+    clear();
+    setEndpointUrl(newUrl);
+    fetchData(newUrl);
+    reset();
   };
 
   useEffect(() => {
-    if (!dataSets) {
-      getData();
-    }
+    if (!data) return;
+    const normalized = normalizeEntities(data, API_ITEMS_LIMIT);
+    setDatasets(normalized);
+  }, [data]);
 
-    setDatasetsInterval();
-    return () => clearInterval(t.current);
+  useEffect(() => {
+    set();
   }, []);
 
-  return [dataSets, isError, isLoading];
+  return [dataSets, error, false, setNewEndpointUrl];
 };
 
 export default useListsData;

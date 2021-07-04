@@ -12,7 +12,7 @@ export const categories: IListCategories = {
     shortName: "Hashtag",
   },
   [DATASET_NAMES.CASHTAGS]: {
-    symbol: "₿",
+    symbol: "$",
     image: CashtagImg,
     title: "Popular $Cashtag",
     shortName: "Cashtag",
@@ -27,18 +27,21 @@ export const categories: IListCategories = {
     symbol: "🔗",
     image: UrlsImg,
     title: "Popular #URL’s",
-    shortName: "urls",
+    shortName: "URL’s",
   },
 };
 
-export const categortyTypesDictionary: { [key: string]: DATASET_NAMES } = {
+export const categortiesDictionary: { [key: string]: DATASET_NAMES } = {
   "0": DATASET_NAMES.CASHTAGS,
   "1": DATASET_NAMES.HASHTAGS,
   "2": DATASET_NAMES.URLS,
   "3": DATASET_NAMES.MENTIONS,
 };
 
-export const INTERVAL_DELAY_SECONDS = 60;
+export const LIST_ITEM_ANIMATION_TIMEOUT_SECONDS = 5;
+export const COUNT_TO_JUMP = 100;
+export const POSITIONS_TO_JUMP = 5;
+export const INTERVAL_DELAY_SECONDS = 10;
 export const LIST_ELEMENT_DEFAULT_HEIGHT = 51;
 export const LIST_ELEMENT_OPENED_HEIGHT = 238;
 export const GET_TWEETS_API_URL =

@@ -1,4 +1,4 @@
-import { IDatasets, IRawTweets } from "../types";
+import { IDatasetElement, IDatasets, IRawTweets } from "../types";
 
 const calculateCount = (processed: any, count: any, lastUpdateTime: Date) => {
   const POLL_INTERVAL = 60;
@@ -65,4 +65,16 @@ export const normalizeEntities = (
       })
       .sort((a: any, b: any) => b.count - a.count),
   };
+};
+
+export const compareDataset = (
+  prevDataset: IDatasetElement[],
+  newDataset: IDatasetElement[]
+) => {
+  return newDataset
+    .filter(
+      (o1: IDatasetElement) =>
+        !prevDataset.some((o2: IDatasetElement) => o1.name === o2.name)
+    )
+    .map((m) => m.name);
 };

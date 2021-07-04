@@ -10,7 +10,7 @@ interface IProps {
 const Counter = ({ value, duration = 3, animationOnStart }: IProps) => {
   const mountRef = useRef(false);
   const { countUp, update } = useCountUp({
-    start: animationOnStart ? 0 : value,
+    start: animationOnStart ? value / 2 : value,
     end: value,
     duration,
     separator: ",",

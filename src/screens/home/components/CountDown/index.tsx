@@ -1,3 +1,4 @@
+import React from "react";
 import Countdown from "react-countdown";
 
 interface IRenderProps {
@@ -6,7 +7,7 @@ interface IRenderProps {
   seconds: number;
   completed: boolean;
 }
-const Completionist = () => <span></span>;
+const Completionist = () => <div></div>;
 const renderer = ({ hours, minutes, seconds, completed }: IRenderProps) => {
   if (completed) {
     // Render a completed state
@@ -37,7 +38,7 @@ const renderer = ({ hours, minutes, seconds, completed }: IRenderProps) => {
 const CountDown = () => {
   return (
     <div className="countdown flex">
-      <p className="countdown-title">Time until new day</p>
+      <p className="countdown-title">Time counter until new day</p>
       <Countdown
         zeroPadDays={2}
         date={Date.now() + 50000000}
