@@ -19,3 +19,8 @@ export const nFormatter = (num: number, digits = 2) => {
     ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol
     : "0";
 };
+
+export const numbersDiff = (a: number, b: number) => {
+  const res = Math.abs(a - b);
+  return res;
+};

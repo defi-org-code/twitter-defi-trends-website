@@ -5,6 +5,7 @@ import TweetPlaceholderImg from "../../assets/images/tweet-placeholder.png";
 import AvatarImg from "../../assets/images/avatar.png";
 
 class DataGenerator {
+  num = 0;
   createDatasets(lists: number): Array<IDatasetElement[]> {
     const arr: any = {};
     for (let i = 0; i < lists; i++) {
@@ -22,6 +23,7 @@ class DataGenerator {
         arr[DATASET_NAMES.URLS] = data;
       }
     }
+    this.num += 1;
     return arr;
   }
   createInfluencers(amount = 5) {
@@ -39,7 +41,7 @@ class DataGenerator {
     const indexesToChange = [...Array(4)].map((e) => {
       return Math.floor(Math.random() * amount);
     });
-    return [...Array(amount)].map((e, i) => {
+    return [...Array(amount + this.num)].map((e, i) => {
       return {
         name: `item-${i + 1}`,
         count: indexesToChange.includes(i)

@@ -1,9 +1,32 @@
 .influencers {
-  background: #e2e2e2;
+  background: #eeeeee;
   margin-bottom: 11px;
   transition: 0.15s all;
   max-height: 0px;
   overflow: hidden;
+  border-radius: 10px;
+  height: 65px;
+  &-most-active {
+    min-width: 143px;
+    align-items: center;
+    justify-content: center;
+    background: #e7e7e7;
+    border-radius: 10px;
+
+    img {
+      width: 21px;
+      height: 21px;
+      object-fit: contain;
+      margin-right: 5px;
+    }
+    p {
+      @extend .text;
+      font-size: 0.563rem;
+      line-height: 0.844rem;
+      text-align: center;
+      width: 77px;
+    }
+  }
   &-flex {
     background: #eeeeee;
     width: fit-content;
@@ -12,42 +35,26 @@
   }
   &-join {
     margin-left: auto;
-    background: #ffc542;
+    background: #e7e7e7;
     border: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 75px;
+    border-radius: 10px;
+    min-width: 90px;
     transition: 0.2s all;
-    .flex {
-      align-items: center;
-      width: 100%;
-      justify-content: center;
-    }
-    .influencers-join-link {
-      margin-bottom: 0px;
-      padding-left: 10px;
-      opacity: 1;
-      transition: 0.2s all;
-      a {
-        @extend .text;
-        font-weight: 600;
-        font-size: 0.625rem;
-      }
-    }
-    &-active {
-      min-width: 220px;
-    }
+
     p {
-      font-size: 0.625rem;
-      margin-bottom: 10px;
+      font-size: 0.5rem;
+
       font-weight: 600;
+      line-height: 0.75rem;
       @extend .text;
     }
     img {
-      width: 15px;
-      height: 15px;
+      width: 30px;
+      height: auto;
       object-fit: contain;
     }
   }
