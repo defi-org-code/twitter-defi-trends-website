@@ -1,40 +1,36 @@
-import {
-  API_ITEMS_LIMIT,
-  GET_TWEETS_API_URL,
-  INTERVAL_DELAY_SECONDS,
-} from "../constants/index";
+import { API_ITEMS_LIMIT, INTERVAL_DELAY_SECONDS } from "../constants/index";
 import { useState, useEffect } from "react";
 import { IDatasets } from "../types";
 import { normalizeEntities } from "../utils";
 import dataGenerator from "../../../services/data-generator";
-import useInterval from "../hooks/useInterval";
-import useFetch from "../hooks/useFetch";
+import useVisibilityChange from "../../../hooks/useVisibilityChange";
+import useFetch from "../../../hooks/useFetch";
+import useInterval from "../../../hooks/useInterval";
 
-const useListsData = (
-  url: string,
-  windowInView: boolean
-): [IDatasets | null, boolean, boolean, (newUrl: string) => void] => {
-  const [endpointUrl, setEndpointUrl] = useState(url);
-  const [data, error, loading, fetchData] = useFetch(endpointUrl, true);
+const useListsData = (url: string): [IDatasets | null, boolean, boolean] => {
+  const [windowInView] = useVisibilityChange();
 
+  const [data, error, loading, fetchData] = useFetch(url, false);
+  const test = () => {
+    const res = dataGenerator.createDatasets(4);
+    setDatasets(res);
+  };
   const [clear, set, reset] = useInterval(fetchData, INTERVAL_DELAY_SECONDS);
 
   const [dataSets, setDatasets] = useState<any>(null);
 
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     test();
+  //   }, 3000);
+  // }, []);
   useEffect(() => {
-    if (!windowInView) {
-      clear();
-      return;
+    if (windowInView) {
+      fetchData();
+      return set();
     }
-    set();
-  }, [windowInView]);
-
-  const setNewEndpointUrl = (newUrl: string) => {
     clear();
-    setEndpointUrl(newUrl);
-    fetchData(newUrl);
-    reset();
-  };
+  }, [windowInView]);
 
   useEffect(() => {
     if (!data) return;
@@ -42,11 +38,7 @@ const useListsData = (
     setDatasets(normalized);
   }, [data]);
 
-  useEffect(() => {
-    set();
-  }, []);
-
-  return [dataSets, error, false, setNewEndpointUrl];
+  return [dataSets, error, false];
 };
 
 export default useListsData;

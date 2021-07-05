@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.scss";
 interface IProps {
   showError: boolean;
   children: any;

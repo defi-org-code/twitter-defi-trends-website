@@ -1,39 +1,42 @@
-import React, { useEffect, useState } from "react";
-import SelectionContainer from "../SelectionContainer";
-import { categories, GET_TWEETS_API_URL } from "../../constants";
-import useListsData from "../../hooks/useListsData";
-import { DATASET_NAMES, IListCategory } from "../../types";
-import ErrorHandling from "../ErrorHandling";
-import LoadingHandler from "../LoadeingHandler";
-import useVisibilityChange from "../../hooks/useVisibilityChange";
-import List from "../List";
+import React, { useRef, useState } from "react";
+import ViewSelector from "../ViewSelector";
+import { viewSelectorOptions } from "../../constants";
+import { IViewOption, VIEW_SELECTOR_OPTIONS } from "../../types";
+import ListsContainer from "../ListsContainer";
+import InfluencersContainer from "../InfluencersContainer";
+
 const TweetsContainer = () => {
-  const [windowInView] = useVisibilityChange();
-  const [datasets, isError, isLoading, setNewEndpointUrl] = useListsData(
-    GET_TWEETS_API_URL,
-    windowInView
-  );
+  const [viewName, setViewName] = useState(VIEW_SELECTOR_OPTIONS.ALL_TWEETS);
+  const [
+    elementToHide,
+    setElementToHide,
+  ] = useState<VIEW_SELECTOR_OPTIONS | null>(null);
+  const handleViewSelect = (name: VIEW_SELECTOR_OPTIONS) => {
+    setViewName(name);
+  };
 
   return (
     <div className="home-tweets">
-      <SelectionContainer setNewEndpointUrl={setNewEndpointUrl} />
-      <div className="home-tweets-lists flex">
-        <ErrorHandling showError={isError} errorText="something went wrong...">
-          <LoadingHandler isLoading={!isError && isLoading}>
-            {datasets &&
-              (Object.keys(datasets) as (keyof typeof datasets)[]).map(
-                (key: DATASET_NAMES) => {
-                  const category: IListCategory = categories[key];
-                  if (!category) return null;
-                  const dataset = datasets[key];
-                  return (
-                    <List key={key} dataset={dataset} category={category} />
-                  );
-                }
-              )}
-          </LoadingHandler>
-        </ErrorHandling>
-      </div>
+      <ViewSelector
+        options={viewSelectorOptions}
+        handleViewSelect={handleViewSelect}
+        selected={viewName}
+      />
+      <InfluencersContainer
+        isActive={viewName === VIEW_SELECTOR_OPTIONS.INFLUENCERS}
+      />
+      {viewSelectorOptions.map((viewOption: IViewOption) => {
+        if (viewName === viewOption.value) {
+          return (
+            <ListsContainer
+              url={viewOption.url}
+              key={viewOption.title}
+              hide={false}
+            />
+          );
+        }
+        return null;
+      })}
     </div>
   );
 };

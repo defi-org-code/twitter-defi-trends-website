@@ -1,11 +1,10 @@
 import { animated } from "@react-spring/web";
-import { IDatasetElement } from "../../../types";
-import { memo } from "react";
-import Counter from "../../Counter";
-import FlameImg from "../../../../../assets/images/flame.png";
-import ListItemTweets from "../ListItemTweets";
-import useListItemUpdate from "../../../hooks/useListItemUpdate";
-import { INTERVAL_DELAY_SECONDS } from "../../../constants";
+import { IDatasetElement } from "../../../../types";
+import { JSXElementConstructor, memo } from "react";
+import Counter from "../../../Counter";
+import FlameImg from "../../../../../../assets/images/flame.png";
+import useListItemUpdate from "../../../../hooks/useListItemUpdate";
+import { INTERVAL_DELAY_SECONDS } from "../../../../constants";
 
 interface IProps {
   style: any;
@@ -15,6 +14,7 @@ interface IProps {
   symbol: string;
   index: number;
   isNew: boolean;
+  ContentComponent: JSXElementConstructor<any>;
 }
 
 const handleClassName = (isOpen: boolean, countChanged: boolean) => {
@@ -35,6 +35,7 @@ const ListItem = ({
   symbol,
   index,
   isNew,
+  ContentComponent,
 }: IProps) => {
   const { name, count } = item;
   const [updated] = useListItemUpdate(count, index, isNew);
@@ -57,7 +58,7 @@ const ListItem = ({
           </p>
         </div>
         <img src={FlameImg} alt="flame" className="list-item-flame" />
-        {isOpen && <ListItemTweets />}
+        {isOpen && <ContentComponent item={item} />}
       </div>
     </animated.div>
   );

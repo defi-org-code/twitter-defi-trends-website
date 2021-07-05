@@ -1,0 +1,31 @@
+.theme-toggle {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  .react-toggle-track {
+    background: #46aaf2;
+  }
+  .react-toggle-thumb {
+    transform: scale(1.2);
+  }
+  &:hover {
+    .react-toggle-track {
+      background: #46aaf2 !important;
+    }
+  }
+}
+
+.dark-mode {
+  .theme-toggle {
+    &:hover {
+      .react-toggle-track {
+        background: #212836 !important;
+      }
+    }
+    .react-toggle-track {
+      background: #212836;
+    }
+    .react-toggle-thumb {
+    }
+  }
+}
