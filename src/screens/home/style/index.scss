@@ -2,27 +2,35 @@
 @import "../components/InfluencersContainer/style.scss";
 @import "../components/CountDown/style.scss";
 @import "../components/List/style.scss";
-@import "../components/List/ListItem/style.scss";
+@import "../components/List/components/ListItem/style.scss";
 @import "../components/Header/style.scss";
 @import "../components/HeaderCounters/style.scss";
-@import "../components/SelectionContainer/style.scss";
+@import "../components/ViewSelector/style.scss";
 @import "../components/ThemeToggle/style.scss";
 @import "../components/TweetsContainer/index.scss";
+@import "../components/ErrorHandling/style.scss";
+@import "../components/ListsContainer/style.scss";
 
 .flex {
   display: flex;
 }
 .home {
+  overflow-y: hidden;
   min-height: 100vh;
   padding-bottom: 150px;
   background: #fafafb;
-  font-family: "Poppins", sans-serif;
-
+  transition: 0s all;
   &-grid {
     max-width: 1350px;
+    width: calc(100% - 80px);
     margin: auto;
     display: flex;
     flex-direction: column;
+  }
+}
+.dark-mode {
+  .home {
+    background: #2b2b2b;
   }
 }
 
@@ -47,4 +55,10 @@
   background: #555;
 }
 
-/* uncomment 'border' to see the bordered dots */
+@media only screen and (max-width: $mobile) {
+  .home {
+    &-grid {
+      width: calc(100% - 20px);
+    }
+  }
+}

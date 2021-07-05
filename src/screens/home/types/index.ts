@@ -1,3 +1,5 @@
+import { JSXElementConstructor, ReactElement } from "react";
+import { JsxElement } from "typescript";
 export interface IDatasetElement {
   name: string;
   count: number;
@@ -30,6 +32,7 @@ export interface IListCategory {
   image: string;
   title: string;
   shortName: string;
+  component: JSXElementConstructor<any>;
 }
 
 export interface IListCategories {
@@ -72,4 +75,16 @@ export interface ITopTweets {
   type: number;
   count: number;
   name: string;
+}
+
+export interface IViewOption {
+  title: string;
+  value: VIEW_SELECTOR_OPTIONS;
+  image: string;
+  url: string;
+}
+
+export enum VIEW_SELECTOR_OPTIONS {
+  ALL_TWEETS = "all_tweets",
+  INFLUENCERS = "influencers",
 }

@@ -1,4 +1,4 @@
-.header-counters {
+.home-header-counters {
   padding-top: 7px;
   flex: 1;
   overflow: hidden;
@@ -74,6 +74,19 @@
     .flex {
       align-items: center;
       width: 100%;
+    }
+  }
+}
+
+.dark-mode {
+  .home-header-counters {
+    &-element {
+      &-title {
+        color: white;
+      }
+      &-count {
+        color: white;
+      }
     }
   }
 }

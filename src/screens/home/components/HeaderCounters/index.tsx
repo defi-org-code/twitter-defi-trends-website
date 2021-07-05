@@ -14,14 +14,16 @@ const HeaderCounter = ({ element }: { element: ITopTweets }) => {
     const category = categories[categoryKey];
     const isLink = categoryKey === DATASET_NAMES.URLS;
     return (
-      <section className="header-counters-element" key={name}>
-        <h4 className="header-counters-element-title">{category.shortName}</h4>
+      <section className="home-header-counters-element" key={name}>
+        <h4 className="home-header-counters-element-title">
+          {category.shortName}
+        </h4>
         <span className="flex">
           <img src={category.image} alt="" />
 
           {isLink ? (
             <a
-              className="header-counters-element-name"
+              className="home-header-counters-element-name"
               href={name}
               target="_blank"
               rel="noreferrer"
@@ -29,9 +31,9 @@ const HeaderCounter = ({ element }: { element: ITopTweets }) => {
               LINK
             </a>
           ) : (
-            <p className="header-counters-element-name">{name}</p>
+            <p className="home-header-counters-element-name">{name}</p>
           )}
-          <p className="header-counters-element-count">
+          <p className="home-header-counters-element-count">
             <Counter value={count} />
           </p>
         </span>
@@ -44,8 +46,8 @@ const HeaderCounter = ({ element }: { element: ITopTweets }) => {
 
 const HeaderCounters = ({ data, title }: IProps) => {
   return (
-    <div className="header-counters">
-      <h5 className="header-counters-title">{title}</h5>
+    <div className="home-header-counters">
+      <h5 className="home-header-counters-title">{title}</h5>
       <div className="flex">
         {data &&
           data.map((element: ITopTweets) => {

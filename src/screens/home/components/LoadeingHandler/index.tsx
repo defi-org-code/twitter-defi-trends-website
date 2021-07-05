@@ -5,19 +5,11 @@ import "./style.scss";
 interface IProps {
   isLoading: boolean;
   children: any;
+  LoadingComponent?: any;
 }
 
-const LoadingHandler = ({ isLoading, children }: IProps) => {
-  return (
-    <>
-      <div
-        className={isLoading ? "app-loader app-loader-active" : "app-loader"}
-      >
-        Loading...
-      </div>
-      {children}
-    </>
-  );
+const LoadingHandler = ({ isLoading, children, LoadingComponent }: IProps) => {
+  return <>{isLoading ? <LoadingComponent /> : children}</>;
 };
 
 export default LoadingHandler;

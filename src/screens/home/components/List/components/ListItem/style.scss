@@ -67,7 +67,6 @@
     }
   }
 
-  transition: 0.2s all;
   &:hover {
     border: 0.3px solid #ffc542;
   }
@@ -75,5 +74,12 @@
     .list-item-flame {
       opacity: 1;
     }
+  }
+}
+
+.dark-mode {
+  .list-item {
+    background: #3b3b3b;
+    box-shadow: inset 0px -1px 0px #000000;
   }
 }

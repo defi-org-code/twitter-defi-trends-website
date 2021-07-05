@@ -1,6 +1,36 @@
 @import "./colors.scss";
 
+body {
+  font-family: "Poppins", sans-serif;
+}
 .text {
   color: $main-text-color;
   letter-spacing: 0.006rem;
+}
+.dark-mode {
+  .text {
+    color: $dark-mode-text-color;
+  }
+}
+
+.loader {
+  animation: glow 1.5s ease-in-out infinite alternate;
+
+  background: lightgray;
+}
+
+.glow {
+  font-size: 80px;
+  text-align: center;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    opacity: 0.8;
+  }
+
+  to {
+    opacity: 0.2;
+  }
 }

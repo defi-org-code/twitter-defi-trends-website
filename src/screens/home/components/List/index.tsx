@@ -1,21 +1,36 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import useListItemTransition from "../../hooks/useListItemTransition";
 import useCompare from "../../hooks/useCompare";
 import { IListCategory, IDatasetElement } from "../../types";
-import ListItem from "./ListItem";
+import ListItem from "./components/ListItem";
 import FrameImg from "../../../../assets/images/frame.png";
+import useWindowSize from "../../../../hooks/useResize";
+import { MOBILE_LIST_LIMIT, MOBILE_WIDTH_LIMIT } from "../../constants";
 
 interface IProps {
   dataset: IDatasetElement[];
   category: IListCategory;
+  categoryName: string;
+  index: number;
+  hide: boolean;
 }
 
-const List = ({ dataset, category }: IProps) => {
+const List = ({ dataset, category, hide, index }: IProps) => {
   const [activeElement, setActiveElement] = useState<IDatasetElement | null>(
     null
   );
+  const [showFullList, setshowFullList] = useState(false);
 
-  const { transitions, height } = useListItemTransition(dataset, activeElement);
+  useEffect(() => {
+    setActiveElement(null);
+  }, [dataset]);
+  const [width] = useWindowSize();
+  const isMobile = width > 0 && width < MOBILE_WIDTH_LIMIT;
+  const { transitions, height } = useListItemTransition(
+    dataset,
+    activeElement,
+    isMobile && !showFullList
+  );
   const [newEntities] = useCompare(dataset);
   const handleActiveElement = useCallback(
     (element: IDatasetElement) => {
@@ -29,7 +44,7 @@ const List = ({ dataset, category }: IProps) => {
 
   const { title, symbol, image } = category;
   return (
-    <div className="list" style={{ height }}>
+    <div className="list">
       <section className="list-title flex">
         <figure className="list-title-images">
           <img
@@ -45,7 +60,7 @@ const List = ({ dataset, category }: IProps) => {
         </figure>
         <h3>{title}</h3>
       </section>
-      <div className="list-flex">
+      <div className="list-flex" style={{ height }}>
         {transitions((style, item, t, index) => {
           const { name } = item;
           const isNew = newEntities.includes(name);
@@ -57,6 +72,7 @@ const List = ({ dataset, category }: IProps) => {
               symbol={symbol}
               isNew={isNew}
               index={index}
+              ContentComponent={category.component}
               style={{
                 zIndex: dataset.length - index,
                 ...style,
@@ -65,6 +81,14 @@ const List = ({ dataset, category }: IProps) => {
           );
         })}
       </div>
+      {isMobile && (
+        <button
+          className="list-mobile-toggle"
+          onClick={() => setshowFullList(!showFullList)}
+        >
+          {showFullList ? "Show less" : "Show more"}
+        </button>
+      )}
     </div>
   );
 };

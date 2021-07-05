@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import dataGenerator from "../../../../../services/data-generator";
-import { ITweet } from "../../../types";
-import LiveAnimation from "../LiveAnimation";
-import "./style.scss";
+import dataGenerator from "../../../../../../../services/data-generator";
+import { ITweet } from "../../../../../types";
+import LiveAnimation from "../../LiveAnimation";
 const tweets = dataGenerator.createTweetLiveData();
 
 const handleText = (text: string, value: string) => {
@@ -17,7 +16,7 @@ const handleText = (text: string, value: string) => {
   );
 };
 
-const ListItemTweets = () => {
+const Hashtags = () => {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     setTimeout(() => {
@@ -59,4 +58,4 @@ const ListItemTweets = () => {
   );
 };
 
-export default ListItemTweets;
+export default Hashtags;

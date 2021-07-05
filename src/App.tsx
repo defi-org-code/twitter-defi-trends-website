@@ -1,11 +1,13 @@
-import React, { FC } from "react";
+import React from "react";
+import CookiePolicy from "./components/CookiePolicy";
 import Home from "./screens/home/index";
 import "./style/index.scss";
 
-const App: FC = () => {
+const App = () => {
   return (
     <div className="App">
       <Home />
+      <CookiePolicy />
     </div>
   );
 };
