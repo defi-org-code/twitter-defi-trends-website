@@ -1,6 +1,7 @@
 import Counter from "../Counter";
 import { DATASET_NAMES, ITopTweets } from "../../types/index";
-import { categories, categortiesDictionary } from "../../constants";
+import { categories } from "../../data";
+import { categortiesDictionary } from "../../constants";
 
 interface IProps {
   data: ITopTweets[];

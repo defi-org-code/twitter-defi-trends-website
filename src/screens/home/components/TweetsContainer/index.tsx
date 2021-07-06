@@ -1,18 +1,30 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import ViewSelector from "../ViewSelector";
-import { viewSelectorOptions } from "../../constants";
-import { IViewOption, VIEW_SELECTOR_OPTIONS } from "../../types";
+import { LIST_HIDE_ANIMATION_CONFIG } from "../../constants";
+import { IViewOption, IViewToHide, VIEW_SELECTOR_OPTIONS } from "../../types";
 import ListsContainer from "../ListsContainer";
 import InfluencersContainer from "../InfluencersContainer";
+import { viewSelectorOptions } from "../../data";
 
 const TweetsContainer = () => {
-  const [viewName, setViewName] = useState(VIEW_SELECTOR_OPTIONS.ALL_TWEETS);
-  const [
-    elementToHide,
-    setElementToHide,
-  ] = useState<VIEW_SELECTOR_OPTIONS | null>(null);
-  const handleViewSelect = (name: VIEW_SELECTOR_OPTIONS) => {
-    setViewName(name);
+  const [view, setView] = useState(VIEW_SELECTOR_OPTIONS.ALL_TWEETS);
+  const [viewToHide, setViewToHide] = useState<IViewToHide | null>(null);
+  const handleViewSelect = (nextView: VIEW_SELECTOR_OPTIONS) => {
+    if (nextView === view) return;
+    const nextViewIndex = viewSelectorOptions.findIndex(
+      (e) => e.value === nextView
+    );
+    const currentViewIndex = viewSelectorOptions.findIndex(
+      (e) => e.value === view
+    );
+    const viewToHideObj = {
+      view,
+      isBigger: nextViewIndex > currentViewIndex,
+    };
+    setViewToHide(viewToHideObj);
+    setTimeout(() => {
+      setView(nextView);
+    }, LIST_HIDE_ANIMATION_CONFIG[view].animationDoneTimeout);
   };
 
   return (
@@ -20,18 +32,22 @@ const TweetsContainer = () => {
       <ViewSelector
         options={viewSelectorOptions}
         handleViewSelect={handleViewSelect}
-        selected={viewName}
+        selected={view}
       />
       <InfluencersContainer
-        isActive={viewName === VIEW_SELECTOR_OPTIONS.INFLUENCERS}
+        isActive={
+          view === VIEW_SELECTOR_OPTIONS.INFLUENCERS &&
+          viewToHide?.view !== VIEW_SELECTOR_OPTIONS.INFLUENCERS
+        }
       />
       {viewSelectorOptions.map((viewOption: IViewOption) => {
-        if (viewName === viewOption.value) {
+        if (view === viewOption.value) {
           return (
             <ListsContainer
               url={viewOption.url}
               key={viewOption.title}
-              hide={false}
+              viewToHide={viewToHide}
+              viewOption={viewOption}
             />
           );
         }

@@ -82,9 +82,16 @@ export interface IViewOption {
   value: VIEW_SELECTOR_OPTIONS;
   image: string;
   url: string;
+  CustomComponent?: JSXElementConstructor<any>;
+  darkImage: string;
 }
 
 export enum VIEW_SELECTOR_OPTIONS {
   ALL_TWEETS = "all_tweets",
   INFLUENCERS = "influencers",
+}
+
+export interface IViewToHide {
+  view: VIEW_SELECTOR_OPTIONS;
+  isBigger: boolean;
 }

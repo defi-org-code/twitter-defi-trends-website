@@ -29,6 +29,7 @@ const InfluencersContainer = ({ isActive }: IProps) => {
 
   return (
     <div ref={containerRef} className="influencers flex">
+      <section className="influencers-bg"></section>
       <MostActive />
       <div className="influencers-flex flex">
         {data.map((influencer: IInfluencer) => {

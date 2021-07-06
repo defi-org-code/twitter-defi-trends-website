@@ -100,6 +100,12 @@ nav,
 section {
   display: block;
 }
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+}
 body {
   line-height: 1;
 }
@@ -125,8 +131,4 @@ table {
 
 * {
   box-sizing: border-box;
-}
-
-button {
-  cursor: pointer;
 }

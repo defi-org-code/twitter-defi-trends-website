@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
-
+import Button from "../Button";
 const CookiePolicy = () => {
   const [cookiePolicy, setCookiePolicy] = useLocalStorage("cookie-policy", "");
   const [show, setshow] = useState(false);
@@ -29,18 +29,20 @@ const CookiePolicy = () => {
           assist in our marketing efforts.
         </p>
         <section className="cookie-policy-content-btns flex">
-          <button
-            className="cookie-policy-content-btns-cancel"
+          <Button
             onClick={() => setCookiePolicy("disabled")}
-          >
-            Cancel
-          </button>
-          <button
+            text="Cancel"
+            customClassName="cookie-policy-content-btns-cancel"
+            style={{
+              background: "transparent",
+              height: "auto",
+              padding: "0px",
+            }}
+          />
+          <Button
             onClick={() => setCookiePolicy("enabled")}
-            className="cookie-policy-content-btns-accept"
-          >
-            Accept All Cookies
-          </button>
+            text=" Accept All Cookies"
+          />
         </section>
       </div>
     </div>

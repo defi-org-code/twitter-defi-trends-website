@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
-import { categories } from "../../constants";
+import React from "react";
+import { categories } from "../../data";
 import useListsData from "../../hooks/useListsData";
-import { DATASET_NAMES, VIEW_SELECTOR_OPTIONS } from "../../types";
+import { DATASET_NAMES, IViewOption, IViewToHide } from "../../types";
 import ErrorHandling from "../ErrorHandling";
 import LoadingHandler from "../LoadeingHandler";
 import List from "../List";
@@ -9,9 +9,10 @@ import ListsLoader from "./components/ListLoader";
 
 interface IProps {
   url: string;
-  hide: boolean;
+  viewToHide: IViewToHide | null;
+  viewOption: IViewOption;
 }
-const ListsContainer = ({ url, hide }: IProps) => {
+const ListsContainer = ({ url, viewToHide, viewOption }: IProps) => {
   const [datasets, isError, isLoading] = useListsData(url);
 
   return (
@@ -29,12 +30,13 @@ const ListsContainer = ({ url, hide }: IProps) => {
                 const dataset = datasets[key];
                 return (
                   <List
-                    hide={hide}
+                    viewToHide={viewToHide}
                     index={index}
                     key={key}
                     dataset={dataset}
                     category={category}
                     categoryName={key}
+                    viewOption={viewOption}
                   />
                 );
               }
