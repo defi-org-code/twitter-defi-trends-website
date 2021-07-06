@@ -1,0 +1,48 @@
+.view-selector-varified-users {
+  position: relative;
+  margin-left: 10px;
+  &-btn {
+    width: 15px;
+    height: 15px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+  &-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 41px;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+    h4 {
+      @extend .text;
+      font-size: 1.063rem;
+      line-height: 1.75rem;
+      width: 200px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .button {
+      min-width: 190px;
+    }
+    p {
+      font-size: 0.813rem;
+      line-height: 1.5rem;
+      a {
+        margin-left: 5px;
+        margin-right: 5px;
+        color: #d5a229;
+        font-weight: 900;
+        text-decoration: none;
+      }
+      margin-bottom: 20px;
+    }
+  }
+}

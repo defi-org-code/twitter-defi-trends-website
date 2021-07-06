@@ -7,6 +7,11 @@
   position: relative;
   width: calc(100% / 4 - 20px);
   max-width: 100%;
+  transition: 0.3s all;
+  &-left {
+    transform: translate(-30%);
+    opacity: 0;
+  }
   &-mobile-toggle {
     background: transparent;
     border: none;

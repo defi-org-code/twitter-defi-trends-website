@@ -1,18 +1,17 @@
+import React, { useContext } from "react";
 import Toggle from "react-toggle";
-
 import "react-toggle/style.css"; // for ES6 modules
 
-import React from "react";
-import useTheme from "../../hooks/useTheme";
+import { ThemeContext } from "../../providers/ThemeProvider";
 
 const ThemeToggle = () => {
-  const [darkMode, handleDarkMode] = useTheme();
+  const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
   return (
     <Toggle
       icons={false}
       className="theme-toggle"
-      checked={darkMode}
-      onChange={handleDarkMode}
+      checked={isDarkMode}
+      onChange={toggleDarkMode}
     />
   );
 };

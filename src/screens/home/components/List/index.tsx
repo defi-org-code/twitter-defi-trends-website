@@ -1,26 +1,38 @@
 import { useCallback, useEffect, useState } from "react";
 import useListItemTransition from "../../hooks/useListItemTransition";
 import useCompare from "../../hooks/useCompare";
-import { IListCategory, IDatasetElement } from "../../types";
+import {
+  IListCategory,
+  IDatasetElement,
+  VIEW_SELECTOR_OPTIONS,
+  IViewOption,
+  IViewToHide,
+} from "../../types";
 import ListItem from "./components/ListItem";
 import FrameImg from "../../../../assets/images/frame.png";
 import useWindowSize from "../../../../hooks/useResize";
 import { MOBILE_LIST_LIMIT, MOBILE_WIDTH_LIMIT } from "../../constants";
+import useHideList from "../../hooks/useHideList";
 
 interface IProps {
   dataset: IDatasetElement[];
   category: IListCategory;
   categoryName: string;
   index: number;
-  hide: boolean;
+  viewToHide: IViewToHide | null;
+  viewOption: IViewOption;
 }
 
-const List = ({ dataset, category, hide, index }: IProps) => {
+const List = ({ dataset, category, viewToHide, viewOption, index }: IProps) => {
   const [activeElement, setActiveElement] = useState<IDatasetElement | null>(
     null
   );
   const [showFullList, setshowFullList] = useState(false);
-
+  const [hideList, delay, translate] = useHideList(
+    viewToHide,
+    index,
+    viewOption.value
+  );
   useEffect(() => {
     setActiveElement(null);
   }, [dataset]);
@@ -44,7 +56,14 @@ const List = ({ dataset, category, hide, index }: IProps) => {
 
   const { title, symbol, image } = category;
   return (
-    <div className="list">
+    <div
+      className="list"
+      style={{
+        transform: hideList ? `translate(${translate})` : "none",
+        transitionDelay: `${delay}s`,
+        opacity: hideList ? 0 : 1,
+      }}
+    >
       <section className="list-title flex">
         <figure className="list-title-images">
           <img

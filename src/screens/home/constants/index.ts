@@ -1,49 +1,4 @@
-import {
-  DATASET_NAMES,
-  IListCategories,
-  VIEW_SELECTOR_OPTIONS,
-} from "../types";
-import CashtagImg from "../../../assets/images/cashtags.png";
-import HashtagImg from "../../../assets/images/hashtags.png";
-import MentionsImg from "../../../assets/images/mentions.png";
-import UrlsImg from "../../../assets/images/urls.png";
-import TweetsImg from "../../../assets/images/twitter-small.png";
-import InfluencerImg from "../../../assets/images/influencer-small.png";
-import Hashtags from "../components/List/components/ListItemContent/Hashtags";
-import Cashtags from "../components/List/components/ListItemContent/Cashtags";
-import Mentions from "../components/List/components/ListItemContent/Mentions";
-import Urls from "../components/List/components/ListItemContent/Urls";
-
-export const categories: IListCategories = {
-  [DATASET_NAMES.HASHTAGS]: {
-    symbol: "#",
-    image: HashtagImg,
-    title: "Popular #Hashtags",
-    shortName: "Hashtag",
-    component: Hashtags,
-  },
-  [DATASET_NAMES.CASHTAGS]: {
-    symbol: "$",
-    image: CashtagImg,
-    title: "Popular $Cashtag",
-    shortName: "Cashtag",
-    component: Cashtags,
-  },
-  [DATASET_NAMES.MENTIONS]: {
-    symbol: "@",
-    image: MentionsImg,
-    title: "Popular @Mentions",
-    shortName: "Mentions",
-    component: Mentions,
-  },
-  [DATASET_NAMES.URLS]: {
-    symbol: "🔗",
-    image: UrlsImg,
-    title: "Popular #URL’s",
-    shortName: "URL’s",
-    component: Urls,
-  },
-};
+import { DATASET_NAMES, VIEW_SELECTOR_OPTIONS } from "../types";
 
 export const categortiesDictionary: { [key: string]: DATASET_NAMES } = {
   "0": DATASET_NAMES.CASHTAGS,
@@ -65,22 +20,21 @@ export const API_ITEMS_LIMIT = 70;
 export const PERIOD_ENTITIES_API =
   "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchPeriodTopEntities";
 
-export const viewSelectorOptions = [
-  {
-    title: "All Tweets",
-    value: VIEW_SELECTOR_OPTIONS.ALL_TWEETS,
-    image: TweetsImg,
-    url: GET_TWEETS_API_URL,
-  },
-  {
-    title: "Tweets By Verified Users",
-    value: VIEW_SELECTOR_OPTIONS.INFLUENCERS,
-    image: InfluencerImg,
-    url: GET_TWEETS_API_URL,
-  },
-];
-
 export const LISTS_AMOUNT = 4;
-
 export const MOBILE_WIDTH_LIMIT = 600;
 export const MOBILE_LIST_LIMIT = 3;
+
+export const LIST_HIDE_ANIMATION_CONFIG = {
+  [VIEW_SELECTOR_OPTIONS.ALL_TWEETS]: {
+    animationDoneTimeout: 600,
+    animationDelay: 0,
+  },
+  [VIEW_SELECTOR_OPTIONS.INFLUENCERS]: {
+    animationDoneTimeout: 800,
+    animationDelay: 0.2,
+  },
+};
+
+export const DEFAULT_API_RETRIES = 3;
+
+export const API_RETRIES_DELAY = 200;
