@@ -9,6 +9,7 @@ import { viewSelectorOptions } from "../../data";
 const TweetsContainer = () => {
   const [view, setView] = useState(VIEW_SELECTOR_OPTIONS.ALL_TWEETS);
   const [viewToHide, setViewToHide] = useState<IViewToHide | null>(null);
+
   const handleViewSelect = (nextView: VIEW_SELECTOR_OPTIONS) => {
     if (nextView === view) return;
     const nextViewIndex = viewSelectorOptions.findIndex(
@@ -32,7 +33,6 @@ const TweetsContainer = () => {
       <ViewSelector
         options={viewSelectorOptions}
         handleViewSelect={handleViewSelect}
-        selected={view}
       />
       <InfluencersContainer
         isActive={

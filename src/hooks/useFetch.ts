@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from "react";
 import api from "../services/api";
 
 const useFetch = (url: string, fecthOnLoad?: boolean) => {

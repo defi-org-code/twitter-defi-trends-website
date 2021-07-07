@@ -4,6 +4,9 @@ export interface IDatasetElement {
   name: string;
   count: number;
   y?: number;
+  processed: number;
+  extra: any;
+  lastUpdateTime: string;
 }
 
 export enum DATASET_NAMES {
@@ -49,11 +52,12 @@ export interface IHeaderCounterData {
   count: number;
 }
 
-interface IRawTweet {
+export interface IRawTweet {
   count: number;
   lastUpdateTime: string;
   name: string;
   processed: number;
+  extra: any;
 }
 
 export interface IRawTweets {

@@ -1,6 +1,6 @@
 import React from "react";
-import { IInfluencer } from "../../types";
-import { nFormatter } from "../../utils/numberUtil";
+import { IInfluencer } from "../../../../types";
+import { nFormatter } from "../../../../utils/numberUtil";
 
 interface IProps {
   influencer: IInfluencer;

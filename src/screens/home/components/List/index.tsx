@@ -33,9 +33,7 @@ const List = ({ dataset, category, viewToHide, viewOption, index }: IProps) => {
     index,
     viewOption.value
   );
-  useEffect(() => {
-    setActiveElement(null);
-  }, [dataset]);
+
   const [width] = useWindowSize();
   const isMobile = width > 0 && width < MOBILE_WIDTH_LIMIT;
   const { transitions, height } = useListItemTransition(

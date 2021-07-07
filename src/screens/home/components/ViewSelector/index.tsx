@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { IViewOption, VIEW_SELECTOR_OPTIONS } from "../../types";
 import Option from "./components/ViewOption";
@@ -6,32 +6,36 @@ import Option from "./components/ViewOption";
 interface IProps {
   options: IViewOption[];
   handleViewSelect: (name: VIEW_SELECTOR_OPTIONS) => void;
-  selected: VIEW_SELECTOR_OPTIONS;
 }
 
-const ViewSelector = ({ options, handleViewSelect, selected }: IProps) => {
-  const select = (
-    e: React.MouseEvent<HTMLElement>,
-    option: VIEW_SELECTOR_OPTIONS
-  ) => {
-    e.stopPropagation();
+const ViewSelector = ({ options, handleViewSelect }: IProps) => {
+  const [selected, setSelected] = useState(VIEW_SELECTOR_OPTIONS.ALL_TWEETS);
+  const indicatorRef = useRef<HTMLDivElement>(null);
+
+  const select = (option: VIEW_SELECTOR_OPTIONS) => {
+    setSelected(option);
     handleViewSelect(option);
   };
+
   return (
     <>
       <div className="home-selection flex">
-        {options.map((option: IViewOption) => {
+        {options.map((option: IViewOption, index: number) => {
           return (
             <Option
+              ref={indicatorRef}
               key={option.value}
               option={option}
               selected={selected}
-              handleClick={(e: React.MouseEvent<HTMLElement>) =>
-                select(e, option.value)
-              }
+              select={() => select(option.value)}
+              isFirst={index === 0}
             />
           );
         })}
+        <figure
+          className="home-selection-indicator"
+          ref={indicatorRef}
+        ></figure>
       </div>
     </>
   );

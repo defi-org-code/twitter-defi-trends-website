@@ -1,59 +1,46 @@
-import React, { useEffect, useState } from "react";
-import dataGenerator from "../../../../../../../services/data-generator";
-import { ITweet } from "../../../../../types";
-import LiveAnimation from "../../LiveAnimation";
-const tweets = dataGenerator.createTweetLiveData();
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { ThemeContext } from "../../../../../../../providers/ThemeProvider";
+import { IDatasetElement } from "../../../../../types";
 
-const handleText = (text: string, value: string) => {
-  const str = text.toLowerCase();
-  const title = value.toLowerCase();
-  const result = str.split(title);
-  return (
-    <span>
-      {result[0]} <a href="/">{value}</a>
-      {result[1]}
-    </span>
-  );
-};
+interface IProps {
+  item: IDatasetElement;
+}
 
-const Mentions = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const Mentions = ({ item }: IProps) => {
+  const { name } = item;
+  const [isLoading, setIsLoading] = useState(true);
+  const ref = useRef<HTMLDivElement>(null);
+  const { isDarkMode } = useContext(ThemeContext);
+
   useEffect(() => {
-    setTimeout(() => {
-      setIsOpen(true);
-    }, 50);
+    embed();
   }, []);
-  const className = isOpen
-    ? "list-item-tweets list-item-tweets-active"
-    : "list-item-tweets";
-  return (
-    <div className={className}>
-      <section className="list-item-tweets-top flex">
-        <p>live tweets</p>
-        <LiveAnimation />
-      </section>
 
-      <ul className="list-item-tweets-list">
-        {tweets.map((tweet: ITweet, index: number) => {
-          const { image, title, author, text } = tweet;
-          return (
-            <li key={`${index}`} className="live-tweet flex">
-              <figure className="live-tweet-image">
-                {image && <img src={image} alt="tweet icon" />}
-              </figure>
-              <section className="live-tweet-content">
-                <span className="live-tweet-content-top flex">
-                  <p>{title}</p>
-                  <p>{`@${author}`}</p>
-                </span>
-                <p className="live-tweet-content-text">
-                  {handleText(text, "#Cryptocurrency")};
-                </p>
-              </section>
-            </li>
-          );
-        })}
-      </ul>
+  const embed = async () => {
+    try {
+      const anchor = document.createElement("a");
+      anchor.setAttribute("class", "twitter-timeline");
+      anchor.setAttribute("data-theme", `${isDarkMode ? "dark" : "light"}`);
+      anchor.setAttribute("data-tweet-limit", "5");
+      anchor.setAttribute("data-chrome", "noheader nofooter noborders");
+      anchor.setAttribute("href", `https://twitter.com/${name}`);
+      document.getElementsByClassName("twitter-embed")[0].appendChild(anchor);
+
+      const script = document.createElement("script");
+      script.setAttribute("src", "https://platform.twitter.com/widgets.js");
+      await document
+        .getElementsByClassName("twitter-embed")[0]
+        .appendChild(script);
+    } catch (error) {
+      console.log("error");
+    }
+    setIsLoading(false);
+  };
+
+  return (
+    <div ref={ref} className="list-item-mentions">
+      {isLoading && <p>is loading...</p>}
+      <div className="twitter-embed"></div>
     </div>
   );
 };

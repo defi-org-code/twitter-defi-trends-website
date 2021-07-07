@@ -1,0 +1,13 @@
+.app-loader {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  background: white;
+  z-index: 999999;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  transition: 0.3s all;
+}

@@ -11,7 +11,7 @@ const CustomPopup = ({ onClick }: IProps) => {
     onClick();
   };
   return (
-    <div className="view-selector-varified-users-popup">
+    <div className="view-selector-custom-popup">
       <img src={images.greenTwitter.img} alt={images.greenTwitter.alt} />
       <h4>Do you think you should be here?</h4>
       <p>
@@ -19,8 +19,8 @@ const CustomPopup = ({ onClick }: IProps) => {
         <a href="https://defi.org/hot" target="_blank" rel="noreferrer">
           https://defi.org/hot
         </a>
-        and mention @defi_org and we will consider adding you to the verified
-        list of users
+        and mention <span>@defi_org</span> and we will consider adding you to
+        the verified list of users
       </p>
       <Button text="Close" onClick={handleClick} />
     </div>

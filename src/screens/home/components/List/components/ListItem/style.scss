@@ -11,6 +11,7 @@
   border: 0.3px solid transparent;
   display: flex;
   flex-direction: column;
+  transition: $theme-transition;
   &-flame {
     width: 90%;
     height: auto;

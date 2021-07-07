@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useRef } from "react";
 
 const useInterval = (callback: () => void, delay: number) => {
   let t = useRef<any>(null);

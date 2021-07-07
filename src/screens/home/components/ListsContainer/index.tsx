@@ -2,8 +2,8 @@ import React from "react";
 import { categories } from "../../data";
 import useListsData from "../../hooks/useListsData";
 import { DATASET_NAMES, IViewOption, IViewToHide } from "../../types";
-import ErrorHandling from "../ErrorHandling";
-import LoadingHandler from "../LoadeingHandler";
+import ErrorHandling from "../../../../components/ErrorHandling";
+import LoadingHandler from "../../../../components/LoadingHandler";
 import List from "../List";
 import ListsLoader from "./components/ListLoader";
 
@@ -13,7 +13,7 @@ interface IProps {
   viewOption: IViewOption;
 }
 const ListsContainer = ({ url, viewToHide, viewOption }: IProps) => {
-  const [datasets, isError, isLoading] = useListsData(url);
+  const [datasets, isError] = useListsData(url);
 
   return (
     <div className="home-tweets-lists flex">

@@ -35,15 +35,13 @@ const renderer = ({ hours, minutes, seconds, completed }: IRenderProps) => {
     );
   }
 };
+const date = new Date();
+date.setHours(24, 0, 0, 0);
 const CountDown = () => {
   return (
     <div className="countdown flex">
       <p className="countdown-title">Time counter until new day</p>
-      <Countdown
-        zeroPadDays={2}
-        date={Date.now() + 50000000}
-        renderer={renderer}
-      />
+      <Countdown zeroPadDays={2} date={date.getTime()} renderer={renderer} />
     </div>
   );
 };

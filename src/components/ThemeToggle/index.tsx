@@ -6,6 +6,7 @@ import { ThemeContext } from "../../providers/ThemeProvider";
 
 const ThemeToggle = () => {
   const { isDarkMode, toggleDarkMode } = useContext(ThemeContext);
+
   return (
     <Toggle
       icons={false}

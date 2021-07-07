@@ -1,6 +1,4 @@
 import React from "react";
-import { JsxElement } from "typescript";
-import "./style.scss";
 
 interface IProps {
   isLoading: boolean;

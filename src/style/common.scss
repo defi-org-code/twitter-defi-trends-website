@@ -1,9 +1,8 @@
-@import "./colors.scss";
-
 body {
   font-family: "Poppins", sans-serif;
 }
 .text {
+  transition: $theme-transition;
   color: $main-text-color;
   letter-spacing: 0.006rem;
 }
