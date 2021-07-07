@@ -6,6 +6,7 @@
   z-index: 999;
   height: 72px;
   background: #0b2239;
+  transition: $theme-transition;
   font-family: "Inter", sans-serif;
   &-content {
     height: 100%;

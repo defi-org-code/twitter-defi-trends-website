@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import dataGenerator from "../../../../services/data-generator";
 import { IInfluencer } from "../../types";
-import Influencer from "../Influencer";
+import Influencer from "./components/Influencer";
 import JoinBtn from "./JoinBtn";
 import MostActive from "./MostActive";
 interface IProps {

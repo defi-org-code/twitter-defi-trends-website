@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const useVisibilityChange = (): [boolean] => {
+const useVisibilityChange = (
+  visibleCallback?: any,
+  hiddenCallback?: any
+): [boolean] => {
   const [windowInView, setWindowInView] = useState(true);
   useEffect(() => {
     window.addEventListener("visibilitychange", handleVisibillity);
@@ -11,11 +14,20 @@ const useVisibilityChange = (): [boolean] => {
 
   const handleVisibillity = () => {
     if (document.visibilityState === "hidden") {
-      return setWindowInView(false);
+      return handleHidden();
+    } else {
+      handleVisible();
     }
-    setWindowInView(true);
   };
 
+  const handleHidden = () => {
+    hiddenCallback && hiddenCallback();
+    setWindowInView(false);
+  };
+  const handleVisible = () => {
+    visibleCallback && visibleCallback();
+    setWindowInView(true);
+  };
   return [windowInView];
 };
 

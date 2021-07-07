@@ -5,11 +5,12 @@ import {
   IListCategories,
   VIEW_SELECTOR_OPTIONS,
 } from "./../types/index";
-import VarifiedUsersView from "../components/ViewSelector/components/VarifiedUsersView";
+import VarifiedUsersViewCustom from "../components/ViewSelector/components/VarifiedUsersViewCustom";
 import Hashtags from "../components/List/components/ListItemContent/Hashtags";
 import Cashtags from "../components/List/components/ListItemContent/Cashtags";
 import Mentions from "../components/List/components/ListItemContent/Mentions";
 import Urls from "../components/List/components/ListItemContent/Urls";
+import AllTweetsViewCustom from "../components/ViewSelector/components/AllTweetsViewCustom";
 export const viewSelectorOptions = [
   {
     title: "All Tweets",
@@ -17,6 +18,7 @@ export const viewSelectorOptions = [
     image: images.allTweetsIcon.img,
     darkImage: images.allTweetsIconDark.img,
     url: GET_TWEETS_API_URL,
+    CustomComponent: AllTweetsViewCustom,
   },
   {
     title: "Tweets By Verified Users",
@@ -24,7 +26,7 @@ export const viewSelectorOptions = [
     image: images.verifiedUsersSelect.img,
     darkImage: images.verifiedUsersSelectDark.img,
     url: GET_TWEETS_API_URL,
-    CustomComponent: VarifiedUsersView,
+    CustomComponent: VarifiedUsersViewCustom,
   },
 ];
 

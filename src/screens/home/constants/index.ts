@@ -7,12 +7,12 @@ export const categortiesDictionary: { [key: string]: DATASET_NAMES } = {
   "3": DATASET_NAMES.MENTIONS,
 };
 
-export const LIST_ITEM_ANIMATION_TIMEOUT_SECONDS = 5;
+export const LIST_ITEM_ANIMATION_TIMEOUT_SECONDS = 2;
 export const COUNT_TO_JUMP = 100;
 export const POSITIONS_TO_JUMP = 5;
-export const INTERVAL_DELAY_SECONDS = 61;
+export const INTERVAL_DELAY_SECONDS = 4;
 export const LIST_ELEMENT_DEFAULT_HEIGHT = 51;
-export const LIST_ELEMENT_OPENED_HEIGHT = 238;
+export const LIST_ELEMENT_OPENED_HEIGHT = 245;
 export const GET_TWEETS_API_URL =
   "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchTopEntities";
 export const API_ITEMS_LIMIT = 70;

@@ -1,14 +1,18 @@
 import React from "react";
 import CountDown from "../CountDown";
-import HeaderCounters from "../HeaderCounters";
+import HeaderCounters from "./components/HeaderCounters";
 import TwitterImg from "../../../../assets/images/twitter.png";
 import useFetch from "../../../../hooks/useFetch";
 import { PERIOD_ENTITIES_API } from "../../constants";
-import ErrorHandling from "../ErrorHandling";
+import ErrorHandling from "../../../../components/ErrorHandling";
 import ThemeToggle from "../../../../components/ThemeToggle";
+import useVisibilityChange from "../../../../hooks/useVisibilityChange";
 const Header = () => {
-  const [data, error] = useFetch(PERIOD_ENTITIES_API, true);
-
+  const [data, error, _loading, fetchData] = useFetch(
+    PERIOD_ENTITIES_API,
+    true
+  );
+  useVisibilityChange(fetchData);
   return (
     <header className="home-header">
       <div className="home-header-top flex">

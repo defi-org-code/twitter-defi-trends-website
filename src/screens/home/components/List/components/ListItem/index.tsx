@@ -1,7 +1,7 @@
 import { animated } from "@react-spring/web";
 import { IDatasetElement } from "../../../../types";
 import { JSXElementConstructor, memo } from "react";
-import Counter from "../../../Counter";
+import Counter from "../../../../../../components/Counter";
 import FlameImg from "../../../../../../assets/images/flame.png";
 import useListItemUpdate from "../../../../hooks/useListItemUpdate";
 import { INTERVAL_DELAY_SECONDS } from "../../../../constants";
@@ -37,9 +37,8 @@ const ListItem = ({
   isNew,
   ContentComponent,
 }: IProps) => {
-  const { name, count } = item;
+  const { name, count, processed } = item;
   const [updated] = useListItemUpdate(count, index, isNew);
-
   return (
     <animated.div className="card" style={style}>
       <div className={handleClassName(isOpen, updated)}>
@@ -53,7 +52,7 @@ const ListItem = ({
             <Counter
               value={count}
               duration={INTERVAL_DELAY_SECONDS}
-              animationOnStart
+              start={processed}
             />
           </p>
         </div>
