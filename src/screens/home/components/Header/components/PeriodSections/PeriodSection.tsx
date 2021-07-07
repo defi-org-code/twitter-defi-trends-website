@@ -3,7 +3,7 @@ import { categortiesDictionary } from "../../../../constants";
 import { categories } from "../../../../data";
 import { DATASET_NAMES, ITopTweets } from "../../../../types";
 import Tooltip from "../../../../../../components/Tooltip";
-const HeaderCounter = ({ element }: { element: ITopTweets }) => {
+const PeriodSection = ({ element }: { element: ITopTweets }) => {
   const { type, name, count } = element;
   const categoryKey = categortiesDictionary[type];
   const category = categories[categoryKey];
@@ -12,8 +12,8 @@ const HeaderCounter = ({ element }: { element: ITopTweets }) => {
     return null;
   }
   return (
-    <section className="home-header-counters-element" key={name}>
-      <h4 className="home-header-counters-element-title">
+    <section className="header-period-sections-element" key={name}>
+      <h4 className="header-period-sections-element-title">
         {category.shortName}
       </h4>
       <span className="flex">
@@ -21,7 +21,7 @@ const HeaderCounter = ({ element }: { element: ITopTweets }) => {
 
         {isLink ? (
           <a
-            className="home-header-counters-element-name"
+            className="header-period-sections-element-name"
             href={name}
             target="_blank"
             rel="noreferrer"
@@ -30,11 +30,11 @@ const HeaderCounter = ({ element }: { element: ITopTweets }) => {
           </a>
         ) : (
           <>
-            <p className="home-header-counters-element-name">{name}</p>
+            <p className="header-period-sections-element-name">{name}</p>
             <Tooltip content={name} />
           </>
         )}
-        <p className="home-header-counters-element-count">
+        <p className="header-period-sections-element-count">
           {count.toLocaleString()}
         </p>
       </span>
@@ -42,4 +42,4 @@ const HeaderCounter = ({ element }: { element: ITopTweets }) => {
   );
 };
 
-export default HeaderCounter;
+export default PeriodSection;

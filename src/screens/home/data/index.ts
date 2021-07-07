@@ -6,11 +6,10 @@ import {
   VIEW_SELECTOR_OPTIONS,
 } from "./../types/index";
 import VarifiedUsersViewCustom from "../components/ViewSelector/components/VarifiedUsersViewCustom";
-import Hashtags from "../components/List/components/ListItemContent/Hashtags";
-import Cashtags from "../components/List/components/ListItemContent/Cashtags";
 import Mentions from "../components/List/components/ListItemContent/Mentions";
 import Urls from "../components/List/components/ListItemContent/Urls";
 import AllTweetsViewCustom from "../components/ViewSelector/components/AllTweetsViewCustom";
+import HashtagsAndCashtags from "../components/List/components/ListItemContent/HashtagsAndCashtags";
 export const viewSelectorOptions = [
   {
     title: "All Tweets",
@@ -36,14 +35,14 @@ export const categories: IListCategories = {
     image: images.hashtag.img,
     title: "Popular #Hashtags",
     shortName: "Hashtag",
-    component: Hashtags,
+    component: HashtagsAndCashtags,
   },
   [DATASET_NAMES.CASHTAGS]: {
     symbol: "$",
     image: images.cashtag.img,
     title: "Popular $Cashtag",
     shortName: "Cashtag",
-    component: Cashtags,
+    component: HashtagsAndCashtags,
   },
   [DATASET_NAMES.MENTIONS]: {
     symbol: "@",

@@ -16,7 +16,8 @@ export const LIST_ELEMENT_OPENED_HEIGHT = 245;
 export const GET_TWEETS_API_URL =
   "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchTopEntities";
 export const API_ITEMS_LIMIT = 70;
-
+export const GET_HASHTAG_TWEETS_API =
+  "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchTweetsByTag";
 export const PERIOD_ENTITIES_API =
   "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchPeriodTopEntities";
 
