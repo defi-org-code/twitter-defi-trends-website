@@ -1,4 +1,5 @@
 import React from "react";
+import DefaultLoader from "./DefaultLoader";
 
 interface IProps {
   isLoading: boolean;
@@ -6,7 +7,11 @@ interface IProps {
   LoadingComponent?: any;
 }
 
-const LoadingHandler = ({ isLoading, children, LoadingComponent }: IProps) => {
+const LoadingHandler = ({
+  isLoading,
+  children,
+  LoadingComponent = DefaultLoader,
+}: IProps) => {
   return <>{isLoading ? <LoadingComponent /> : children}</>;
 };
 

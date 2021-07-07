@@ -1,12 +1,12 @@
 import React from "react";
 import CountDown from "../CountDown";
-import HeaderCounters from "./components/HeaderCounters";
 import TwitterImg from "../../../../assets/images/twitter.png";
 import useFetch from "../../../../hooks/useFetch";
 import { PERIOD_ENTITIES_API } from "../../constants";
 import ErrorHandling from "../../../../components/ErrorHandling";
 import ThemeToggle from "../../../../components/ThemeToggle";
 import useVisibilityChange from "../../../../hooks/useVisibilityChange";
+import PeriodSections from "./components/PeriodSections";
 const Header = () => {
   const [data, error, _loading, fetchData] = useFetch(
     PERIOD_ENTITIES_API,
@@ -26,14 +26,14 @@ const Header = () => {
       </div>
       <div className="home-header-bottom flex">
         <ErrorHandling showError={error} errorText="Fetch failed">
-          <HeaderCounters
+          <PeriodSections
             title="Yesterday's top"
             data={data?.yesterdayTopEntities}
           />
         </ErrorHandling>
         <CountDown />
         <ErrorHandling showError={error} errorText="Fetch failed">
-          <HeaderCounters title="Weekly top" data={data?.weeklyTopEntities} />
+          <PeriodSections title="Weekly top" data={data?.weeklyTopEntities} />
         </ErrorHandling>
       </div>
     </header>

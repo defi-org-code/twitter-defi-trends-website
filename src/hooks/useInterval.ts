@@ -8,6 +8,7 @@ const useInterval = (callback: () => void, delay: number) => {
     window.clearInterval(t.current);
     set();
     return () => {
+      console.log("cleared");
       window.clearInterval(t.current);
     };
   }, []);

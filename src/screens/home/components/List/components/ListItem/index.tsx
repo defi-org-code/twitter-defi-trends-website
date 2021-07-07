@@ -57,7 +57,7 @@ const ListItem = ({
           </p>
         </div>
         <img src={FlameImg} alt="flame" className="list-item-flame" />
-        {isOpen && <ContentComponent item={item} />}
+        {isOpen && <ContentComponent item={item} symbol={symbol} />}
       </div>
     </animated.div>
   );
