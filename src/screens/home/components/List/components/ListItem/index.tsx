@@ -65,9 +65,10 @@ const ListItem = ({
 
 const areEqual = (prevProps: IProps, nextProps: IProps) => {
   const isSameNum = prevProps.item.count === nextProps.item.count;
+  const isSameProcessed = prevProps.item.processed === nextProps.item.processed;
   const isSameActive = prevProps.isOpen === nextProps.isOpen;
   const isNew = prevProps.isNew === nextProps.isNew;
-  return isSameNum && isSameActive && isNew;
+  return isSameNum && isSameActive && isNew && isSameProcessed;
 };
 
 export default memo(ListItem, areEqual);
