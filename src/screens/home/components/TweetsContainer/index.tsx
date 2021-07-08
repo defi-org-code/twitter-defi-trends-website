@@ -3,8 +3,7 @@ import ViewSelector from "../ViewSelector";
 import { LIST_HIDE_ANIMATION_CONFIG } from "../../constants";
 import { IViewOption, IViewToHide, VIEW_SELECTOR_OPTIONS } from "../../types";
 import ListsContainer from "../ListsContainer";
-import InfluencersContainer from "../InfluencersContainer";
-import { viewSelectorOptions } from "../../data";
+import { views } from "../../data";
 
 const TweetsContainer = () => {
   const [view, setView] = useState(VIEW_SELECTOR_OPTIONS.ALL_TWEETS);
@@ -12,12 +11,8 @@ const TweetsContainer = () => {
 
   const handleViewSelect = (nextView: VIEW_SELECTOR_OPTIONS) => {
     if (nextView === view) return;
-    const nextViewIndex = viewSelectorOptions.findIndex(
-      (e) => e.value === nextView
-    );
-    const currentViewIndex = viewSelectorOptions.findIndex(
-      (e) => e.value === view
-    );
+    const nextViewIndex = views.findIndex((e) => e.value === nextView);
+    const currentViewIndex = views.findIndex((e) => e.value === view);
     const viewToHideObj = {
       view,
       isBigger: nextViewIndex > currentViewIndex,
@@ -30,24 +25,16 @@ const TweetsContainer = () => {
 
   return (
     <div className="home-tweets">
-      <ViewSelector
-        options={viewSelectorOptions}
-        handleViewSelect={handleViewSelect}
-      />
-      <InfluencersContainer
-        isActive={
-          view === VIEW_SELECTOR_OPTIONS.INFLUENCERS &&
-          viewToHide?.view !== VIEW_SELECTOR_OPTIONS.INFLUENCERS
-        }
-      />
-      {viewSelectorOptions.map((viewOption: IViewOption) => {
+      <ViewSelector options={views} handleViewSelect={handleViewSelect} />
+
+      {views.map((viewOption: IViewOption) => {
         if (view === viewOption.value) {
           return (
             <ListsContainer
-              url={viewOption.url}
               key={viewOption.title}
               viewToHide={viewToHide}
               viewOption={viewOption}
+              CustomComponent={viewOption.ListCustomComponent}
             />
           );
         }

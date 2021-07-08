@@ -1,48 +1,73 @@
-import { useEffect, useRef, useState } from "react";
-import {
-  LIST_ITEM_ANIMATION_TIMEOUT_SECONDS,
-  POSITIONS_TO_JUMP,
-  COUNT_TO_JUMP,
-} from "../constants";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { LIST_ITEM_ANIMATION_TIMEOUT_SECONDS } from "../constants";
 import { numbersDiff } from "../utils/numberUtil";
-
-const handleCount = (prevCount: number, currentCount: number) => {
-  if (!prevCount || currentCount <= prevCount) {
-    return false;
-  }
-  return numbersDiff(currentCount, prevCount) > COUNT_TO_JUMP;
-};
-
-const handlePosition = (prevIndex: number, currentIndex: number) => {
-  if (!prevIndex || currentIndex >= prevIndex) {
-    return false;
-  }
-  return numbersDiff(currentIndex, prevIndex) >= POSITIONS_TO_JUMP;
-};
 
 const useListItemUpdate = (
   count: number,
+  processed: number,
+  countForAnimation: number,
   index: number,
+  positionsJumpForAnimation: number,
   isNewEntity: boolean
 ): [boolean] => {
   const [updated, setUpdated] = useState(false);
-  const prevCount = useRef(0);
+  const [numbersAnimation, setNumbersAnimation] = useState(false);
+  const [positionAnimation, setPositionAnimation] = useState(false);
+
   const prevIndex = useRef(0);
+  const prevProcessed = useRef(0);
+  const prevCount = useRef(0);
+  const t = useRef<any>(null);
+
+  const isNumbersAnimationAllowed = useCallback(() => {
+    if (!prevProcessed.current || !prevCount.current) {
+      prevProcessed.current = processed;
+      prevCount.current = count;
+      return;
+    }
+    if (processed !== prevProcessed.current && count !== prevCount.current) {
+      const isAllowed = numbersDiff(count, processed) > countForAnimation;
+      console.log(numbersDiff(count, processed));
+      setNumbersAnimation(isAllowed);
+    }
+    prevProcessed.current = processed;
+    prevCount.current = count;
+  }, [count, countForAnimation, processed]);
+
+  const isPositionAnimationAllowed = useCallback(() => {
+    if (!prevIndex.current) {
+      prevIndex.current = index;
+      return;
+    }
+    const isAllowed =
+      numbersDiff(index, prevIndex.current) >= positionsJumpForAnimation;
+    setPositionAnimation(isAllowed);
+    prevIndex.current = index;
+  }, [index, positionsJumpForAnimation]);
 
   useEffect(() => {
-    const countIncreased = handleCount(prevCount.current, count);
-    const positionIncreased = handlePosition(prevIndex.current, index);
-    prevCount.current = count;
-    prevIndex.current = index;
-    if (countIncreased || positionIncreased || isNewEntity) {
-      setTimeout(() => {
-        setUpdated(true);
-      }, 100);
-      setTimeout(() => {
+    if (numbersAnimation || positionAnimation || isNewEntity) {
+      setUpdated(true);
+      window.clearTimeout(t.current);
+      t.current = setTimeout(() => {
         setUpdated(false);
+        setNumbersAnimation(false);
+        setPositionAnimation(false);
       }, LIST_ITEM_ANIMATION_TIMEOUT_SECONDS * 1000);
     }
-  }, [count, index, isNewEntity]);
+  }, [numbersAnimation, positionAnimation, isNewEntity]);
+
+  useEffect(() => {
+    isNumbersAnimationAllowed();
+    isPositionAnimationAllowed();
+  }, [
+    count,
+    processed,
+    index,
+    isNewEntity,
+    isNumbersAnimationAllowed,
+    isPositionAnimationAllowed,
+  ]);
 
   return [updated];
 };

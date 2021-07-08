@@ -8,7 +8,7 @@ export const categortiesDictionary: { [key: string]: DATASET_NAMES } = {
 };
 
 export const LIST_ITEM_ANIMATION_TIMEOUT_SECONDS = 2;
-export const COUNT_TO_JUMP = 100;
+export const COUNT_TO_JUMP = 6;
 export const POSITIONS_TO_JUMP = 5;
 export const INTERVAL_DELAY_SECONDS = 4;
 export const LIST_ELEMENT_DEFAULT_HEIGHT = 51;
@@ -18,6 +18,8 @@ export const GET_TWEETS_API_URL =
 export const API_ITEMS_LIMIT = 70;
 export const GET_HASHTAG_TWEETS_API =
   "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchTweetsByTag";
+export const GET_HASHTAG_TWEETS_INTERVAL = 5;
+
 export const PERIOD_ENTITIES_API =
   "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchPeriodTopEntities";
 
@@ -27,11 +29,11 @@ export const MOBILE_LIST_LIMIT = 3;
 
 export const LIST_HIDE_ANIMATION_CONFIG = {
   [VIEW_SELECTOR_OPTIONS.ALL_TWEETS]: {
-    animationDoneTimeout: 600,
+    animationDoneTimeout: 500,
     animationDelay: 0,
   },
   [VIEW_SELECTOR_OPTIONS.INFLUENCERS]: {
-    animationDoneTimeout: 800,
+    animationDoneTimeout: 700,
     animationDelay: 0.2,
   },
 };
@@ -39,3 +41,4 @@ export const LIST_HIDE_ANIMATION_CONFIG = {
 export const DEFAULT_API_RETRIES = 3;
 
 export const API_RETRIES_DELAY = 200;
+export const FETCH_VARIFIED_USERS_INTERVAL = 60;

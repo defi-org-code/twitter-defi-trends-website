@@ -1,24 +1,24 @@
 import React from "react";
-import { IInfluencer } from "../../../../types";
+import { IUser } from "../../../../types";
 import { nFormatter } from "../../../../utils/numberUtil";
 
 interface IProps {
-  influencer: IInfluencer;
+  influencer: IUser;
 }
 
 function Influencer({ influencer }: IProps) {
-  const { avatar, following, followers, name, username } = influencer;
+  const { profileImage, following, followers, name, displayName } = influencer;
   return (
     <div className="influencer">
       <section className="influencer-top flex">
         <img
           className="influencer-avatar"
-          src={avatar}
+          src={profileImage}
           alt="influencer avatar"
         />
         <span>
           <h5 className="influencer-name">{name}</h5>
-          <p className="influencer-username">{username}</p>
+          <p className="influencer-username">{displayName}</p>
         </span>
       </section>
       <section className="influencer-bottom flex">

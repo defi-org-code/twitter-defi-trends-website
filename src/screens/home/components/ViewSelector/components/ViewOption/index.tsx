@@ -14,7 +14,7 @@ const ViewOption = forwardRef(
   ({ option, selected, select, isFirst }: IProps, indicatorRef: any) => {
     const ref = useRef<any>(0);
     const { isDarkMode } = useContext(ThemeContext);
-    const { title, value, image, CustomComponent, darkImage } = option;
+    const { title, value, image, SelectorCustomComponent, darkImage } = option;
     const className =
       value === selected
         ? "view-selector view-selector-active"
@@ -48,7 +48,7 @@ const ViewOption = forwardRef(
           />
           <p> {title}</p>
         </div>
-        {CustomComponent && <CustomComponent />}
+        {SelectorCustomComponent && <SelectorCustomComponent />}
       </section>
     );
   }

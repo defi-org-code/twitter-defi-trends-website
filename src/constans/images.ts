@@ -10,8 +10,13 @@ import HashtagImg from "../assets/images/hashtags.png";
 import MentionsImg from "../assets/images/mentions.png";
 import UrlsImg from "../assets/images/urls.png";
 import twitterBlackImg from "../assets/images/twitter-black.png";
+import FrameImg from "../assets/images/frame.png";
 
 const images = {
+  frame: {
+    img: FrameImg,
+    alt: "frame",
+  },
   twitterBlack: {
     img: twitterBlackImg,
     alt: "twitter",

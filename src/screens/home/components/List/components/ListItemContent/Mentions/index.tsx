@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "../../../../../../../providers/ThemeProvider";
 import { IDatasetElement } from "../../../../../types";
-
+import LottieAnimation from "../../../../../../../components/LottieAnimation";
+import { lottieAnimations } from "../../../../../../../constans";
 interface IProps {
   item: IDatasetElement;
 }
@@ -28,19 +29,26 @@ const Mentions = ({ item }: IProps) => {
 
       const script = document.createElement("script");
       script.setAttribute("src", "https://platform.twitter.com/widgets.js");
-      await document
-        .getElementsByClassName("twitter-embed")[0]
-        .appendChild(script);
+      script.addEventListener("load", () => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
+      });
+      document.getElementsByClassName("twitter-embed")[0].appendChild(script);
     } catch (error) {
       console.log("error");
     }
-    setIsLoading(false);
   };
 
   return (
     <div ref={ref} className="list-item-mentions">
-      {isLoading && <p>is loading...</p>}
-      <div className="twitter-embed"></div>
+      {isLoading && (
+        <LottieAnimation animation={lottieAnimations.loadingSmall} />
+      )}
+      <div
+        className="twitter-embed"
+        style={{ opacity: isLoading ? "0" : "1" }}
+      ></div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { sleep } from "../../../utils";
 import { LISTS_AMOUNT, LIST_HIDE_ANIMATION_CONFIG } from "../constants";
 import { IViewToHide, VIEW_SELECTOR_OPTIONS } from "../types";

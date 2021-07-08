@@ -23,11 +23,16 @@ export interface IDatasets {
   [DATASET_NAMES.URLS]: IDatasetElement[];
 }
 
+export interface IUser {
+  displayName: string;
+  followers: number;
+  following: number;
+  name: string;
+  profileImage: string;
+}
 export interface ITweet {
-  image: string;
-  title: string;
-  author: string;
   text: string;
+  user: IUser;
 }
 
 export interface IListCategory {
@@ -67,14 +72,6 @@ export interface IRawTweets {
   [DATASET_NAMES.URLS]: IRawTweet[];
 }
 
-export interface IInfluencer {
-  name: string;
-  avatar: string;
-  username: string;
-  following: number;
-  followers: number;
-}
-
 export interface ITopTweets {
   type: number;
   count: number;
@@ -86,8 +83,12 @@ export interface IViewOption {
   value: VIEW_SELECTOR_OPTIONS;
   image: string;
   url: string;
-  CustomComponent?: JSXElementConstructor<any>;
+  SelectorCustomComponent?: JSXElementConstructor<any>;
+  ListCustomComponent?: JSXElementConstructor<any>;
   darkImage: string;
+  apiIntervalSeconds: number;
+  countForAnimation: number;
+  positionsJumpForAnimation: number;
 }
 
 export enum VIEW_SELECTOR_OPTIONS {
