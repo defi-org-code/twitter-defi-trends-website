@@ -22,7 +22,7 @@ export const views = [
     SelectorCustomComponent: AllTweetsViewCustom,
     url: GET_TWEETS_API_URL,
     apiIntervalSeconds: 8,
-    countForAnimation: 1,
+    countForAnimation: 100,
     positionsJumpForAnimation: 5,
   },
   {
