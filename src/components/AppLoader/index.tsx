@@ -1,28 +1,40 @@
 import React, { useState, useEffect, useRef } from "react";
-import { APP_LOADER_ANIMATION_TIMEOUT } from "../../constans";
+import { APP_LOADER_ANIMATION_TIMEOUT, lottieAnimations } from "../../constans";
+import LottieAnimation from "../../components/LottieAnimation";
 
-const AppLoader = () => {
-  const [showLoader, setShowLoader] = useState(false);
+interface IProps {
+  children: JSX.Element;
+}
+const AppLoader = ({ children }: IProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hideLoader, setHideLoader] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    hideWithAnimation();
     setTimeout(() => {
-      setShowLoader(false);
-    }, APP_LOADER_ANIMATION_TIMEOUT + 1000);
+      setIsLoading(false);
+      hideWithAnimation();
+    }, APP_LOADER_ANIMATION_TIMEOUT);
   }, []);
 
   const hideWithAnimation = () => {
+    if (!ref.current) return;
+    ref.current.style.opacity = "0";
     setTimeout(() => {
-      if (!ref.current) return;
-      ref.current.style.opacity = "0";
-    }, APP_LOADER_ANIMATION_TIMEOUT);
+      setHideLoader(true);
+    }, 200);
   };
 
-  return showLoader ? (
-    <div ref={ref} className="app-loader flex">
-      Loading...
-    </div>
-  ) : null;
+  return (
+    <>
+      {!hideLoader && (
+        <div ref={ref} className="app-loader flex">
+          <LottieAnimation animation={lottieAnimations.loadingSmall} />
+        </div>
+      )}
+      {!isLoading && children}
+    </>
+  );
 };
 
 export default AppLoader;

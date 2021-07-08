@@ -16,7 +16,7 @@ const PeriodSection = ({ element }: { element: ITopTweets }) => {
       <h4 className="header-period-sections-element-title">
         {category.shortName}
       </h4>
-      <span className="flex">
+      <span className="flex header-period-sections-element-content">
         <img src={category.image} alt="" />
 
         {isLink ? (

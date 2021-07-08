@@ -1,19 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import useListItemTransition from "../../hooks/useListItemTransition";
 import useCompare from "../../hooks/useCompare";
 import {
   IListCategory,
   IDatasetElement,
-  VIEW_SELECTOR_OPTIONS,
   IViewOption,
   IViewToHide,
 } from "../../types";
 import ListItem from "./components/ListItem";
-import FrameImg from "../../../../assets/images/frame.png";
-import useWindowSize from "../../../../hooks/useResize";
-import { MOBILE_LIST_LIMIT, MOBILE_WIDTH_LIMIT } from "../../constants";
 import useHideList from "../../hooks/useHideList";
-
+import Title from "./components/Title";
+import useMobile from "../../../../hooks/useMobile";
 interface IProps {
   dataset: IDatasetElement[];
   category: IListCategory;
@@ -24,6 +21,8 @@ interface IProps {
 }
 
 const List = ({ dataset, category, viewToHide, viewOption, index }: IProps) => {
+  const { title, symbol, image } = category;
+
   const [activeElement, setActiveElement] = useState<IDatasetElement | null>(
     null
   );
@@ -34,8 +33,7 @@ const List = ({ dataset, category, viewToHide, viewOption, index }: IProps) => {
     viewOption.value
   );
 
-  const [width] = useWindowSize();
-  const isMobile = width > 0 && width < MOBILE_WIDTH_LIMIT;
+  const [isMobile] = useMobile();
   const { transitions, height } = useListItemTransition(
     dataset,
     activeElement,
@@ -51,8 +49,6 @@ const List = ({ dataset, category, viewToHide, viewOption, index }: IProps) => {
     },
     [activeElement]
   );
-
-  const { title, symbol, image } = category;
   return (
     <div
       className="list"
@@ -62,21 +58,7 @@ const List = ({ dataset, category, viewToHide, viewOption, index }: IProps) => {
         opacity: hideList ? 0 : 1,
       }}
     >
-      <section className="list-title flex">
-        <figure className="list-title-images">
-          <img
-            src={FrameImg}
-            alt="category icon"
-            className="list-title-images-frame"
-          />
-          <img
-            src={image}
-            alt="category icon"
-            className="list-title-images-main"
-          />
-        </figure>
-        <h3>{title}</h3>
-      </section>
+      <Title image={image} title={title} />
       <div className="list-flex" style={{ height }}>
         {transitions((style, item, t, index) => {
           const { name } = item;
@@ -90,6 +72,9 @@ const List = ({ dataset, category, viewToHide, viewOption, index }: IProps) => {
               isNew={isNew}
               index={index}
               ContentComponent={category.component}
+              countForAnimation={viewOption.countForAnimation}
+              positionsJumpForAnimation={viewOption.positionsJumpForAnimation}
+              apiIntervalSeconds={viewOption.apiIntervalSeconds}
               style={{
                 zIndex: dataset.length - index,
                 ...style,

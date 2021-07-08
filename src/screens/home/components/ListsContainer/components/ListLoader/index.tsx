@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { LISTS_AMOUNT } from "../../../../constants";
-
+import LottieAnimation from "../../../../../../components/LottieAnimation";
+import { lottieAnimations } from "../../../../../../constans";
 const ListsLoader = () => {
   const [show, setShow] = useState(false);
   useEffect(() => {
@@ -12,7 +13,7 @@ const ListsLoader = () => {
   const items = [...Array(20)];
   return (
     <div className={show ? "list-loader list-loader-active" : "list-loader"}>
-      {lists.map((e, i) => {
+      {/* {lists.map((e, i) => {
         return (
           <div key={`${i}`} className="list-loader-section">
             <section className="list-loader-section-title flex">
@@ -31,7 +32,8 @@ const ListsLoader = () => {
             </ul>
           </div>
         );
-      })}
+      })} */}
+      <LottieAnimation animation={lottieAnimations.placeholderLoading} />
     </div>
   );
 };

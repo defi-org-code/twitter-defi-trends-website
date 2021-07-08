@@ -1,32 +1,30 @@
-import { INTERVAL_DELAY_SECONDS } from "../constants/index";
-import { useState, useEffect } from "react";
 import { IDatasets } from "../types";
 import useVisibilityChange from "../../../hooks/useVisibilityChange";
 import useFetch from "../../../hooks/useFetch";
 import useInterval from "../../../hooks/useInterval";
+import { useEffect } from "react";
 
-const useListsData = (url: string): [IDatasets | null, boolean, boolean] => {
-  const [data, error, loading, fetchData] = useFetch(url, false);
-  const [clear, set, reset] = useInterval(fetchData, INTERVAL_DELAY_SECONDS);
-  const [dataSets, setDatasets] = useState<any>(null);
+const useListsData = (
+  url: string,
+  apiIntervalSeconds: number
+): [IDatasets | null, boolean] => {
+  const [data, error, _loading, fetchData] = useFetch(url, true);
+  const [clear, set] = useInterval(fetchData, apiIntervalSeconds);
 
   const getData = () => {
     fetchData();
     set();
   };
 
+  useEffect(() => {
+    if (error) {
+      clear();
+    }
+  }, [error]);
+
   useVisibilityChange(getData, clear);
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  useEffect(() => {
-    if (!data) return;
-    setDatasets(data);
-  }, [data]);
-
-  return [dataSets, error, false];
+  return [data, error];
 };
 
 export default useListsData;

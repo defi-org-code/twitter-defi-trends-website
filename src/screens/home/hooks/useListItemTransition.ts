@@ -1,4 +1,3 @@
-import React from "react";
 import {
   LIST_ELEMENT_DEFAULT_HEIGHT,
   LIST_ELEMENT_OPENED_HEIGHT,

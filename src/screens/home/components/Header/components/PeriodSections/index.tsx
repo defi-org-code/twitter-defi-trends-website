@@ -12,7 +12,7 @@ const PeriodSections = ({ data, title }: IProps) => {
     <LoadingHandler isLoading={!data} LoadingComponent={PeriodSectionsLoader}>
       <div className="header-period-sections">
         <h5 className="header-period-sections-title">{title}</h5>
-        <div className="flex">
+        <div className="flex header-period-sections-list">
           {data &&
             data.map((element: ITopTweets) => {
               return <PeriodSection key={element.name} element={element} />;

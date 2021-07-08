@@ -29,9 +29,9 @@ class DataGenerator {
   createInfluencers(amount = 5) {
     return [...Array(amount)].map((e, i) => {
       return {
+        displayName: `name-${i}`,
         name: `name-${i}`,
-        avatar: AvatarImg,
-        username: `@name-${i}`,
+        profileImage: AvatarImg,
         following: 400,
         followers: 500,
       };
@@ -42,11 +42,13 @@ class DataGenerator {
       return Math.floor(Math.random() * amount);
     });
     return [...Array(amount + this.num)].map((e, i) => {
+      const num = indexesToChange.includes(i)
+        ? Math.floor(Math.random() * 1000) + 100
+        : i;
       return {
         name: `item-${i + 1}`,
-        count: indexesToChange.includes(i)
-          ? Math.floor(Math.random() * 1000) + 100
-          : i,
+        count: num,
+        processed: num - 100,
       };
     });
   }

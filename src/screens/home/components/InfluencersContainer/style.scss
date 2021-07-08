@@ -1,12 +1,12 @@
 @import "./components/Influencer/style.scss";
 
 .influencers {
-  margin-bottom: 35px;
-  max-height: 0px;
+  margin-bottom: 21px;
   overflow: hidden;
   transition: 0.25s all;
   border-radius: 10px;
   height: 65px;
+  max-height: auto;
   position: relative;
   &-bg {
     transition: $theme-transition;

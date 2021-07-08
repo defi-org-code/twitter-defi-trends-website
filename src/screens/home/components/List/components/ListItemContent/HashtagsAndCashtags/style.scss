@@ -4,8 +4,17 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-
+  position: relative;
   transition: 0.2s all;
+  height: 100%;
+  .lottie {
+    position: absolute;
+    left: 50%;
+    top: -10px;
+    transform: translate(-50%);
+    width: 80%;
+    height: 80%;
+  }
   &-active {
     opacity: 1;
   }
@@ -70,6 +79,14 @@
           }
         }
       }
+    }
+  }
+}
+
+.dark-mode {
+  .list-item-hashtags {
+    * {
+      color: white;
     }
   }
 }

@@ -10,22 +10,33 @@ import Mentions from "../components/List/components/ListItemContent/Mentions";
 import Urls from "../components/List/components/ListItemContent/Urls";
 import AllTweetsViewCustom from "../components/ViewSelector/components/AllTweetsViewCustom";
 import HashtagsAndCashtags from "../components/List/components/ListItemContent/HashtagsAndCashtags";
-export const viewSelectorOptions = [
+import InfluencersContainer from "../components/InfluencersContainer";
+
+//this array is responsible for the lists and selectors
+export const views = [
   {
     title: "All Tweets",
     value: VIEW_SELECTOR_OPTIONS.ALL_TWEETS,
     image: images.allTweetsIcon.img,
     darkImage: images.allTweetsIconDark.img,
+    SelectorCustomComponent: AllTweetsViewCustom,
     url: GET_TWEETS_API_URL,
-    CustomComponent: AllTweetsViewCustom,
+    apiIntervalSeconds: 8,
+    countForAnimation: 1,
+    positionsJumpForAnimation: 5,
   },
   {
     title: "Tweets By Verified Users",
     value: VIEW_SELECTOR_OPTIONS.INFLUENCERS,
     image: images.verifiedUsersSelect.img,
     darkImage: images.verifiedUsersSelectDark.img,
+    SelectorCustomComponent: VarifiedUsersViewCustom,
+    ListCustomComponent: InfluencersContainer,
+    //change here the api to the get by varified users
     url: GET_TWEETS_API_URL,
-    CustomComponent: VarifiedUsersViewCustom,
+    apiIntervalSeconds: 7,
+    countForAnimation: 10,
+    positionsJumpForAnimation: 5,
   },
 ];
 

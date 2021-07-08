@@ -101,6 +101,8 @@
     }
     .flex {
       align-items: center;
+    }
+    &-content {
       width: 100%;
     }
   }
@@ -139,6 +141,40 @@
       &-count {
         color: white;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: $mobile) {
+  .header-period-sections {
+    width: 100%;
+    background: #dedede;
+    border-radius: 15px;
+    padding: 15px;
+    &-element {
+      padding-left: 0px;
+      flex-direction: row;
+      width: 100%;
+      &-title {
+        width: 100px;
+      }
+      &-count {
+        flex: auto;
+        width: auto;
+      }
+      &-content {
+        width: auto;
+        flex: 1;
+      }
+      &::after {
+        display: none;
+      }
+      border-bottom: 1px solid black;
+    }
+
+    &-list {
+      flex-direction: column;
+      width: 100%;
     }
   }
 }
