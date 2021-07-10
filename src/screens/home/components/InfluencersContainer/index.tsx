@@ -1,26 +1,20 @@
 import useFetch from "../../../../hooks/useFetch";
 import useInterval from "../../../../hooks/useInterval";
 import useVisibilityChange from "../../../../hooks/useVisibilityChange";
-import dataGenerator from "../../../../services/data-generator";
-import {
-  FETCH_VARIFIED_USERS_INTERVAL,
-  GET_TWEETS_API_URL,
-} from "../../constants";
-import { IUser } from "../../types";
+import {FETCH_VERIFIED_USERS_INTERVAL, GET_ACTIVE_USERS_OF_LIST_API_URL,} from "../../constants";
+import {IUser} from "../../types";
 import Influencer from "./components/Influencer";
 import JoinBtn from "./JoinBtn";
 import MostActive from "./MostActive";
 
-const demoData = dataGenerator.createInfluencers(20);
-
 const InfluencersContainer = () => {
   // change this api to the get users api
-  const url = GET_TWEETS_API_URL;
+  const url = GET_ACTIVE_USERS_OF_LIST_API_URL;
 
   // this hooks fetches data on load
   const [data, error, _loading, fetchData] = useFetch(url, true);
-  // this hooks runs the fetch data every FETCH_VARIFIED_USERS_INTERVAL seconds
-  const [clear, set] = useInterval(fetchData, FETCH_VARIFIED_USERS_INTERVAL);
+  // this hooks runs the fetch data every FETCH_VERIFIED_USERS_INTERVAL seconds
+  const [clear, set] = useInterval(fetchData, FETCH_VERIFIED_USERS_INTERVAL);
 
   const getData = () => {
     fetchData();
@@ -35,10 +29,12 @@ const InfluencersContainer = () => {
       <section className="influencers-bg"></section>
       <MostActive />
       <div className="influencers-flex flex">
-        {demoData &&
-          demoData.map((influencer: IUser) => {
-            return <Influencer key={influencer.name} influencer={influencer} />;
-          })}
+          {
+              data &&
+              data.map((influencer: IUser) => {
+                  return <Influencer key={influencer.name} influencer={influencer}/>;
+              })
+          }
       </div>
       <JoinBtn />
     </div>

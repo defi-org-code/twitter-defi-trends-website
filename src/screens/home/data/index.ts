@@ -1,4 +1,4 @@
-import { GET_TWEETS_API_URL } from "./../constants/index";
+import {GET_TWEETS_API_URL, GET_TWEETS_BY_LIST_API_URL} from "./../constants/index";
 import images from "../../../constans/images";
 import {
   DATASET_NAMES,
@@ -32,8 +32,7 @@ export const views = [
     darkImage: images.verifiedUsersSelectDark.img,
     SelectorCustomComponent: VarifiedUsersViewCustom,
     ListCustomComponent: InfluencersContainer,
-    //change here the api to the get by varified users
-    url: GET_TWEETS_API_URL,
+    url: GET_TWEETS_BY_LIST_API_URL,
     apiIntervalSeconds: 7,
     countForAnimation: 10,
     positionsJumpForAnimation: 5,
