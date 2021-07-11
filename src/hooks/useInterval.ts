@@ -8,13 +8,11 @@ const useInterval = (callback: () => void, delay: number) => {
     window.clearInterval(t.current);
     set();
     return () => {
-      console.log("cleared");
       window.clearInterval(t.current);
     };
   }, []);
 
   const clear = () => {
-    console.log("cleared");
     if (t.current) {
       window.clearInterval(t.current);
       t.current = null;
@@ -30,7 +28,6 @@ const useInterval = (callback: () => void, delay: number) => {
     if (t.current) {
       return;
     }
-    console.log("set");
     t.current = setInterval(() => {
       callback();
     }, delay * 1000);

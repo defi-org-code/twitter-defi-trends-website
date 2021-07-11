@@ -1,7 +1,6 @@
-import { useContext, useState } from "react";
-import JoinImg from "../../../../assets/images/tweet.png";
-import images from "../../../../constans/images";
-import { ThemeContext } from "../../../../providers/ThemeProvider";
+import { useContext } from "react";
+import images from "../../../../../../constans/images";
+import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 
 const JoinBtn = () => {
   const { isDarkMode } = useContext(ThemeContext);

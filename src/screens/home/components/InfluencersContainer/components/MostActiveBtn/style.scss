@@ -1,0 +1,22 @@
+.influencers-most-active {
+  width: 143px;
+  align-items: center;
+  justify-content: center;
+  background: #e7e7e7;
+  border-radius: 10px;
+  position: relative;
+  transition: $theme-transition;
+  img {
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+    margin-right: 5px;
+  }
+  p {
+    @extend .text;
+    font-size: 0.563rem;
+    line-height: 0.844rem;
+    text-align: center;
+    width: 77px;
+  }
+}

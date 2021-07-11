@@ -9,7 +9,10 @@ interface IProps {
 
 const PeriodSections = ({ data, title }: IProps) => {
   return (
-    <LoadingHandler isLoading={!data} LoadingComponent={PeriodSectionsLoader}>
+    <LoadingHandler
+      isLoading={!data}
+      LoadingComponent={<PeriodSectionsLoader />}
+    >
       <div className="header-period-sections">
         <h5 className="header-period-sections-title">{title}</h5>
         <div className="flex header-period-sections-list">

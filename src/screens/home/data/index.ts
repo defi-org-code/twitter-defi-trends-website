@@ -1,7 +1,10 @@
-import {GET_TWEETS_API_URL, GET_TWEETS_BY_LIST_API_URL} from "./../constants/index";
+import {
+  GET_TWEETS_API_URL,
+  GET_TWEETS_BY_LIST_API_URL,
+} from "./../constants/index";
 import images from "../../../constans/images";
 import {
-  DATASET_NAMES,
+  DATASET_TYPES,
   IListCategories,
   VIEW_SELECTOR_OPTIONS,
 } from "./../types/index";
@@ -23,7 +26,7 @@ export const views = [
     url: GET_TWEETS_API_URL,
     apiIntervalSeconds: 8,
     countForAnimation: 100,
-    positionsJumpForAnimation: 5,
+    positionsJumpForAnimation: 1,
   },
   {
     title: "Tweets By Verified Users",
@@ -35,35 +38,43 @@ export const views = [
     url: GET_TWEETS_BY_LIST_API_URL,
     apiIntervalSeconds: 7,
     countForAnimation: 10,
-    positionsJumpForAnimation: 5,
+    positionsJumpForAnimation: 1,
   },
 ];
 
 export const categories: IListCategories = {
-  [DATASET_NAMES.HASHTAGS]: {
+  [DATASET_TYPES.HASHTAGS]: {
     symbol: "#",
     image: images.hashtag.img,
+    titleImg: images.hashtagsTitle.img,
+    titleDarkImg: images.hashtagsTitleDark.img,
     title: "Popular #Hashtags",
     shortName: "Hashtag",
     component: HashtagsAndCashtags,
   },
-  [DATASET_NAMES.CASHTAGS]: {
+  [DATASET_TYPES.CASHTAGS]: {
     symbol: "$",
     image: images.cashtag.img,
+    titleImg: images.cashtagsTitle.img,
+    titleDarkImg: images.cashtagsTitleDark.img,
     title: "Popular $Cashtag",
     shortName: "Cashtag",
     component: HashtagsAndCashtags,
   },
-  [DATASET_NAMES.MENTIONS]: {
+  [DATASET_TYPES.MENTIONS]: {
     symbol: "@",
     image: images.menstions.img,
+    titleImg: images.mentionsTitle.img,
+    titleDarkImg: images.mentionsTitleDark.img,
     title: "Popular @Mentions",
     shortName: "Mentions",
     component: Mentions,
   },
-  [DATASET_NAMES.URLS]: {
+  [DATASET_TYPES.URLS]: {
     symbol: "🔗",
     image: images.urls.img,
+    titleImg: images.urlsTitle.img,
+    titleDarkImg: images.urlsTitleDark.img,
     title: "Popular #URL’s",
     shortName: "URL’s",
     component: Urls,

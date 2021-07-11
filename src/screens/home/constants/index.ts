@@ -1,10 +1,10 @@
-import { DATASET_NAMES, VIEW_SELECTOR_OPTIONS } from "../types";
+import { DATASET_TYPES, VIEW_SELECTOR_OPTIONS } from "../types";
 
-export const categortiesDictionary: { [key: string]: DATASET_NAMES } = {
-  "0": DATASET_NAMES.CASHTAGS,
-  "1": DATASET_NAMES.HASHTAGS,
-  "2": DATASET_NAMES.URLS,
-  "3": DATASET_NAMES.MENTIONS,
+export const categortiesDictionary: { [key: string]: DATASET_TYPES } = {
+  "0": DATASET_TYPES.CASHTAGS,
+  "1": DATASET_TYPES.HASHTAGS,
+  "2": DATASET_TYPES.URLS,
+  "3": DATASET_TYPES.MENTIONS,
 };
 
 export const LIST_ITEM_ANIMATION_TIMEOUT_SECONDS = 2;
@@ -18,7 +18,7 @@ export const GET_TWEETS_API_URL =
 export const GET_TWEETS_BY_LIST_API_URL =
   "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchTopEntitiesOfList/1413118800363458560";
 export const GET_ACTIVE_USERS_OF_LIST_API_URL =
-    "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchActiveUsersOfList/1413118800363458560";
+  "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchActiveUsersOfList/1413118800363458560";
 export const API_ITEMS_LIMIT = 70;
 export const GET_HASHTAG_TWEETS_API =
   "https://uft4jjndug.execute-api.us-east-2.amazonaws.com/dev/fetchTweetsByTag";

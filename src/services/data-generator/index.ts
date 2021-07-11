@@ -1,4 +1,4 @@
-import { DATASET_NAMES } from "./../../screens/home/types/index";
+import { DATASET_TYPES } from "./../../screens/home/types/index";
 import { IDatasetElement, IHeaderCounterData } from "../../screens/home/types";
 import SymbolImg from "../../assets/images/symbol.png";
 import TweetPlaceholderImg from "../../assets/images/tweet-placeholder.png";
@@ -11,16 +11,16 @@ class DataGenerator {
     for (let i = 0; i < lists; i++) {
       const data = this.createDataset(30);
       if (i === 0) {
-        arr[DATASET_NAMES.HASHTAGS] = data;
+        arr[DATASET_TYPES.HASHTAGS] = data;
       }
       if (i === 1) {
-        arr[DATASET_NAMES.CASHTAGS] = data;
+        arr[DATASET_TYPES.CASHTAGS] = data;
       }
       if (i === 2) {
-        arr[DATASET_NAMES.MENTIONS] = data;
+        arr[DATASET_TYPES.MENTIONS] = data;
       }
       if (i === 3) {
-        arr[DATASET_NAMES.URLS] = data;
+        arr[DATASET_TYPES.URLS] = data;
       }
     }
     this.num += 1;

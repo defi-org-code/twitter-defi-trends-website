@@ -23,23 +23,26 @@ const TweetsContainer = () => {
     }, LIST_HIDE_ANIMATION_CONFIG[view].animationDoneTimeout);
   };
 
+  const showView = (views: IViewOption[]) => {
+    return views.map((viewOption: IViewOption) => {
+      if (view === viewOption.value) {
+        return (
+          <ListsContainer
+            key={viewOption.title}
+            viewToHide={viewToHide}
+            viewOption={viewOption}
+            CustomComponent={viewOption.ListCustomComponent}
+          />
+        );
+      }
+      return null;
+    });
+  };
+
   return (
     <div className="home-tweets">
       <ViewSelector options={views} handleViewSelect={handleViewSelect} />
-
-      {views.map((viewOption: IViewOption) => {
-        if (view === viewOption.value) {
-          return (
-            <ListsContainer
-              key={viewOption.title}
-              viewToHide={viewToHide}
-              viewOption={viewOption}
-              CustomComponent={viewOption.ListCustomComponent}
-            />
-          );
-        }
-        return null;
-      })}
+      {showView(views)}
     </div>
   );
 };

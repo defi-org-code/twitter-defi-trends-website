@@ -1,7 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { categories } from "../../data";
 import useListsData from "../../hooks/useListsData";
 import {
-  DATASET_NAMES,
+  DATASET_TYPES,
   IDatasetElement,
   IDatasets,
   IListCategories,
@@ -23,7 +24,7 @@ interface IProps {
 
 const getCategory = (
   categories: IListCategories,
-  key: DATASET_NAMES,
+  key: DATASET_TYPES,
   datasets: IDatasets
 ): { dataset: IDatasetElement[]; category: IListCategory } | null => {
   const category = categories[key];
@@ -52,27 +53,29 @@ const ListsContainer = ({
       <ErrorHandling showError={isError} errorText="something went wrong...">
         <LoadingHandler
           isLoading={!datasets && !isError}
-          LoadingComponent={ListsLoader}
+          LoadingComponent={<ListsLoader />}
         >
           {CustomComponent && <CustomComponent />}
-          {datasets &&
-            (Object.keys(datasets) as (keyof typeof datasets)[]).map(
-              (key: DATASET_NAMES, index: number) => {
-                const result = getCategory(categories, key, datasets);
-                if (!result) return null;
-                return (
-                  <List
-                    viewToHide={viewToHide}
-                    index={index}
-                    key={key}
-                    dataset={result.dataset}
-                    category={result.category}
-                    categoryName={key}
-                    viewOption={viewOption}
-                  />
-                );
-              }
-            )}
+          <div className="lists-grid flex">
+            {datasets &&
+              (Object.keys(datasets) as (keyof typeof datasets)[]).map(
+                (key: DATASET_TYPES, index: number) => {
+                  const result = getCategory(categories, key, datasets);
+                  if (!result) return null;
+                  return (
+                    <List
+                      viewToHide={viewToHide}
+                      index={index}
+                      key={key}
+                      dataset={result.dataset}
+                      category={result.category}
+                      categoryName={key}
+                      viewOption={viewOption}
+                    />
+                  );
+                }
+              )}
+          </div>
         </LoadingHandler>
       </ErrorHandling>
     </div>
