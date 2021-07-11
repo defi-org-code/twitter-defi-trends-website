@@ -12,7 +12,7 @@ const useTweetsData = (name: string): [ITweet[], boolean, boolean] => {
   const [tweets, setTweets] = useState<ITweet[]>([]);
   const sinceIdRef = useRef<string | null>(null);
   const url = encodeURI(`${GET_HASHTAG_TWEETS_API}/${name}`);
-  const [data, error, _loading, fetchData] = useFetch(url, true);
+  const [data, fetch, error] = useFetch(url);
   const mountRef = useRef(true);
   useEffect(() => {
     if (data && mountRef.current) {
@@ -21,6 +21,7 @@ const useTweetsData = (name: string): [ITweet[], boolean, boolean] => {
   }, [data]);
 
   useEffect(() => {
+    fetch().then();
     return () => {
       mountRef.current = false;
     };
@@ -35,7 +36,7 @@ const useTweetsData = (name: string): [ITweet[], boolean, boolean] => {
     const urlWithSiceId = encodeURI(
       `${GET_HASHTAG_TWEETS_API}/${name}/${sinceIdRef.current}`
     );
-    fetchData(urlWithSiceId);
+    fetch(urlWithSiceId);
   };
 
   useInterval(fecthDataWithSinceId, GET_HASHTAG_TWEETS_INTERVAL);

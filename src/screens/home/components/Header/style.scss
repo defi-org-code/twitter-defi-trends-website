@@ -1,78 +1,28 @@
-@import "./components/PeriodSections/style.scss";
-
 .home-header {
-  display: flex;
-  flex-direction: column;
+  margin-top: 15px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 25px;
   align-items: center;
   justify-content: center;
-  padding-top: 20px;
-  width: 100%;
-  margin-bottom: 34px;
-  &-top {
-    width: 100%;
-    position: relative;
-    margin-bottom: 25px;
-    align-items: center;
-    justify-content: center;
-    @extend .text;
-    font-size: 0.875rem;
-    font-weight: 200;
-    img {
-      margin-right: 10px;
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-    }
-    strong {
-      font-weight: 600;
-      margin-right: 5px;
-    }
-    p {
-      background: -webkit-linear-gradient(180deg, #ffc843 0%, #43c7ff 100%);
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 600;
-      margin-right: 5px;
-    }
+  @extend .text;
+  font-size: 0.875rem;
+  font-weight: 200;
+  img {
+    margin-right: 7px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
   }
-  &-bottom {
-    border-radius: 15px;
-    padding: 0px 23px;
-    background: #f6f7fb;
-    width: 100%;
-    height: 73px;
-    align-items: center;
-    justify-content: space-between;
-    transition: $theme-transition;
-  }
-  .countdown {
-    margin-left: 15px;
-    margin-right: 15px;
-  }
-  h3 {
-    font-size: 0.875rem;
+  strong {
     font-weight: 600;
     margin-right: 5px;
   }
-}
-
-.dark-mode {
-  .home-header {
-    &-bottom {
-      background: transparent;
-    }
-  }
-}
-
-@media only screen and (max-width: $mobile) {
-  .home {
-    height: auto;
-    &-header {
-      &-bottom {
-        background: white;
-        flex-direction: column;
-        height: auto;
-      }
-    }
+  p {
+    background: -webkit-linear-gradient(180deg, #ffc843 0%, #43c7ff 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    margin-right: 5px;
   }
 }

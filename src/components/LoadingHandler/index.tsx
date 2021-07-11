@@ -10,9 +10,9 @@ interface IProps {
 const LoadingHandler = ({
   isLoading,
   children,
-  LoadingComponent = DefaultLoader,
+  LoadingComponent = <DefaultLoader />,
 }: IProps) => {
-  return <>{isLoading ? <LoadingComponent /> : children}</>;
+  return <>{isLoading ? LoadingComponent : children}</>;
 };
 
 export default LoadingHandler;

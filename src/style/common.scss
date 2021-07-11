@@ -8,6 +8,18 @@ body {
   color: $main-text-color;
   letter-spacing: 0.006rem;
 }
+
+.overflow-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.grid {
+  max-width: 1350px;
+  width: calc(100% - 80px);
+  margin: auto;
+}
 .dark-mode {
   .text {
     color: $dark-mode-text-color;
@@ -17,6 +29,7 @@ body {
 .loader {
   animation: glow 1.5s ease-in-out infinite alternate;
   background: lightgray;
+  border-radius: 20px;
 }
 
 .glow {

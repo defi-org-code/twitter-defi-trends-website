@@ -6,6 +6,7 @@ import {
   IDatasetElement,
   IViewOption,
   IViewToHide,
+  DATASET_TYPES,
 } from "../../types";
 import ListItem from "./components/ListItem";
 import useHideList from "../../hooks/useHideList";
@@ -20,8 +21,15 @@ interface IProps {
   viewOption: IViewOption;
 }
 
-const List = ({ dataset, category, viewToHide, viewOption, index }: IProps) => {
-  const { title, symbol, image } = category;
+const List = ({
+  dataset,
+  category,
+  viewToHide,
+  viewOption,
+  index,
+  categoryName,
+}: IProps) => {
+  const { title, symbol, titleImg, titleDarkImg } = category;
 
   const [activeElement, setActiveElement] = useState<IDatasetElement | null>(
     null
@@ -58,7 +66,7 @@ const List = ({ dataset, category, viewToHide, viewOption, index }: IProps) => {
         opacity: hideList ? 0 : 1,
       }}
     >
-      <Title image={image} title={title} />
+      <Title image={titleImg} darkImage={titleDarkImg} title={title} />
       <div className="list-flex" style={{ height }}>
         {transitions((style, item, t, index) => {
           const { name } = item;
@@ -71,6 +79,7 @@ const List = ({ dataset, category, viewToHide, viewOption, index }: IProps) => {
               symbol={symbol}
               isNew={isNew}
               index={index}
+              isUrl={categoryName === DATASET_TYPES.URLS}
               ContentComponent={category.component}
               countForAnimation={viewOption.countForAnimation}
               positionsJumpForAnimation={viewOption.positionsJumpForAnimation}

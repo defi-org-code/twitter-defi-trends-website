@@ -7,6 +7,11 @@
   justify-content: space-between;
   padding-top: 18px;
   position: relative;
+  flex-direction: column;
+  &-grid {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
   .list-loader {
     .lottie {
       position: absolute;

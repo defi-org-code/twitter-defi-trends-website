@@ -1,5 +1,4 @@
-import { JSXElementConstructor, ReactElement } from "react";
-import { JsxElement } from "typescript";
+import { JSXElementConstructor } from "react";
 export interface IDatasetElement {
   name: string;
   count: number;
@@ -9,7 +8,7 @@ export interface IDatasetElement {
   lastUpdateTime: string;
 }
 
-export enum DATASET_NAMES {
+export enum DATASET_TYPES {
   HASHTAGS = "hashtags",
   CASHTAGS = "cashtags",
   MENTIONS = "mentions",
@@ -17,10 +16,10 @@ export enum DATASET_NAMES {
 }
 
 export interface IDatasets {
-  [DATASET_NAMES.HASHTAGS]: IDatasetElement[];
-  [DATASET_NAMES.CASHTAGS]: IDatasetElement[];
-  [DATASET_NAMES.MENTIONS]: IDatasetElement[];
-  [DATASET_NAMES.URLS]: IDatasetElement[];
+  [DATASET_TYPES.HASHTAGS]: IDatasetElement[];
+  [DATASET_TYPES.CASHTAGS]: IDatasetElement[];
+  [DATASET_TYPES.MENTIONS]: IDatasetElement[];
+  [DATASET_TYPES.URLS]: IDatasetElement[];
 }
 
 export interface IUser {
@@ -41,13 +40,15 @@ export interface IListCategory {
   title: string;
   shortName: string;
   component: JSXElementConstructor<any>;
+  titleImg: string;
+  titleDarkImg: string;
 }
 
 export interface IListCategories {
-  [DATASET_NAMES.HASHTAGS]: IListCategory;
-  [DATASET_NAMES.CASHTAGS]: IListCategory;
-  [DATASET_NAMES.MENTIONS]: IListCategory;
-  [DATASET_NAMES.URLS]: IListCategory;
+  [DATASET_TYPES.HASHTAGS]: IListCategory;
+  [DATASET_TYPES.CASHTAGS]: IListCategory;
+  [DATASET_TYPES.MENTIONS]: IListCategory;
+  [DATASET_TYPES.URLS]: IListCategory;
 }
 
 export interface IHeaderCounterData {
@@ -66,10 +67,10 @@ export interface IRawTweet {
 }
 
 export interface IRawTweets {
-  [DATASET_NAMES.HASHTAGS]: IRawTweet[];
-  [DATASET_NAMES.CASHTAGS]: IRawTweet[];
-  [DATASET_NAMES.MENTIONS]: IRawTweet[];
-  [DATASET_NAMES.URLS]: IRawTweet[];
+  [DATASET_TYPES.HASHTAGS]: IRawTweet[];
+  [DATASET_TYPES.CASHTAGS]: IRawTweet[];
+  [DATASET_TYPES.MENTIONS]: IRawTweet[];
+  [DATASET_TYPES.URLS]: IRawTweet[];
 }
 
 export interface ITopTweets {

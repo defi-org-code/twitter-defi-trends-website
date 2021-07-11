@@ -1,13 +1,12 @@
-import Counter from "../../../../../../components/Counter";
 import { categortiesDictionary } from "../../../../constants";
 import { categories } from "../../../../data";
-import { DATASET_NAMES, ITopTweets } from "../../../../types";
+import { DATASET_TYPES, ITopTweets } from "../../../../types";
 import Tooltip from "../../../../../../components/Tooltip";
 const PeriodSection = ({ element }: { element: ITopTweets }) => {
   const { type, name, count } = element;
   const categoryKey = categortiesDictionary[type];
   const category = categories[categoryKey];
-  const isLink = categoryKey === DATASET_NAMES.URLS;
+  const isLink = categoryKey === DATASET_TYPES.URLS;
   if (!category) {
     return null;
   }

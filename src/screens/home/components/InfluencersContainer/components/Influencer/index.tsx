@@ -12,11 +12,11 @@ function Influencer({ influencer }: IProps) {
     <div className="influencer">
       <section className="influencer-top flex">
         <img
-          className="influencer-avatar"
+          className="influencer-top-avatar"
           src={profileImage}
           alt="influencer avatar"
         />
-        <span>
+        <span className="influencer-top-content">
           <h5 className="influencer-name">{name}</h5>
           <p className="influencer-username">{displayName}</p>
         </span>

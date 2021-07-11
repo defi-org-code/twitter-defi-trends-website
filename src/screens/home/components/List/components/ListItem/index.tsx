@@ -2,11 +2,12 @@ import { animated } from "@react-spring/web";
 import { IDatasetElement } from "../../../../types";
 import { JSXElementConstructor, memo } from "react";
 import Counter from "../../../../../../components/Counter";
-import FlameImg from "../../../../../../assets/images/flame.png";
 import useListItemUpdate from "../../../../hooks/useListItemUpdate";
 import { INTERVAL_DELAY_SECONDS } from "../../../../constants";
 import LottieAnimation from "../../../../../../components/LottieAnimation";
 import { lottieAnimations } from "../../../../../../constans";
+
+import fireGif from "../../../../../../assets/images/gif/fire.gif";
 interface IProps {
   style: any;
   item: IDatasetElement;
@@ -19,6 +20,7 @@ interface IProps {
   countForAnimation: number;
   positionsJumpForAnimation: number;
   apiIntervalSeconds: number;
+  isUrl: boolean;
 }
 
 const handleClassName = (isOpen: boolean) => {
@@ -40,6 +42,7 @@ const ListItem = ({
   countForAnimation,
   positionsJumpForAnimation,
   apiIntervalSeconds,
+  isUrl,
 }: IProps) => {
   const { name, count, processed } = item;
   const [updated] = useListItemUpdate(
@@ -51,15 +54,23 @@ const ListItem = ({
     isNew
   );
 
+  const handleClick = () => {
+    if (isUrl) {
+      return window.open(name);
+    }
+    setActiveElement();
+  };
+
   return (
     <animated.div className="card" style={style}>
       <div className={handleClassName(isOpen)}>
-        <figure className="list-item-action" onClick={setActiveElement} />
+        <figure className="list-item-action" onClick={handleClick} />
         <div className="list-item-top">
           <section className="list-item-top-name flex">
             <p>{symbol}</p>
             <p>{name}</p>
           </section>
+
           <p className="list-item-top-counter">
             <Counter
               value={count}
@@ -68,10 +79,8 @@ const ListItem = ({
             />
           </p>
         </div>
-        {/* {updated && (
-          <LottieAnimation animation={lottieAnimations.loadingSmall} />
-        )} */}
-        {updated && <div>Updaing......</div>}
+        {/* {updated && <LottieAnimation animation={lottieAnimations.fire} />} */}
+        {updated && <img alt="fire" src={fireGif} />}
         {isOpen && <ContentComponent item={item} symbol={symbol} />}
       </div>
     </animated.div>

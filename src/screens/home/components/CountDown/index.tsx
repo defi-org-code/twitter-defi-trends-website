@@ -36,12 +36,18 @@ const renderer = ({ hours, minutes, seconds, completed }: IRenderProps) => {
   }
 };
 const date = new Date();
-date.setHours(24, 0, 0, 0);
+var endOfDayDate = new Date(
+  Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59)
+);
 const CountDown = () => {
   return (
     <div className="countdown flex">
       <p className="countdown-title">Time counter until new day</p>
-      <Countdown zeroPadDays={2} date={date.getTime()} renderer={renderer} />
+      <Countdown
+        zeroPadDays={2}
+        date={endOfDayDate.getTime()}
+        renderer={renderer}
+      />
     </div>
   );
 };

@@ -48,7 +48,7 @@
       }
       p {
         font-size: 0.563rem;
-        line-height: 0.75rem;
+        line-height: 0.85rem;
         letter-spacing: 0.006rem;
       }
       a {
@@ -66,12 +66,16 @@
       &-content {
         padding-left: 8px;
         flex: 1;
+        strong {
+          font-weight: 600;
+          color: #ffc542;
+        }
         &-top {
           align-items: center;
           margin-bottom: 5px;
 
           p {
-            font-weight: 700;
+            font-weight: 600;
             margin-right: 5px;
             &:last-child {
               margin-right: 0px;
