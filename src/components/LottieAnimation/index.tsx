@@ -3,10 +3,12 @@ import Lottie from "lottie-react";
 
 interface IProps {
   animation: any;
+  customClassName?: string;
 }
-const LottieAnimation = ({ animation }: IProps) => {
+const LottieAnimation = ({ animation, customClassName }: IProps) => {
+  const className = customClassName ? `${customClassName} lottie` : "lottie";
   return (
-    <div className="lottie">
+    <div className={className}>
       <Lottie animationData={animation} />
     </div>
   );

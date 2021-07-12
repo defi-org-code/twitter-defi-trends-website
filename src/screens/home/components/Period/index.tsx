@@ -6,15 +6,22 @@ import { PERIOD_ENTITIES_API } from "../../constants";
 import ErrorHandling from "../../../../components/ErrorHandling";
 import useVisibilityChange from "../../../../hooks/useVisibilityChange";
 import PeriodSections from "./components/PeriodSections";
+import { IPeriodData } from "../../types";
+
+interface IUseFetch {
+  yesterdayTopEntities: IPeriodData[];
+  weeklyTopEntities: IPeriodData[];
+}
+
 const Period = () => {
-  const [data, fetch, error] = useFetch(PERIOD_ENTITIES_API);
+  const [data, fetch, error] = useFetch<IUseFetch>(PERIOD_ENTITIES_API);
   useEffect(() => {
     fetch();
   }, []);
 
   useVisibilityChange(fetch);
   return (
-    <div className="home-period flex">
+    <div className="period flex">
       <ErrorHandling showError={error} errorText="Fetch failed">
         <PeriodSections
           title="Yesterday's top"

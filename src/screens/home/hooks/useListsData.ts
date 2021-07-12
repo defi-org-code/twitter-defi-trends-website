@@ -12,7 +12,7 @@ const useListsData = (
   url: string,
   apiIntervalSeconds: number
 ): [IDatasets | null, boolean] => {
-  const [data, fetch, error] = useFetch(url);
+  const [data, fetch, error] = useFetch<IDatasets>(url);
   const [clear, set] = useInterval(fetch, apiIntervalSeconds);
 
   const handleBackToView = () => {

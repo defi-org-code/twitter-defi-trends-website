@@ -9,10 +9,10 @@ import {
   VIEW_SELECTOR_OPTIONS,
 } from "./../types/index";
 import VarifiedUsersViewCustom from "../components/ViewSelector/components/VarifiedUsersViewCustom";
-import Mentions from "../components/List/components/ListItemContent/Mentions";
-import Urls from "../components/List/components/ListItemContent/Urls";
+import Mentions from "../components/ListsContainer/components/ListItemMentions";
+import Urls from "../components/ListsContainer/components/ListItemUrl";
 import AllTweetsViewCustom from "../components/ViewSelector/components/AllTweetsViewCustom";
-import HashtagsAndCashtags from "../components/List/components/ListItemContent/HashtagsAndCashtags";
+import HashtagsAndCashtags from "../components/ListsContainer/components/ListItemHashtagsCashtags";
 import InfluencersContainer from "../components/InfluencersContainer";
 
 //this array is responsible for the lists and selectors
@@ -24,19 +24,20 @@ export const views = [
     darkImage: images.allTweetsIconDark.img,
     SelectorCustomComponent: AllTweetsViewCustom,
     url: GET_TWEETS_API_URL,
-    apiIntervalSeconds: 8,
+    apiIntervalSeconds: 60,
     countForAnimation: 100,
     positionsJumpForAnimation: 1,
   },
   {
     title: "Tweets By Verified Users",
+    mobileTitle: " Verified Tweets",
     value: VIEW_SELECTOR_OPTIONS.INFLUENCERS,
     image: images.verifiedUsersSelect.img,
     darkImage: images.verifiedUsersSelectDark.img,
     SelectorCustomComponent: VarifiedUsersViewCustom,
     ListCustomComponent: InfluencersContainer,
     url: GET_TWEETS_BY_LIST_API_URL,
-    apiIntervalSeconds: 7,
+    apiIntervalSeconds: 60,
     countForAnimation: 10,
     positionsJumpForAnimation: 1,
   },

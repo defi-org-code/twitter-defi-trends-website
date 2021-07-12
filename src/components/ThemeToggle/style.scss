@@ -1,31 +1,89 @@
-.theme-toggle {
-  position: absolute;
-  right: 0px;
-  top: 0px;
+.desktop-toggle {
   .react-toggle-track {
-    background: #46aaf2;
+    background: url(../../assets/images/svg/toggle-bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-color: transparent !important;
+    border: none;
   }
   .react-toggle-thumb {
-    transform: scale(1.2);
+    width: 25px;
+    height: 25px;
+    top: 45%;
+    transform: translate(-5px, -50%);
+    box-shadow: none !important;
+    border: none;
+    background: url(../../assets/images/svg/toggle.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
   }
-  &:hover {
-    .react-toggle-track {
-      background: #46aaf2 !important;
+}
+
+.mobile-toggle {
+  .react-toggle-track {
+    background-color: #e9e9e9 !important;
+    border: 1px solid white;
+  }
+  .react-toggle-thumb {
+    width: 22px;
+    height: 22px;
+
+    box-shadow: none !important;
+    border: none;
+
+    z-index: 10;
+    &::after {
+      position: absolute;
+      width: 80%;
+      height: 80%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: "";
+      background: url(../../assets/images/svg/mobile-toggle.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    &::before {
+      position: absolute;
+      width: 100%;
+      border-radius: 50%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: "";
+      background-color: #dddddd;
     }
   }
 }
 
 .dark-mode {
-  .theme-toggle {
-    &:hover {
-      .react-toggle-track {
-        background: #212836 !important;
-      }
-    }
+  .desktop-toggle {
     .react-toggle-track {
-      background: #212836;
+      background: url(../../assets/images/svg/dark-toggle-bg.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: right;
     }
     .react-toggle-thumb {
+      background: url(../../assets/images/svg/dark-toggle.svg);
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
+  .mobile-toggle {
+    .react-toggle-thumb {
+      width: 22px;
+      height: 22px;
+      &::after {
+        background: url(../../assets/images/svg/mobile-dark-toggle.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
     }
   }
 }

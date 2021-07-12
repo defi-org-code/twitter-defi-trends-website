@@ -1,29 +1,16 @@
-import { ITopTweets } from "../../../../types/index";
-import PeriodSection from "./PeriodSection";
-import LoadingHandler from "../../../../../../components/LoadingHandler";
-import PeriodSectionsLoader from "./PeriodSectionsLoader";
+import { IPeriodData } from "../../../../types/index";
+import useMobile from "../../../../../../hooks/useMobile";
+import Mobile from "./Mobile";
+import Desktop from "./Desktop";
+
 interface IProps {
-  data: ITopTweets[];
+  data: IPeriodData[];
   title: string;
 }
 
-const PeriodSections = ({ data, title }: IProps) => {
-  return (
-    <LoadingHandler
-      isLoading={!data}
-      LoadingComponent={<PeriodSectionsLoader />}
-    >
-      <div className="header-period-sections">
-        <h5 className="header-period-sections-title">{title}</h5>
-        <div className="flex header-period-sections-list">
-          {data &&
-            data.map((element: ITopTweets) => {
-              return <PeriodSection key={element.name} element={element} />;
-            })}
-        </div>
-      </div>
-    </LoadingHandler>
-  );
+const PeriodSections = (props: IProps) => {
+  const [isMobile] = useMobile();
+  return isMobile ? <Mobile {...props} /> : <Desktop {...props} />;
 };
 
 export default PeriodSections;

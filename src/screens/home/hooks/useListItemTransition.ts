@@ -2,28 +2,36 @@ import {
   LIST_ELEMENT_DEFAULT_HEIGHT,
   LIST_ELEMENT_OPENED_HEIGHT,
   MOBILE_LIST_LIMIT,
+  LIST_ELEMENT_OPENED_HEIGHT_MOBILE,
 } from "../constants";
 import { IDatasetElement } from "../types";
 import { useTransition } from "@react-spring/web";
 
 const getItemHeight = (
   item: IDatasetElement,
-  activeItem: IDatasetElement | null
+  activeItem: IDatasetElement | null,
+  isMobile: boolean
 ) => {
   if (!activeItem) {
     return LIST_ELEMENT_DEFAULT_HEIGHT;
   }
   if (item.name === activeItem.name) {
-    return LIST_ELEMENT_OPENED_HEIGHT;
+    return isMobile
+      ? LIST_ELEMENT_OPENED_HEIGHT_MOBILE
+      : LIST_ELEMENT_OPENED_HEIGHT;
   }
   return LIST_ELEMENT_DEFAULT_HEIGHT;
 };
 
-const handleDataset = (dataset: IDatasetElement[], limit: boolean) => {
+const handleDataset = (
+  dataset: IDatasetElement[],
+  isMobile: boolean,
+  showFullList: boolean
+) => {
   const sorted = dataset.sort((a, b) =>
     a.count !== b.count ? (a.count < b.count ? 1 : -1) : 0
   );
-  if (limit) {
+  if (isMobile && !showFullList) {
     return sorted.slice(0, MOBILE_LIST_LIMIT);
   }
   return sorted;
@@ -32,12 +40,13 @@ const handleDataset = (dataset: IDatasetElement[], limit: boolean) => {
 const useListItemTransition = (
   dataset: IDatasetElement[],
   activeElement: IDatasetElement | null,
-  limit: boolean
+  isMobile: boolean,
+  showFullList: boolean
 ) => {
   let height = 0;
   const transitions = useTransition(
-    handleDataset(dataset, limit).map((data) => {
-      const itemHeight = getItemHeight(data, activeElement);
+    handleDataset(dataset, isMobile, showFullList).map((data) => {
+      const itemHeight = getItemHeight(data, activeElement, isMobile);
       return {
         ...data,
         height: itemHeight,

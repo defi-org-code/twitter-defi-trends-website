@@ -1,0 +1,16 @@
+@import "./Desktop/style.scss";
+@import "./Mobile/style.scss";
+.navbar-color-text {
+  strong {
+    font-weight: 600;
+    margin-right: 5px;
+    @extend .text;
+  }
+  p {
+    background: -webkit-linear-gradient(180deg, #ffc843 0%, #43c7ff 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    margin-right: 5px;
+  }
+}

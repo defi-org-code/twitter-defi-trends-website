@@ -1,0 +1,104 @@
+.navbar-mobile {
+  background: #fafafb;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  z-index: 99999;
+  transition: $theme-transition;
+  &-top {
+    width: 100%;
+    padding: 0px 14px;
+    justify-content: center;
+    position: relative;
+    &-open {
+      margin-left: 10px;
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  }
+
+  &-menu {
+    transition: $theme-transition;
+    background: #f4f4f5;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 25px 20px 20px 20px;
+    width: calc(100% - 90px);
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 0px;
+    transition: 0.2s all;
+    top: 0px;
+    transform: translate(-100%);
+    &-top {
+      flex-direction: column;
+      align-items: center;
+    }
+    &-close {
+      @extend .text;
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+    .img {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 15px;
+      margin-top: 20px;
+    }
+    &-content {
+      width: 100%;
+      margin-top: 80px;
+      p,
+      a {
+        @extend .text;
+        font-size: 0.813rem;
+        text-decoration: none;
+      }
+      section {
+        width: 100%;
+        height: 40px;
+        align-items: center;
+        display: flex;
+      }
+      .flex {
+        justify-content: space-between;
+      }
+    }
+    &-bottom {
+      margin-top: auto;
+      text-align: center;
+      section {
+        margin-bottom: 25px;
+        color: #92929d;
+        font-size: 0.688rem;
+        a {
+          color: #92929d;
+          text-decoration: none;
+        }
+      }
+
+      p {
+        @extend .text;
+        font-weight: 500;
+        margin-top: 10px;
+        font-size: 0.688rem;
+      }
+    }
+  }
+}
+
+.dark-mode {
+  .navbar-mobile {
+    background: #2b2b2b;
+    &-menu {
+      background: #424242;
+    }
+  }
+}

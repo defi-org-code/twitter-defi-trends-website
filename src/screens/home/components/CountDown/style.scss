@@ -67,3 +67,14 @@
     color: white;
   }
 }
+
+@media only screen and (max-width: $mobile) {
+  .countdown {
+    &-title {
+      font-size: 0.75rem;
+    }
+    &-text {
+      font-size: 0.7rem;
+    }
+  }
+}

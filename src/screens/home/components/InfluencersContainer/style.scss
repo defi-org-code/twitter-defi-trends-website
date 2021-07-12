@@ -41,3 +41,14 @@
     }
   }
 }
+
+@media only screen and (max-width: $mobile) {
+  .influencers {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+    &-bg {
+      display: none;
+    }
+  }
+}

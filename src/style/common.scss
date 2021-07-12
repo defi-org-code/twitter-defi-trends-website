@@ -15,11 +15,6 @@ body {
   text-overflow: ellipsis;
 }
 
-.grid {
-  max-width: 1350px;
-  width: calc(100% - 80px);
-  margin: auto;
-}
 .dark-mode {
   .text {
     color: $dark-mode-text-color;

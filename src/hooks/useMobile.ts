@@ -1,5 +1,5 @@
-import { MOBILE_WIDTH_LIMIT } from "./../screens/home/constants/index";
 import { useEffect, useState } from "react";
+import { MOBILE } from "../constans";
 import useWindowSize from "./useResize";
 
 const useMobile = (): [boolean] => {
@@ -7,7 +7,7 @@ const useMobile = (): [boolean] => {
   const [width] = useWindowSize();
 
   useEffect(() => {
-    if (width && width <= MOBILE_WIDTH_LIMIT) {
+    if (width && width <= MOBILE) {
       setIsMobile(true);
     } else {
       setIsMobile(false);

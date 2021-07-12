@@ -25,6 +25,8 @@ import cashtagsTitleDarkImg from "../assets/images/cashtags-title-dark.svg";
 import urlsTitleDarkImg from "../assets/images/urls-title-dark.svg";
 import mentionsTitleDarkImg from "../assets/images/mentions-title-dark.svg";
 import CoinsImg from "../assets/images/most-active.png";
+import MenuDots from "../assets/images/menu-dots.svg";
+import MenuDotsDark from "../assets/images/menu-dots-dark.svg";
 
 const images = {
   coinsImg: {
@@ -118,6 +120,14 @@ const images = {
   allTweetsIconDark: {
     img: allTweetsIconDark,
     alt: "twitter",
+  },
+  menuDots: {
+    img: MenuDots,
+    alt: "menu dots",
+  },
+  menuDotsDark: {
+    img: MenuDotsDark,
+    alt: "menu dots",
   },
 };
 

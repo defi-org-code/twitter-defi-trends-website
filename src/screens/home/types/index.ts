@@ -32,6 +32,7 @@ export interface IUser {
 export interface ITweet {
   text: string;
   user: IUser;
+  id?: string;
 }
 
 export interface IListCategory {
@@ -73,7 +74,7 @@ export interface IRawTweets {
   [DATASET_TYPES.URLS]: IRawTweet[];
 }
 
-export interface ITopTweets {
+export interface IPeriodData {
   type: number;
   count: number;
   name: string;
@@ -81,6 +82,7 @@ export interface ITopTweets {
 
 export interface IViewOption {
   title: string;
+  mobileTitle?: string;
   value: VIEW_SELECTOR_OPTIONS;
   image: string;
   url: string;
