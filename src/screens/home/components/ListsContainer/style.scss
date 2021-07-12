@@ -1,4 +1,10 @@
 @import "./components/ListLoader/style.scss";
+@import "./components/List/style.scss";
+@import "./components/ListItemHashtagsCashtags/style.scss";
+@import "./components/ListItemMentions/style.scss";
+@import "./components/ListItemUrl/style.scss";
+@import "./components/ListItem/style.scss";
+
 .lists {
   width: 100%;
   margin: auto;
@@ -24,5 +30,11 @@
     .influencers {
       height: 0px;
     }
+  }
+}
+
+@media only screen and (max-width: $mobile) {
+  .lists {
+    padding: 23px 14px 14px 14px;
   }
 }

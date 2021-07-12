@@ -6,6 +6,7 @@ import placeholderLoading from "../assets/animations/placeholderLoading.json";
 export const DARK_MODE = "dark-mode";
 
 export const APP_LOADER_ANIMATION_TIMEOUT = 2000;
+export const MOBILE = 700;
 
 export const lottieAnimations = {
   fire,

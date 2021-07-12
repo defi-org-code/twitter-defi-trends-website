@@ -1,11 +1,10 @@
-.view-selector {
+.view-selector-option {
   display: flex;
   align-items: center;
   justify-content: center;
   min-width: 240px;
   padding: 0px 40px;
   text-align: center;
-  z-index: 999;
   position: relative;
   bottom: -2px;
   padding-bottom: 5px;
@@ -33,5 +32,14 @@
     p {
       font-weight: 600;
     }
+  }
+}
+
+@media only screen and (max-width: $mobile) {
+  .view-selector-option {
+    min-width: auto;
+    width: 50%;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }

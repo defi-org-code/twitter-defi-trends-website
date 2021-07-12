@@ -1,6 +1,7 @@
 @import "./components/PeriodSections/style.scss";
+@import "./components/PeriodSection/style.scss";
 
-.home-period {
+.period {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,18 +29,27 @@
 }
 
 .dark-mode {
-  .home-period {
+  .period {
     background: transparent;
   }
 }
 
 @media only screen and (max-width: $mobile) {
-  .home {
+  .period {
     height: auto;
-    &-period {
-      background: white;
-      flex-direction: column;
-      height: auto;
+    flex-wrap: wrap;
+    padding: 0px 14px;
+
+    background: transparent;
+    .countdown {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      &:before,
+      &:after {
+        display: none;
+      }
     }
   }
 }

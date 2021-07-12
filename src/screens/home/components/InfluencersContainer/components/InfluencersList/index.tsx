@@ -1,22 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import LoadingHandler from "../../../../../../components/LoadingHandler";
-import ErrorHandling from "../../../../../../components/ErrorHandling";
-import InfluencersLoader from "../InfluencersLoader/index";
 import useInterval from "../../../../../../hooks/useInterval";
 import {
   FETCH_VERIFIED_USERS_INTERVAL,
   GET_ACTIVE_USERS_OF_LIST_API_URL,
 } from "../../../../constants";
 import { IUser } from "../../../../types";
-import Influencer from "../Influencer/index";
+import Desktop from "./Desktop";
+import Mobile from "./Mobile";
 import { useEffect } from "react";
 import useVisibilityChange from "../../../../../../hooks/useVisibilityChange";
 import useFetch from "../../../../../../hooks/useFetch";
+import useMobile from "../../../../../../hooks/useMobile";
 
 const InfluencersList = () => {
   const url = GET_ACTIVE_USERS_OF_LIST_API_URL;
-
-  const [users, fetch, error] = useFetch(url);
+  const [isMobile] = useMobile();
+  const [users, fetch, error] = useFetch<IUser[]>(url);
   const [clear, set] = useInterval(fetch, FETCH_VERIFIED_USERS_INTERVAL);
   useEffect(() => {
     fetch();
@@ -31,19 +30,11 @@ const InfluencersList = () => {
 
   return (
     <div className="influencers-list flex">
-      <ErrorHandling showError={error} errorText="something went wrong...">
-        <LoadingHandler
-          isLoading={!error && !users}
-          LoadingComponent={<InfluencersLoader />}
-        >
-          <>
-            {users &&
-              users.map((user: IUser) => {
-                return <Influencer key={user.name} influencer={user} />;
-              })}
-          </>
-        </LoadingHandler>
-      </ErrorHandling>
+      {isMobile ? (
+        <Mobile users={users} error={error} />
+      ) : (
+        <Desktop users={users} error={error} />
+      )}
     </div>
   );
 };

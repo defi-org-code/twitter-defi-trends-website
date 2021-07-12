@@ -12,7 +12,7 @@ import {
 } from "../../types";
 import ErrorHandling from "../../../../components/ErrorHandling";
 import LoadingHandler from "../../../../components/LoadingHandler";
-import List from "../List";
+import List from "./components/List";
 import ListsLoader from "./components/ListLoader";
 import { JSXElementConstructor, useEffect, useRef } from "react";
 

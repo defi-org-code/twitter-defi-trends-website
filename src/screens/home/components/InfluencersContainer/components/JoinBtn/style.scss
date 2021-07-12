@@ -24,3 +24,16 @@
     object-fit: contain;
   }
 }
+
+@media only screen and (max-width: $mobile) {
+  .influencers-join {
+    order: 1;
+    margin-left: 0px;
+    width: 100%;
+    background: transparent;
+    flex-direction: row;
+    p {
+      font-size: 0.688rem;
+    }
+  }
+}

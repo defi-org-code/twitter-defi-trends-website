@@ -1,11 +1,9 @@
 @import "../components/InfluencersContainer/style.scss";
 @import "../components/CountDown/style.scss";
-@import "../components/List/style.scss";
 @import "../components/Period/style.scss";
 @import "../components/ViewSelector/style.scss";
-@import "../components/TweetsContainer/index.scss";
+@import "../components/ViewContainer/index.scss";
 @import "../components/ListsContainer/style.scss";
-@import "../components/Header/style.scss";
 
 .flex {
   display: flex;
@@ -13,13 +11,7 @@
 .home {
   overflow-y: hidden;
   min-height: 100vh;
-
   transition: $theme-transition;
-  &-grid {
-    @extend .grid;
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 /* width */

@@ -19,7 +19,7 @@ const ViewSelector = ({ options, handleViewSelect }: IProps) => {
 
   return (
     <>
-      <div className="home-selection flex">
+      <div className="view-selector flex">
         {options.map((option: IViewOption, index: number) => {
           return (
             <Option
@@ -32,10 +32,7 @@ const ViewSelector = ({ options, handleViewSelect }: IProps) => {
             />
           );
         })}
-        <figure
-          className="home-selection-indicator"
-          ref={indicatorRef}
-        ></figure>
+        <figure className="view-selector-indicator" ref={indicatorRef}></figure>
       </div>
     </>
   );

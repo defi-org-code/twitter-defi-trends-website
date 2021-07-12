@@ -1,0 +1,54 @@
+.period-sections-desktop {
+  padding-top: 10px;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  &-list {
+    margin-top: auto;
+  }
+  &-title {
+    font-weight: 500;
+    @extend .text;
+    margin-bottom: 8px;
+    font-size: 0.688rem;
+  }
+
+  &-loader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .loader {
+      height: 15px;
+
+      border-radius: 10px;
+    }
+    &-top {
+      margin-bottom: 10px;
+      .loader {
+        width: 100px;
+      }
+    }
+    &-bottom {
+      justify-content: space-between;
+      .loader {
+        width: calc(100% / 4 - 20px);
+      }
+    }
+  }
+}
+
+.dark-mode {
+  .home-header-counters {
+    &-element {
+      &-title {
+        color: white;
+      }
+      &-count {
+        color: white;
+      }
+    }
+  }
+}

@@ -1,7 +1,6 @@
-import React from "react";
 import { IUser } from "../../../../types";
 import { nFormatter } from "../../../../utils/numberUtil";
-
+import ImgComponent from "../../../../../../components/ImgComponent";
 interface IProps {
   influencer: IUser;
 }
@@ -11,11 +10,8 @@ function Influencer({ influencer }: IProps) {
   return (
     <div className="influencer">
       <section className="influencer-top flex">
-        <img
-          className="influencer-top-avatar"
-          src={profileImage}
-          alt="influencer avatar"
-        />
+        <ImgComponent src={profileImage} alt="user" />
+
         <span className="influencer-top-content">
           <h5 className="influencer-name">{name}</h5>
           <p className="influencer-username">{displayName}</p>

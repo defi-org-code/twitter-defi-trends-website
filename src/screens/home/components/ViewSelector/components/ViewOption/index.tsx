@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { forwardRef, useContext, useEffect, useRef } from "react";
+import { forwardRef, useContext, useEffect, useRef } from "react";
+import useMobile from "../../../../../../hooks/useMobile";
 import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 import { IViewOption } from "../../../../types";
 
@@ -14,11 +15,19 @@ const ViewOption = forwardRef(
   ({ option, selected, select, isFirst }: IProps, indicatorRef: any) => {
     const ref = useRef<any>(0);
     const { isDarkMode } = useContext(ThemeContext);
-    const { title, value, image, SelectorCustomComponent, darkImage } = option;
+    const [isMobile] = useMobile();
+    const {
+      title,
+      value,
+      image,
+      SelectorCustomComponent,
+      darkImage,
+      mobileTitle,
+    } = option;
     const className =
       value === selected
-        ? "view-selector view-selector-active"
-        : "view-selector";
+        ? "view-selector-option view-selector-option-active"
+        : "view-selector-option";
 
     useEffect(() => {
       if (isFirst) {
@@ -43,12 +52,12 @@ const ViewOption = forwardRef(
         <div className="flex" onClick={onClick}>
           <img
             src={isDarkMode ? darkImage : image}
-            alt={title}
-            className="view-selector-img"
+            alt="view select"
+            className="view-selector-option-img"
           />
-          <p> {title}</p>
+          <p> {isMobile && mobileTitle ? mobileTitle : title}</p>
         </div>
-        {SelectorCustomComponent && <SelectorCustomComponent />}
+        {SelectorCustomComponent && !isMobile && <SelectorCustomComponent />}
       </section>
     );
   }

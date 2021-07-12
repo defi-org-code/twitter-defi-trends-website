@@ -1,5 +1,13 @@
+@import "./Mobile/style.scss";
+
 .influencers-list {
   width: fit-content;
   overflow: auto;
   flex: 1;
+}
+
+@media only screen and (max-width: $mobile) {
+  .influencers-list {
+    order: 2;
+  }
 }

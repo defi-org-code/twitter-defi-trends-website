@@ -1,7 +1,8 @@
-import React from "react";
+import useMobile from "../../hooks/useMobile";
 
 const Footer = () => {
-  return (
+  const [isMobile] = useMobile();
+  return !isMobile ? (
     <footer className="footer flex">
       <div></div>
       <div className="footer-policy flex">
@@ -15,7 +16,7 @@ const Footer = () => {
         </a>
       </div>
     </footer>
-  );
+  ) : null;
 };
 
 export default Footer;

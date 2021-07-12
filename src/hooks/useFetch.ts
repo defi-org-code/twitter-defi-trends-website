@@ -2,7 +2,10 @@
 import { useEffect, useRef, useState } from "react";
 import api from "../services/api";
 
-const useFetch = (url: string, modifier?: (data: any) => any) => {
+const useFetch = <T>(
+  url: string,
+  modifier?: (data: T) => any
+): [T, (customUrl?: string) => Promise<void>, boolean, boolean] => {
   const mountedRef = useRef(true);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
