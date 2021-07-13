@@ -21,6 +21,12 @@
   }
 }
 
+.dark-mode {
+  .influencers-most-active {
+    background: #3a3a3a;
+  }
+}
+
 @media only screen and (max-width: $mobile) {
   .influencers-most-active {
     width: 100%;

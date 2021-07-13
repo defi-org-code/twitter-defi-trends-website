@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { CSSProperties, useMemo } from "react";
 import ImgComponent from "../../../../../../components/ImgComponent";
 import { ITweet } from "../../../../types";
-import AnimateHeight from "react-animate-height";
 
 const handleText = (text: string) => {
   const splittedText = text.replaceAll("\n", " ").split(" ");
@@ -19,21 +18,14 @@ interface IProps {
   index: number;
 }
 
-const Tweet = ({ tweet, index }: IProps) => {
+const Tweet = ({ tweet }: IProps) => {
   const { user, text } = tweet;
-  const [show, setShow] = useState(false);
   const { displayName, name, profileImage } = user;
   const memoizedText = useMemo(() => handleText(text), [text]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShow(true);
-    }, 10);
-  }, []);
-
   return (
-    <AnimateHeight duration={500} height={show ? "auto" : 0}>
-      <li className="tweet flex">
+    <div className="tweet">
+      <div className="tweet-flex">
         <ImgComponent src={profileImage} alt="user" />
         <section className="tweet-content">
           <span className="tweet-content-top flex">
@@ -42,8 +34,9 @@ const Tweet = ({ tweet, index }: IProps) => {
           </span>
           <p className="tweet-content-text">{memoizedText}</p>
         </section>
-      </li>
-    </AnimateHeight>
+      </div>
+      <div className="tweet-margin"></div>
+    </div>
   );
 };
 

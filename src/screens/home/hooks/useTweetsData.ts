@@ -2,10 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import useFetch from "../../../hooks/useFetch";
 import useInterval from "../../../hooks/useInterval";
-import {
-  GET_HASHTAG_TWEETS_API,
-  GET_HASHTAG_TWEETS_INTERVAL,
-} from "../constants";
+import { GET_HASHTAG_TWEETS_INTERVAL } from "../constants";
 import { ITweet } from "../types";
 import { v4 as uuidv4 } from "uuid";
 
@@ -13,11 +10,17 @@ interface IUseFetch {
   sinceId: string;
   tweets: ITweet[];
 }
+declare var process: {
+  env: {
+    REACT_APP_HASHTAG_TWEETS_API: string;
+  };
+};
 
 const useTweetsData = (name: string): [ITweet[], boolean, boolean] => {
+  const apiUrl = process.env.REACT_APP_HASHTAG_TWEETS_API;
   const [tweets, setTweets] = useState<ITweet[]>([]);
   const sinceIdRef = useRef<string | null>(null);
-  const url = encodeURI(`${GET_HASHTAG_TWEETS_API}/${name}`);
+  const url = encodeURI(`${apiUrl}/${name}`);
   const [data, fetch, error] = useFetch<IUseFetch>(url);
   const mountRef = useRef(true);
   useEffect(() => {
@@ -34,6 +37,7 @@ const useTweetsData = (name: string): [ITweet[], boolean, boolean] => {
   }, []);
 
   const handleTweets = (newTweets: ITweet[], sinceId: string) => {
+    if (!mountRef.current) return;
     sinceIdRef.current = sinceId;
     const tweetsToInsert = newTweets.map((t: ITweet) => {
       return {
@@ -41,14 +45,12 @@ const useTweetsData = (name: string): [ITweet[], boolean, boolean] => {
         id: uuidv4(),
       };
     });
-
-    setTweets([...tweetsToInsert, ...tweets]);
+    const currentTweets = [...tweets];
+    currentTweets.unshift(...tweetsToInsert);
+    setTweets(currentTweets);
   };
-
   const fecthDataWithSinceId = () => {
-    const urlWithSiceId = encodeURI(
-      `${GET_HASHTAG_TWEETS_API}/${name}/${sinceIdRef.current}`
-    );
+    const urlWithSiceId = encodeURI(`${apiUrl}/${name}/${sinceIdRef.current}`);
     fetch(urlWithSiceId);
   };
 

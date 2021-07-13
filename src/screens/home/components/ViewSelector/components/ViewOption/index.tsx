@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { forwardRef, useContext, useEffect, useRef } from "react";
-import useMobile from "../../../../../../hooks/useMobile";
 import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 import { IViewOption } from "../../../../types";
 
@@ -14,8 +13,8 @@ interface IProps {
 const ViewOption = forwardRef(
   ({ option, selected, select, isFirst }: IProps, indicatorRef: any) => {
     const ref = useRef<any>(0);
-    const { isDarkMode } = useContext(ThemeContext);
-    const [isMobile] = useMobile();
+    const { isDarkMode, isMobile } = useContext(ThemeContext);
+
     const {
       title,
       value,

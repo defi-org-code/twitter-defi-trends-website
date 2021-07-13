@@ -1,7 +1,3 @@
-import {
-  GET_TWEETS_API_URL,
-  GET_TWEETS_BY_LIST_API_URL,
-} from "./../constants/index";
 import images from "../../../constans/images";
 import {
   DATASET_TYPES,
@@ -15,6 +11,13 @@ import AllTweetsViewCustom from "../components/ViewSelector/components/AllTweets
 import HashtagsAndCashtags from "../components/ListsContainer/components/ListItemHashtagsCashtags";
 import InfluencersContainer from "../components/InfluencersContainer";
 
+declare var process: {
+  env: {
+    REACT_APP_TWEETS_BY_LIST_API: string;
+    REACT_APP_TOP_ENTETIES_API: string;
+  };
+};
+
 //this array is responsible for the lists and selectors
 export const views = [
   {
@@ -23,9 +26,9 @@ export const views = [
     image: images.allTweetsIcon.img,
     darkImage: images.allTweetsIconDark.img,
     SelectorCustomComponent: AllTweetsViewCustom,
-    url: GET_TWEETS_API_URL,
+    url: process.env.REACT_APP_TOP_ENTETIES_API,
     apiIntervalSeconds: 60,
-    countForAnimation: 100,
+    countForAnimation: 10,
     positionsJumpForAnimation: 1,
   },
   {
@@ -36,7 +39,7 @@ export const views = [
     darkImage: images.verifiedUsersSelectDark.img,
     SelectorCustomComponent: VarifiedUsersViewCustom,
     ListCustomComponent: InfluencersContainer,
-    url: GET_TWEETS_BY_LIST_API_URL,
+    url: process.env.REACT_APP_TWEETS_BY_LIST_API,
     apiIntervalSeconds: 60,
     countForAnimation: 10,
     positionsJumpForAnimation: 1,

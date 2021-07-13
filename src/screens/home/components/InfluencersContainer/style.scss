@@ -1,5 +1,4 @@
 @import "./components/Influencer/style.scss";
-@import "./components/InfluencersLoader/style.scss";
 @import "./components/InfluencersList/style.scss";
 @import "./components/JoinBtn/style.scss";
 @import "./components/MostActiveBtn/style.scss";
@@ -10,7 +9,7 @@
   transition: 0.25s all;
   border-radius: 10px;
   height: 65px;
-  max-height: auto;
+
   position: relative;
   width: 100%;
   &-bg {
@@ -28,16 +27,6 @@
   .influencers {
     &-bg {
       background: #1e1e1e;
-    }
-    &-join,
-    &-most-active {
-      background: #3a3a3a;
-    }
-    &-join {
-      img {
-        width: 24px;
-        height: 24px;
-      }
     }
   }
 }

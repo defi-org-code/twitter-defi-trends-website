@@ -9,7 +9,7 @@ const ViewContainer = () => {
   const [view, setView] = useState(VIEW_SELECTOR_OPTIONS.ALL_TWEETS);
   const [viewToHide, setViewToHide] = useState<IViewToHide | null>(null);
 
-  const handleViewSelect = (nextView: VIEW_SELECTOR_OPTIONS) => {
+  const handleViewSelectDesktop = (nextView: VIEW_SELECTOR_OPTIONS) => {
     if (nextView === view) return;
     const nextViewIndex = views.findIndex((e) => e.value === nextView);
     const currentViewIndex = views.findIndex((e) => e.value === view);
@@ -21,6 +21,10 @@ const ViewContainer = () => {
     setTimeout(() => {
       setView(nextView);
     }, LIST_HIDE_ANIMATION_CONFIG[view].animationDoneTimeout);
+  };
+
+  const handleViewSelectMobile = (nextView: VIEW_SELECTOR_OPTIONS) => {
+    setView(nextView);
   };
 
   const showView = (views: IViewOption[]) => {
@@ -41,7 +45,11 @@ const ViewContainer = () => {
 
   return (
     <>
-      <ViewSelector options={views} handleViewSelect={handleViewSelect} />
+      <ViewSelector
+        options={views}
+        handleViewSelectDesktop={handleViewSelectDesktop}
+        handleViewSelectMobile={handleViewSelectMobile}
+      />
       {showView(views)}
     </>
   );

@@ -1,20 +1,30 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { ThemeContext } from "../../../../providers/ThemeProvider";
 
 import { IViewOption, VIEW_SELECTOR_OPTIONS } from "../../types";
 import Option from "./components/ViewOption";
 
 interface IProps {
   options: IViewOption[];
-  handleViewSelect: (name: VIEW_SELECTOR_OPTIONS) => void;
+  handleViewSelectDesktop: (name: VIEW_SELECTOR_OPTIONS) => void;
+  handleViewSelectMobile: (name: VIEW_SELECTOR_OPTIONS) => void;
 }
 
-const ViewSelector = ({ options, handleViewSelect }: IProps) => {
+const ViewSelector = ({
+  options,
+  handleViewSelectDesktop,
+  handleViewSelectMobile,
+}: IProps) => {
   const [selected, setSelected] = useState(VIEW_SELECTOR_OPTIONS.ALL_TWEETS);
   const indicatorRef = useRef<HTMLDivElement>(null);
+  const { isMobile } = useContext(ThemeContext);
 
   const select = (option: VIEW_SELECTOR_OPTIONS) => {
     setSelected(option);
-    handleViewSelect(option);
+    if (isMobile) {
+      return handleViewSelectMobile(option);
+    }
+    handleViewSelectDesktop(option);
   };
 
   return (

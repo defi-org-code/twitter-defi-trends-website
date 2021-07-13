@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import CountDown from "../CountDown";
 import useFetch from "../../../../hooks/useFetch";
-import { PERIOD_ENTITIES_API } from "../../constants";
 import ErrorHandling from "../../../../components/ErrorHandling";
 import useVisibilityChange from "../../../../hooks/useVisibilityChange";
 import PeriodSections from "./components/PeriodSections";
@@ -12,9 +11,16 @@ interface IUseFetch {
   yesterdayTopEntities: IPeriodData[];
   weeklyTopEntities: IPeriodData[];
 }
+declare var process: {
+  env: {
+    REACT_APP_PERIOD_ENTITIES_API: string;
+  };
+};
 
 const Period = () => {
-  const [data, fetch, error] = useFetch<IUseFetch>(PERIOD_ENTITIES_API);
+  const [data, fetch, error] = useFetch<IUseFetch>(
+    process.env.REACT_APP_PERIOD_ENTITIES_API
+  );
   useEffect(() => {
     fetch();
   }, []);

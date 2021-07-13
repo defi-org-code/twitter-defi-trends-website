@@ -1,4 +1,5 @@
 @import "./Mobile/style.scss";
+@import "./Desktop/style.scss";
 
 .influencers-list {
   width: fit-content;
@@ -9,5 +10,7 @@
 @media only screen and (max-width: $mobile) {
   .influencers-list {
     order: 2;
+    width: 100%;
+    overflow: hidden;
   }
 }
