@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useContext, useEffect, useState } from "react";
+import { ThemeContext } from "../../../providers/ThemeProvider";
 import { sleep } from "../../../utils";
 import { LISTS_AMOUNT, LIST_HIDE_ANIMATION_CONFIG } from "../constants";
 import { IViewToHide, VIEW_SELECTOR_OPTIONS } from "../types";
@@ -28,17 +30,28 @@ const useHideList = (
   const [hideList, setHideList] = useState(false);
   const [translate, setTranslate] = useState("");
   const [delay, setDelay] = useState(0);
+  const { isMobile } = useContext(ThemeContext);
+  const hdeDesktop = async () => {
+    if (!viewToHide) return;
+    const translateStr = viewToHide.isBigger ? "-100px" : "100px";
+    const delay = await handleDelay(viewToHide, index);
+    setDelay(delay);
+    setTranslate(translateStr);
+    setHideList(true);
+  };
 
-  useEffect(() => {
-    async function checkIfNeedToHide() {
-      if (viewToHide?.view === viewName) {
-        const translateStr = viewToHide.isBigger ? "-100px" : "100px";
-        const delay = await handleDelay(viewToHide, index);
-        setDelay(delay);
-        setTranslate(translateStr);
-        setHideList(true);
+  const hideMobile = () => {};
+  const checkIfNeedToHide = () => {
+    if (viewToHide?.view === viewName) {
+      if (isMobile) {
+        hideMobile();
+      } else {
+        hdeDesktop();
       }
     }
+  };
+
+  useEffect(() => {
     checkIfNeedToHide();
   }, [index, viewName, viewToHide]);
   return [hideList, delay, translate];

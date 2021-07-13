@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import LottieAnimation from "../../../../../../components/LottieAnimation";
 import { lottieAnimations } from "../../../../../../constans";
-import useMobile from "../../../../../../hooks/useMobile";
+import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 const mobileLoaders = [...Array(3)];
 const ListsLoader = () => {
   const [show, setShow] = useState(false);
-  const [isMobile] = useMobile();
+  const { isMobile } = useContext(ThemeContext);
+
   useEffect(() => {
     setTimeout(() => {
       setShow(true);

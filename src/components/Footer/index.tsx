@@ -1,7 +1,9 @@
-import useMobile from "../../hooks/useMobile";
+import { useContext } from "react";
+import { ThemeContext } from "../../providers/ThemeProvider";
 
 const Footer = () => {
-  const [isMobile] = useMobile();
+  const { isMobile } = useContext(ThemeContext);
+
   return !isMobile ? (
     <footer className="footer flex">
       <div></div>

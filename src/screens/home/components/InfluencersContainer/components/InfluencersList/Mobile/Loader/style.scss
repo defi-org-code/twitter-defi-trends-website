@@ -1,0 +1,14 @@
+.influencers-loader {
+  width: 100%;
+  height: 100%;
+  &-mobile {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .loader-element {
+      width: calc(50% - 10px);
+      height: 70px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+  }
+}

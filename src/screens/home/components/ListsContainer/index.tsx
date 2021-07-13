@@ -51,11 +51,11 @@ const ListsContainer = ({
   return (
     <div className="lists flex" ref={container}>
       <ErrorHandling showError={isError} errorText="something went wrong...">
+        {CustomComponent && <CustomComponent />}
         <LoadingHandler
           isLoading={!datasets && !isError}
           LoadingComponent={<ListsLoader />}
         >
-          {CustomComponent && <CustomComponent />}
           <div className="lists-grid flex">
             {datasets &&
               (Object.keys(datasets) as (keyof typeof datasets)[]).map(

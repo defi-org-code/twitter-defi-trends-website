@@ -1,7 +1,8 @@
 import { IPeriodData } from "../../../../types/index";
-import useMobile from "../../../../../../hooks/useMobile";
 import Mobile from "./Mobile";
 import Desktop from "./Desktop";
+import { useContext } from "react";
+import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 
 interface IProps {
   data: IPeriodData[];
@@ -9,7 +10,8 @@ interface IProps {
 }
 
 const PeriodSections = (props: IProps) => {
-  const [isMobile] = useMobile();
+  const { isMobile } = useContext(ThemeContext);
+
   return isMobile ? <Mobile {...props} /> : <Desktop {...props} />;
 };
 

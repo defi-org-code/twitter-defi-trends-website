@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import LoadingHandler from "../../../../../../../components/LoadingHandler";
 import ErrorHandling from "../../../../../../../components/ErrorHandling";
-import InfluencersLoader from "../../InfluencersLoader/index";
+import Loader from "./Loader";
 import { IUser } from "../../../../../types";
 import Influencer from "../../Influencer/index";
 
@@ -15,7 +15,7 @@ const Desktop = ({ users, error }: IProps) => {
       <ErrorHandling showError={error} errorText="something went wrong...">
         <LoadingHandler
           isLoading={!error && !users}
-          LoadingComponent={<InfluencersLoader />}
+          LoadingComponent={<Loader />}
         >
           <>
             {users &&

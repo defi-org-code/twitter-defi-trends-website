@@ -6,6 +6,8 @@ import {
 } from "../constants";
 import { IDatasetElement } from "../types";
 import { useTransition } from "@react-spring/web";
+import { useContext } from "react";
+import { ThemeContext } from "../../../providers/ThemeProvider";
 
 const getItemHeight = (
   item: IDatasetElement,
@@ -40,10 +42,11 @@ const handleDataset = (
 const useListItemTransition = (
   dataset: IDatasetElement[],
   activeElement: IDatasetElement | null,
-  isMobile: boolean,
   showFullList: boolean
 ) => {
   let height = 0;
+  const { isMobile } = useContext(ThemeContext);
+
   const transitions = useTransition(
     handleDataset(dataset, isMobile, showFullList).map((data) => {
       const itemHeight = getItemHeight(data, activeElement, isMobile);

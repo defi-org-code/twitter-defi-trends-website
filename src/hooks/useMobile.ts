@@ -13,6 +13,7 @@ const useMobile = (): [boolean] => {
       setIsMobile(false);
     }
   }, [width]);
+
   return [isMobile];
 };
 

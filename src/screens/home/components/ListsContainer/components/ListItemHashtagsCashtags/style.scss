@@ -21,11 +21,17 @@
   &-list {
     padding-top: 7px;
     overflow-y: auto;
+    padding-bottom: 40px;
 
     .tweet {
-      margin-bottom: 10px;
       position: relative;
-      transition: 0.5s all;
+      &-flex {
+        display: flex;
+      }
+      &-margin {
+        width: 100%;
+        height: 10px;
+      }
       &:first-of-type {
         &:after {
           position: absolute;

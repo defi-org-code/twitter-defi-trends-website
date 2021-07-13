@@ -56,3 +56,21 @@
     background: #58595a;
   }
 }
+
+@media only screen and (max-width: $mobile) {
+  .cookie-policy {
+    height: auto;
+    &-content {
+      flex-direction: column;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      p {
+        text-align: center;
+        padding: 0px;
+      }
+      &-btns {
+        margin-top: 40px;
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AppLoader from "./components/AppLoader";
 import { ThemeProvider } from "./providers/ThemeProvider";
+
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>

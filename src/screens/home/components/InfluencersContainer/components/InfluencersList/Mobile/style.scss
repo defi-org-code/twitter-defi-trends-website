@@ -1,4 +1,6 @@
+@import "./Loader/style.scss";
 .influencers-list-mobile {
+  width: 100%;
   button {
     width: 100%;
     text-align: center;
@@ -8,32 +10,7 @@
   }
   &-grid {
     flex-wrap: wrap;
-
-    .influencer {
-      width: 50%;
-      max-width: none;
-      &::before {
-        position: absolute;
-
-        width: calc(100% - 30px);
-        left: 50%;
-        top: 0px;
-        transform: translate(-50%);
-        background: #dddddd;
-        height: 1px;
-        content: "";
-      }
-      &:nth-child(even) {
-        &:after {
-          display: none;
-        }
-      }
-      &:nth-child(1),
-      &:nth-child(2) {
-        &:before {
-          display: none;
-        }
-      }
-    }
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }

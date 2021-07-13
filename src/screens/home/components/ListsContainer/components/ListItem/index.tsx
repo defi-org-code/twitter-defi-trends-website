@@ -2,10 +2,7 @@ import { animated } from "@react-spring/web";
 import { JSXElementConstructor, memo } from "react";
 import Counter from "../../../../../../components/Counter";
 import useListItemUpdate from "../../../../hooks/useListItemUpdate";
-// import { INTERVAL_DELAY_SECONDS } from "../../../../../../constants";
-// import LottieAnimation from "../../../../../../../../components/LottieAnimation";
-// import { lottieAnimations } from "../../../../../../../../constans";
-
+import UpdatedAnimation from "./UpdatedAnimation";
 import { IDatasetElement } from "../../../../types";
 interface IProps {
   style: any;
@@ -49,8 +46,7 @@ const ListItem = ({
     processed,
     countForAnimation,
     index,
-    positionsJumpForAnimation,
-    isNew
+    positionsJumpForAnimation
   );
 
   const handleClick = () => {
@@ -77,7 +73,7 @@ const ListItem = ({
             />
           </p>
         </div>
-        {/* {updated && <LottieAnimation animation={lottieAnimations.fire} />} */}
+        {updated && !isOpen && <UpdatedAnimation />}
         {isOpen && (
           <div className="list-item-custom">
             <ContentComponent item={item} symbol={symbol} />

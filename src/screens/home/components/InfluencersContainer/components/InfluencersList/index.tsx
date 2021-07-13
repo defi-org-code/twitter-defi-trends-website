@@ -1,21 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import useInterval from "../../../../../../hooks/useInterval";
-import {
-  FETCH_VERIFIED_USERS_INTERVAL,
-  GET_ACTIVE_USERS_OF_LIST_API_URL,
-} from "../../../../constants";
+import { FETCH_VERIFIED_USERS_INTERVAL } from "../../../../constants";
 import { IUser } from "../../../../types";
 import Desktop from "./Desktop";
 import Mobile from "./Mobile";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import useVisibilityChange from "../../../../../../hooks/useVisibilityChange";
 import useFetch from "../../../../../../hooks/useFetch";
-import useMobile from "../../../../../../hooks/useMobile";
+import { ThemeContext } from "../../../../../../providers/ThemeProvider";
+
+declare const process: {
+  env: {
+    REACT_APP_ACTIVE_USERS_API: string;
+  };
+};
 
 const InfluencersList = () => {
-  const url = GET_ACTIVE_USERS_OF_LIST_API_URL;
-  const [isMobile] = useMobile();
-  const [users, fetch, error] = useFetch<IUser[]>(url);
+  const apiUrl = process.env.REACT_APP_ACTIVE_USERS_API;
+  const { isMobile } = useContext(ThemeContext);
+  const [users, fetch, error] = useFetch<IUser[]>(apiUrl);
   const [clear, set] = useInterval(fetch, FETCH_VERIFIED_USERS_INTERVAL);
   useEffect(() => {
     fetch();

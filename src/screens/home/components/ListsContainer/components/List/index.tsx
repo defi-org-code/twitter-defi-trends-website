@@ -41,11 +41,9 @@ const List = ({
     viewOption.value
   );
 
-  const [isMobile] = useMobile();
   const { transitions, height } = useListItemTransition(
     dataset,
     activeElement,
-    isMobile,
     showFullList
   );
   const [newEntities] = useCompare(dataset);
@@ -58,6 +56,7 @@ const List = ({
     },
     [activeElement]
   );
+
   return (
     <div
       className="list"
@@ -93,14 +92,12 @@ const List = ({
           );
         })}
       </div>
-      {isMobile && (
-        <button
-          className="list-mobile-toggle"
-          onClick={() => setshowFullList(!showFullList)}
-        >
-          {showFullList ? "Show less" : "Show more"}
-        </button>
-      )}
+      <button
+        className="list-mobile-toggle"
+        onClick={() => setshowFullList(!showFullList)}
+      >
+        {showFullList ? "Show less" : "Show more"}
+      </button>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import fire from "../assets/animations/fire2.json";
+import fire from "../assets/animations/fire.json";
 import loadingBig from "../assets/animations/loadingBig.json";
 import loadingSmall from "../assets/animations/loadingSmall.json";
 import placeholderLoading from "../assets/animations/placeholderLoading.json";
