@@ -13,13 +13,6 @@ interface IProps {
   error: boolean;
 }
 
-const handleList = (arr: IUser[], showAll: boolean) => {
-  if (showAll) {
-    return arr;
-  }
-  return arr.slice(0, 4);
-};
-
 const InfluencersList = ({ users, error }: IProps) => {
   const [showAll, setShowAll] = useState(false);
   return (

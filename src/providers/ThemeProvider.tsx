@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect } from "react";
 import { DARK_MODE } from "../constans";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useMobile from "../hooks/useMobile";

@@ -15,24 +15,18 @@
   &-update-animation {
     justify-content: space-between;
     position: absolute;
-    bottom: -4px;
+    bottom: -2px;
     left: 100%;
     width: 98%;
     left: 50%;
     transform: translate(-50%);
+
     .lottie {
       width: calc(100% / 11);
-      transform: scale(1.4);
-      transform-origin: bottom;
+      height: auto;
+
+      transform: scaleX(1.5);
     }
-  }
-  &-loader-lottie {
-    position: absolute;
-    left: 50%;
-    top: -30px;
-    transform: translate(-50%);
-    width: 220px;
-    height: 220px;
   }
 
   &-flame {

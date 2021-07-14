@@ -2,8 +2,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 import { IDatasetElement } from "../../../../types";
-import LottieAnimation from "../../../../../../components/LottieAnimation";
-import { lottieAnimations } from "../../../../../../constans";
+import ListItemLoader from "../ListItemLoader/index";
 interface IProps {
   item: IDatasetElement;
 }
@@ -43,12 +42,7 @@ const Mentions = ({ item }: IProps) => {
 
   return (
     <div ref={ref} className="list-item-mentions">
-      {isLoading && (
-        <LottieAnimation
-          customClassName="list-item-loader-lottie"
-          animation={lottieAnimations.loadingSmall}
-        />
-      )}
+      {isLoading && <ListItemLoader />}
       <div
         className="twitter-embed"
         style={{ opacity: isLoading ? "0" : "1" }}

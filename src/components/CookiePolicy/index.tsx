@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import analytics from "../../services/analytics";
 import Button from "../Button";
 const CookiePolicy = () => {
   const [cookiePolicy, setCookiePolicy] = useLocalStorage("cookie-policy", "");
   const [show, setshow] = useState(false);
   const container: any = useRef(null);
+
   useEffect(() => {
     if (!cookiePolicy) {
       return setshow(true);
@@ -14,7 +16,7 @@ const CookiePolicy = () => {
 
   const handleAccepted = (cookiePolicy: string) => {
     if (cookiePolicy === "enabled") {
-      //some callback function
+      analytics.init();
       console.log("cookies enabled");
     }
     setshow(false);

@@ -11,7 +11,6 @@ interface IProps {
   setActiveElement: () => void;
   symbol: string;
   index: number;
-  isNew: boolean;
   ContentComponent: JSXElementConstructor<any>;
   countForAnimation: number;
   positionsJumpForAnimation: number;
@@ -33,7 +32,6 @@ const ListItem = ({
   isOpen,
   symbol,
   index,
-  isNew,
   ContentComponent,
   countForAnimation,
   positionsJumpForAnimation,
@@ -88,8 +86,7 @@ const areEqual = (prevProps: IProps, nextProps: IProps) => {
   const isSameNum = prevProps.item.count === nextProps.item.count;
   const isSameProcessed = prevProps.item.processed === nextProps.item.processed;
   const isSameActive = prevProps.isOpen === nextProps.isOpen;
-  const isNew = prevProps.isNew === nextProps.isNew;
-  return isSameNum && isSameActive && isNew && isSameProcessed;
+  return isSameNum && isSameActive && isSameProcessed;
 };
 
 export default memo(ListItem, areEqual);

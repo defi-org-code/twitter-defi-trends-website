@@ -1,4 +1,4 @@
-import React, { CSSProperties, useMemo } from "react";
+import { useMemo } from "react";
 import ImgComponent from "../../../../../../components/ImgComponent";
 import { ITweet } from "../../../../types";
 
