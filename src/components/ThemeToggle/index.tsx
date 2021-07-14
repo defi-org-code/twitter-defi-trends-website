@@ -17,7 +17,7 @@ const ThemeToggle = ({ customClassName }: IProps) => {
       <Toggle
         icons={false}
         className={className}
-        checked={isDarkMode}
+        checked={!!isDarkMode}
         onChange={toggleDarkMode}
       />
     </>

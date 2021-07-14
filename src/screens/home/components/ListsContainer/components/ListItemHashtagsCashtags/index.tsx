@@ -1,9 +1,8 @@
-import { lottieAnimations } from "../../../../../../constans";
 import useTweetsData from "../../../../hooks/useTweetsData";
 import { IDatasetElement } from "../../../../types";
 import LiveAnimation from "../LiveAnimation";
 import Tweet from "./Tweet";
-import LottieAnimation from "../../../../../../components/LottieAnimation";
+import ListItemLoader from "../ListItemLoader";
 import ErrorHandling from "../../../../../../components/ErrorHandling";
 import LoadingHandler from "../../../../../../components/LoadingHandler";
 import "react-virtualized/styles.css";
@@ -21,7 +20,7 @@ interface IProps {
 
 const ListItemHashtagsCashtags = ({ item, symbol }: IProps) => {
   const { name } = item;
-  const [tweets, loading, error] = useTweetsData(name);
+  const [tweets, loading, error] = useTweetsData(name, symbol);
   const cache = new CellMeasurerCache({
     fixedWidth: true,
   });
@@ -56,20 +55,8 @@ const ListItemHashtagsCashtags = ({ item, symbol }: IProps) => {
           </section>
           <LoadingHandler
             isLoading={!error && loading}
-            LoadingComponent={
-              <LottieAnimation
-                customClassName="list-item-loader-lottie"
-                animation={lottieAnimations.loadingSmall}
-              />
-            }
+            LoadingComponent={<ListItemLoader />}
           >
-            {/* <ul className="list-item-hashtags-list">
-              {tweets.map((tweet: ITweet, index: number) => {
-                return (
-                  <Tweet key={`${tweet.id}`} tweet={tweet} index={index} />
-                );
-              })}
-            </ul> */}
             <AutoSizer>
               {({ height, width }) => (
                 <List

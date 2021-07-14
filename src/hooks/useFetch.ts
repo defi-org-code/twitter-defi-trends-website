@@ -12,18 +12,20 @@ const useFetch = <T>(
   const [data, setData] = useState<any>(null);
 
   const fetch = async (customUrl?: string) => {
-    if (!mountedRef.current) return;
     setLoading(true);
     setError(false);
-    let res = await api.get(customUrl || url);
-    setLoading(false);
-    if (!res) {
-      setError(true);
-    }
-    if (modifier) {
-      res = modifier(res);
-    }
-    setData(res);
+    api.get(customUrl || url).then((res) => {
+      if (!mountedRef.current) return;
+      setLoading(false);
+      if (!res) {
+        setError(true);
+      }
+      if (modifier) {
+        res = modifier(res);
+      }
+
+      setData(res);
+    });
   };
 
   useEffect(() => {

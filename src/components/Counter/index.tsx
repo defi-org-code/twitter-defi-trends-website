@@ -1,5 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import CountUp from "react-countup";
+import { CountUp } from "use-count-up";
+// import CountUp from "react-countup";
 
 interface IProps {
   value: number;
@@ -9,8 +9,13 @@ interface IProps {
 
 const Counter = ({ value, duration = 3, start = 0 }: IProps) => {
   return (
-    <CountUp end={value} duration={duration} separator="," start={start} />
+    <CountUp
+      end={value}
+      isCounting
+      start={start}
+      duration={duration}
+      thousandsSeparator=","
+    />
   );
 };
-
 export default Counter;

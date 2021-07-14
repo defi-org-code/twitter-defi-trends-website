@@ -1,6 +1,5 @@
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import useListItemTransition from "../../../../hooks/useListItemTransition";
-import useCompare from "../../../../hooks/useCompare";
 import {
   IListCategory,
   IDatasetElement,
@@ -11,7 +10,6 @@ import {
 import ListItem from "../ListItem";
 import useHideList from "../../../../hooks/useHideList";
 import Title from "../Title";
-import useMobile from "../../../../../../hooks/useMobile";
 interface IProps {
   dataset: IDatasetElement[];
   category: IListCategory;
@@ -46,7 +44,7 @@ const List = ({
     activeElement,
     showFullList
   );
-  const [newEntities] = useCompare(dataset);
+  // const [newEntities] = useCompare(dataset);
   const handleActiveElement = useCallback(
     (element: IDatasetElement) => {
       if (activeElement?.name === element.name) {
@@ -70,14 +68,14 @@ const List = ({
       <div className="list-flex" style={{ height }}>
         {transitions((style, item, t, index) => {
           const { name } = item;
-          const isNew = newEntities.includes(name);
+          // const isNew = newEntities.includes(name);
           return (
             <ListItem
               isOpen={activeElement?.name === name}
               setActiveElement={() => handleActiveElement(item)}
               item={item}
               symbol={symbol}
-              isNew={isNew}
+              // isNew={isNew}
               index={index}
               isUrl={categoryName === DATASET_TYPES.URLS}
               ContentComponent={category.component}
@@ -102,4 +100,4 @@ const List = ({
   );
 };
 
-export default List;
+export default memo(List);
