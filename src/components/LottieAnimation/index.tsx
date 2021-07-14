@@ -1,4 +1,4 @@
-import { useLottie } from "lottie-react";
+/* eslint-disable react-hooks/exhaustive-deps */
 import lottie from "lottie-web";
 import { useEffect, useRef } from "react";
 
@@ -8,28 +8,28 @@ interface IProps {
 }
 const LottieAnimation = ({ animation, customClassName }: IProps) => {
   const container = useRef<any>(null);
-  const options = {
-    animationData: animation,
-    loop: true,
-    autoplay: true,
-    width: 100,
-    height: 50,
-  };
 
   useEffect(() => {
-    lottie.loadAnimation({
+    const anim = lottie.loadAnimation({
       container: container.current,
       renderer: "svg",
       loop: true,
       autoplay: true,
       animationData: animation,
       rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice",
+        preserveAspectRatio: "xMinYMin slice",
+        progressiveLoad: false,
+        hideOnTransparent: true,
       },
     });
+    anim.addEventListener("complete", () => {
+      anim.destroy();
+    });
+    return () => {
+      anim.destroy();
+    };
   }, []);
 
-  // const { View } = useLottie(options);
   const className = customClassName ? `${customClassName} lottie` : "lottie";
   return <div className={className} ref={container}></div>;
 };
