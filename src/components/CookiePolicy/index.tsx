@@ -17,7 +17,6 @@ const CookiePolicy = () => {
   const handleAccepted = (cookiePolicy: string) => {
     if (cookiePolicy === "enabled") {
       analytics.init();
-      console.log("cookies enabled");
     }
     setshow(false);
   };

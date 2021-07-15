@@ -1,21 +1,22 @@
-import { CountUp } from "use-count-up";
-// import CountUp from "react-countup";
+import {useCountUp} from "use-count-up/lib";
+import React from "react";
 
 interface IProps {
-  value: number;
-  duration?: number;
-  start?: number;
+    value: number;
+    duration?: number;
+    start?: number;
 }
 
-const Counter = ({ value, duration = 3, start = 0 }: IProps) => {
-  return (
-    <CountUp
-      end={value}
-      isCounting
-      start={start}
-      duration={duration}
-      thousandsSeparator=","
-    />
-  );
+const Counter = ({value, duration = 3, start = 0}: IProps) => {
+    const { value:animatedValue } = useCountUp({
+        isCounting: true,
+        end: value,
+        start: start,
+        duration: duration,
+        autoResetKey: value,
+        thousandsSeparator: ","
+    });
+
+    return <div>{animatedValue}</div>
 };
 export default Counter;

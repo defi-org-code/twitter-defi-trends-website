@@ -1,16 +1,16 @@
 import amplitude from "amplitude-js";
 
-declare var process: {
+declare const process: {
   env: {
     REACT_APP_AMPLITUDE: string;
+    NODE_ENV?: string;
   };
 };
 
 class Analytics {
   init() {
-    if (process.env.REACT_APP_AMPLITUDE) {
+    if (process.env.REACT_APP_AMPLITUDE && process.env.NODE_ENV !== "development") {
       amplitude.getInstance().init(process.env.REACT_APP_AMPLITUDE);
-      console.log("analytics enabled");
     }
   }
   sendEvent(event: string, data?: any) {
