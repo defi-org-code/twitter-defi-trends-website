@@ -27,6 +27,8 @@ import mentionsTitleDarkImg from "../assets/images/mentions-title-dark.svg";
 import CoinsImg from "../assets/images/most-active.png";
 import MenuDots from "../assets/images/menu-dots.svg";
 import MenuDotsDark from "../assets/images/menu-dots-dark.svg";
+import BlackLogo from "../assets/images/black-logo.svg";
+import Logo from "../assets/images/logo.svg";
 
 const images = {
   coinsImg: {
@@ -128,6 +130,14 @@ const images = {
   menuDotsDark: {
     img: MenuDotsDark,
     alt: "menu dots",
+  },
+  blackLogo: {
+    img: BlackLogo,
+    alt: "orbs logo",
+  },
+  logo: {
+    img: Logo,
+    alt: "orbs logo",
   },
 };
 

@@ -3,9 +3,6 @@
   margin-top: 16px;
   margin-bottom: 22px;
   * {
-    font-size: 0.688rem;
-    font-weight: 400;
-    color: #92929d;
   }
   &-policy {
     height: 14px;
@@ -27,11 +24,6 @@
           opacity: 0.5;
         }
       }
-    }
-  }
-  &-logo {
-    a {
-      text-decoration: none;
     }
   }
 }

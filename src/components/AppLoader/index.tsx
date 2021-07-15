@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { APP_LOADER_ANIMATION_TIMEOUT, lottieAnimations } from "../../constans";
 import LottieAnimation from "../../components/LottieAnimation";
+import { sleep } from "../../utils";
 
 interface IProps {
   children: JSX.Element;
@@ -11,18 +12,20 @@ const AppLoader = ({ children }: IProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-      hideWithAnimation();
-    }, APP_LOADER_ANIMATION_TIMEOUT);
+    onLoad();
   }, []);
 
-  const hideWithAnimation = () => {
+  const onLoad = async () => {
+    await sleep(APP_LOADER_ANIMATION_TIMEOUT);
+    setIsLoading(false);
+    hideWithAnimation();
+  };
+
+  const hideWithAnimation = async () => {
     if (!ref.current) return;
     ref.current.style.opacity = "0";
-    setTimeout(() => {
-      setHideLoader(true);
-    }, 200);
+    await sleep(200);
+    setHideLoader(true);
   };
 
   return (

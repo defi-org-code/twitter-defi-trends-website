@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
-import CountDown from "../CountDown";
-import useFetch from "../../../../hooks/useFetch";
-import ErrorHandling from "../../../../components/ErrorHandling";
+import React, { useContext, useEffect } from "react";
+import { ThemeContext } from "../../../../providers/ThemeProvider";
+import Mobile from "./Mobile";
+import Desktop from "./Desktop";
 import useVisibilityChange from "../../../../hooks/useVisibilityChange";
-import PeriodSections from "./components/PeriodSections";
+import useFetch from "../../../../hooks/useFetch";
 import { IPeriodData } from "../../types";
 
 interface IUseFetch {
@@ -26,19 +26,11 @@ const Period = () => {
   }, []);
 
   useVisibilityChange(fetch);
-  return (
-    <div className="period flex">
-      <ErrorHandling showError={error} errorText="Fetch failed">
-        <PeriodSections
-          title="Yesterday's top"
-          data={data?.yesterdayTopEntities}
-        />
-      </ErrorHandling>
-      <CountDown />
-      <ErrorHandling showError={error} errorText="Fetch failed">
-        <PeriodSections title="Weekly top" data={data?.weeklyTopEntities} />
-      </ErrorHandling>
-    </div>
+  const { isMobile } = useContext(ThemeContext);
+  return isMobile ? (
+    <Mobile data={data} error={error} />
+  ) : (
+    <Desktop error={error} data={data} />
   );
 };
 

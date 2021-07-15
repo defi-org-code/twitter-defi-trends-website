@@ -7,12 +7,17 @@ import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 interface IProps {
   data: IPeriodData[];
   title: string;
+  toggle?: () => void;
 }
 
-const PeriodSections = (props: IProps) => {
+const PeriodSections = ({ data, title, toggle }: IProps) => {
   const { isMobile } = useContext(ThemeContext);
 
-  return isMobile ? <Mobile {...props} /> : <Desktop {...props} />;
+  return isMobile ? (
+    <Mobile data={data} title={title} toggle={toggle} />
+  ) : (
+    <Desktop data={data} title={title} />
+  );
 };
 
 export default PeriodSections;

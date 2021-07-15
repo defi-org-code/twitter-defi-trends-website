@@ -1,4 +1,5 @@
-import React, { JSXElementConstructor, useEffect, useRef } from "react";
+import { JSXElementConstructor, useEffect, useRef } from "react";
+import { sleep } from "../../utils";
 
 interface IProps {
   ContentCoponent?: JSXElementConstructor<any>;
@@ -14,23 +15,21 @@ const Popup = ({ ContentCoponent, close, show }: IProps) => {
     }
   }, [show]);
 
-  const handleShow = () => {
-    setTimeout(() => {
-      if (container.current) {
-        container.current.style.opacity = "1";
-        container.current.style.pointerEvents = "all";
-      }
-    }, 10);
+  const handleShow = async () => {
+    await sleep(10);
+    if (container.current) {
+      container.current.style.opacity = "1";
+      container.current.style.pointerEvents = "all";
+    }
   };
 
-  const handleHide = () => {
+  const handleHide = async () => {
     if (container.current) {
       container.current.style.opacity = "0";
       container.current.style.pointerEvents = "none";
     }
-    setTimeout(() => {
-      close();
-    }, 200);
+    await sleep(200);
+    close();
   };
 
   return show ? (

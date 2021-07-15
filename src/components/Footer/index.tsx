@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import WithLoveText from "../WithLoveText";
 import { ThemeContext } from "../../providers/ThemeProvider";
 
 const Footer = () => {
@@ -11,9 +12,7 @@ const Footer = () => {
       {/*  <a href="/">Policy Privacy</a>*/}
       {/*  <a href="/">All rights reserved DeFi</a>*/}
       {/*</div>*/}
-      <div className="footer-logo">
-          Brought to you with <span style={{marginRight: "-2px"}}>❤️</span> by <a href="https://www.orbs.com/" target="_blank" rel="noreferrer">ORBS</a>
-      </div>
+      <WithLoveText />
     </footer>
   ) : null;
 };

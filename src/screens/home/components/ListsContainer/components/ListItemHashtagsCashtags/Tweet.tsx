@@ -2,10 +2,10 @@ import { useMemo } from "react";
 import ImgComponent from "../../../../../../components/ImgComponent";
 import { ITweet } from "../../../../types";
 
-const handleText = (text: string) => {
+const handleText = (categoryTitle: string, text: string) => {
   const splittedText = text.replaceAll("\n", " ").split(" ");
   return splittedText.map((str: string, index: number) => {
-    if (str.indexOf("#") === 0) {
+    if (str.toLowerCase().indexOf(`#${categoryTitle.toLowerCase()}`) === 0) {
       return <strong key={index}>{`${str} `}</strong>;
     } else {
       return `${str} `;
@@ -15,13 +15,16 @@ const handleText = (text: string) => {
 
 interface IProps {
   tweet: ITweet;
-  index: number;
+  categoryTitle: string;
 }
 
-const Tweet = ({ tweet }: IProps) => {
+const Tweet = ({ tweet, categoryTitle }: IProps) => {
   const { user, text } = tweet;
   const { displayName, name, profileImage } = user;
-  const memoizedText = useMemo(() => handleText(text), [text]);
+  const memoizedText = useMemo(() => handleText(categoryTitle, text), [
+    categoryTitle,
+    text,
+  ]);
 
   return (
     <div className="tweet">

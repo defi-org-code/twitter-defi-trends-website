@@ -10,8 +10,21 @@
   border: 0.3px solid transparent;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   transition: $theme-transition;
+  .tooltip {
+    word-break: break-all;
+    padding: 10px;
+    width: fit-content;
+    max-width: none;
+    top: calc(100% - 10px);
+    left: 10px;
+    max-width: 90%;
+  }
+  &:hover {
+    .tooltip {
+      opacity: 1;
+    }
+  }
   &-update-animation {
     justify-content: flex-end;
     padding-right: 70px;
@@ -60,8 +73,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    white-space: nowrap;
     &-name {
-      margin-right: 20px;
+      margin-right: 30px;
       border-bottom: 1px solid transparent;
       font-weight: 600;
       @extend .text;
@@ -70,12 +84,31 @@
       flex: 1;
       height: 100%;
       overflow: hidden;
-      display: flex;
+
       align-items: center;
       text-overflow: ellipsis;
       padding-top: 5px;
       padding-bottom: 5px;
     }
+    // &-link {
+    //   flex: 1;
+
+    //   // margin-right: 30px;
+    //   font-weight: 600;
+    //   p {
+    //     white-space: nowrap;
+    //     overflow: hidden;
+    //     // margin-right: 30px;
+    //     font-weight: 600;
+    //     text-overflow: ellipsis;
+    //     text-decoration: none;
+    //     width: 100%;
+    //     @extend .text;
+    //     font-size: 0.688rem;
+    //     padding-top: 5px;
+    //     padding-bottom: 5px;
+    //   }
+    // }
     &-counter {
       font-size: 0.813rem;
       color: #92929d;

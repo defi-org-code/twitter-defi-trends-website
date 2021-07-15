@@ -38,7 +38,7 @@ const ListItemHashtagsCashtags = ({ item, symbol }: IProps) => {
       >
         {({ measure, registerChild }) => (
           <div style={style} onLoad={measure} ref={registerChild as any}>
-            <Tweet tweet={tweet} index={0} />
+            <Tweet tweet={tweet} categoryTitle={name} />
           </div>
         )}
       </CellMeasurer>
@@ -62,12 +62,14 @@ const ListItemHashtagsCashtags = ({ item, symbol }: IProps) => {
                 <List
                   className="list-item-hashtags-list"
                   width={width}
+                  onRowsRendered={({ startIndex, stopIndex }) => {}}
                   height={height}
                   deferredMeasurementCache={cache}
                   rowHeight={cache.rowHeight}
                   rowRenderer={renderRow}
                   rowCount={tweets.length}
                   overscanRowCount={3}
+                  scrollAtIndex={tweets.length}
                 ></List>
               )}
             </AutoSizer>

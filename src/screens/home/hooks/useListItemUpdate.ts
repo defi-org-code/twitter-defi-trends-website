@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { sleep } from "../../../utils";
 import { LIST_ITEM_ANIMATION_TIMEOUT_SECONDS } from "../constants";
 import { numbersDiff } from "../utils/numberUtil";
 
@@ -49,15 +50,16 @@ const useListItemUpdate = (
   }, [index, positionsJumpForAnimation]);
 
   useEffect(() => {
-    if (positionAnimation || countAnimation) {
-      setUpdated(true);
-      window.clearTimeout(t.current);
-      t.current = setTimeout(() => {
+    const handleUpdate = async () => {
+      if (positionAnimation || countAnimation) {
+        setUpdated(true);
+        await sleep(LIST_ITEM_ANIMATION_TIMEOUT_SECONDS * 1000);
         setUpdated(false);
         setPositionAnimation(false);
         setCountAnimation(false);
-      }, LIST_ITEM_ANIMATION_TIMEOUT_SECONDS * 1000);
-    }
+      }
+    };
+    handleUpdate();
   }, [countAnimation, positionAnimation]);
 
   useEffect(() => {

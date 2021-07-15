@@ -1,11 +1,12 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
 interface IProps {
   content: any;
+  style?: CSSProperties;
 }
-const Tooltip = ({ content }: IProps) => {
+const Tooltip = ({ content, style }: IProps) => {
   return (
-    <div className="tooltip">
+    <div className="tooltip" style={style}>
       <p>{content}</p>
     </div>
   );

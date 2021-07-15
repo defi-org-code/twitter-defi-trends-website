@@ -78,6 +78,7 @@ export interface IPeriodData {
   type: number;
   count: number;
   name: string;
+  extra?: string;
 }
 
 export interface IViewOption {

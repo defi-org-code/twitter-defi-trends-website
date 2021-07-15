@@ -8,7 +8,9 @@ body {
   color: $main-text-color;
   letter-spacing: 0.006rem;
 }
-
+a {
+  cursor: pointer;
+}
 .overflow-text {
   white-space: nowrap;
   overflow: hidden;

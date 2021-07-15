@@ -4,12 +4,13 @@ import { LIST_HIDE_ANIMATION_CONFIG } from "../../constants";
 import { IViewOption, IViewToHide, VIEW_SELECTOR_OPTIONS } from "../../types";
 import ListsContainer from "../ListsContainer";
 import { views } from "../../data";
+import { sleep } from "../../../../utils";
 
 const ViewContainer = () => {
   const [view, setView] = useState(VIEW_SELECTOR_OPTIONS.ALL_TWEETS);
   const [viewToHide, setViewToHide] = useState<IViewToHide | null>(null);
 
-  const handleViewSelectDesktop = (nextView: VIEW_SELECTOR_OPTIONS) => {
+  const handleViewSelectDesktop = async (nextView: VIEW_SELECTOR_OPTIONS) => {
     if (nextView === view) return;
     const nextViewIndex = views.findIndex((e) => e.value === nextView);
     const currentViewIndex = views.findIndex((e) => e.value === view);
@@ -18,9 +19,8 @@ const ViewContainer = () => {
       isBigger: nextViewIndex > currentViewIndex,
     };
     setViewToHide(viewToHideObj);
-    setTimeout(() => {
-      setView(nextView);
-    }, LIST_HIDE_ANIMATION_CONFIG[view].animationDoneTimeout);
+    await sleep(LIST_HIDE_ANIMATION_CONFIG[view].animationDoneTimeout);
+    setView(nextView);
   };
 
   const handleViewSelectMobile = (nextView: VIEW_SELECTOR_OPTIONS) => {

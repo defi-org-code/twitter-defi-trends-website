@@ -28,7 +28,8 @@ function MobileNavbar() {
       <Menu
         isDarkMode={isDarkMode}
         showMenu={showMenu}
-        toggleMenu={() => setShowMenu(!showMenu)}
+        openMenu={() => setShowMenu(true)}
+        hideMenu={() => setShowMenu(false)}
       />
     </div>
   );

@@ -32,3 +32,6 @@ export const LIST_HIDE_ANIMATION_CONFIG = {
 export const DEFAULT_API_RETRIES = 3;
 export const API_RETRIES_DELAY = 200;
 export const FETCH_VERIFIED_USERS_INTERVAL = 60;
+
+export const DEFI_ORG_URL = "https://defi.org/hot";
+export const TWEET_TEXT = "hello world";

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { CSSProperties, useEffect } from "react";
+import { sleep } from "../utils";
 
 const useOnloadAnimation = (
   container: any,
@@ -7,16 +8,15 @@ const useOnloadAnimation = (
   timeoutSeconds: number
 ) => {
   useEffect(() => {
-    if (!container.current) return;
-    let timeOut: any;
-    timeOut = setTimeout(() => {
-      const elementStyles = container.current.style;
-      container.current.style = { ...elementStyles, ...style };
-    }, timeoutSeconds * 1000);
-    return () => {
-      window.clearTimeout(timeOut);
-    };
+    onLoad();
   }, []);
+
+  const onLoad = async () => {
+    if (!container.current) return;
+    await sleep(timeoutSeconds * 1000);
+    const elementStyles = container.current.style;
+    container.current.style = { ...elementStyles, ...style };
+  };
 };
 
 export default useOnloadAnimation;

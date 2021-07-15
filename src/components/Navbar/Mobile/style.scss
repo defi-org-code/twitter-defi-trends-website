@@ -26,7 +26,7 @@
     transition: $theme-transition;
     background: #f4f4f5;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 25px 20px 20px 20px;
+    padding: 25px 20px 60px 20px;
     width: calc(100% - 90px);
     height: 100vh;
     position: fixed;
@@ -74,22 +74,6 @@
     &-bottom {
       margin-top: auto;
       text-align: center;
-      section {
-        margin-bottom: 25px;
-        color: #92929d;
-        font-size: 0.688rem;
-        a {
-          color: #92929d;
-          text-decoration: none;
-        }
-      }
-
-      p {
-        @extend .text;
-        font-weight: 500;
-        margin-top: 10px;
-        font-size: 0.688rem;
-      }
     }
   }
 }

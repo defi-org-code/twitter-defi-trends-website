@@ -6,9 +6,10 @@ import AnimateHeight from "react-animate-height";
 interface IProps {
   data: IPeriodData[];
   title: string;
+  toggle?: () => void;
 }
 
-const PeriodSectionsMobile = ({ data, title }: IProps) => {
+const PeriodSectionsMobile = ({ data, title, toggle }: IProps) => {
   const [active, setActive] = useState(false);
 
   const handleActive = () => {
@@ -21,7 +22,13 @@ const PeriodSectionsMobile = ({ data, title }: IProps) => {
   return (
     <div className="period-sections-mobile">
       <section className="period-sections-mobile-header flex">
-        <h5>{title}</h5>
+        <div className="flex">
+          <h5>{title}</h5>
+          <aside
+            onClick={toggle}
+            className="period-sections-mobile-toggle"
+          ></aside>
+        </div>
         {data && (
           <button onClick={handleActive}>{active ? "X Close" : "View"}</button>
         )}

@@ -54,9 +54,11 @@ const ViewOption = forwardRef(
             alt="view select"
             className="view-selector-option-img"
           />
-          <p> {isMobile && mobileTitle ? mobileTitle : title}</p>
+          <p className="view-selector-option-name">
+            {isMobile && mobileTitle ? mobileTitle : title}
+          </p>
         </div>
-        {SelectorCustomComponent && !isMobile && <SelectorCustomComponent />}
+        {SelectorCustomComponent && <SelectorCustomComponent />}
       </section>
     );
   }

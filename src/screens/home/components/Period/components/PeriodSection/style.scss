@@ -40,6 +40,9 @@
     text-overflow: ellipsis;
     text-decoration: none;
   }
+  a {
+    cursor: pointer;
+  }
   &-name {
     width: 45%;
     cursor: default;

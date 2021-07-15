@@ -18,7 +18,7 @@
     margin-left: 10px;
     margin-top: 2px;
   }
-  p {
+  &-name {
     @extend .text;
     font-size: 0.813rem;
   }
@@ -29,7 +29,7 @@
     width: 20px;
   }
   &-active {
-    p {
+    .view-selector-option-name {
       font-weight: 600;
     }
   }

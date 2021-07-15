@@ -1,0 +1,36 @@
+.with-love-text {
+  align-items: center;
+  font-size: 0.688rem;
+  font-weight: 400;
+  color: #92929d;
+  a {
+    text-decoration: none;
+    margin-left: 5px;
+    align-items: center;
+    font-size: 0.688rem;
+    font-weight: 400;
+    color: #92929d;
+    p {
+      align-items: center;
+      font-weight: 300;
+    }
+    img {
+      margin-right: 3px;
+      opacity: 0.5;
+    }
+  }
+  figure {
+    margin-left: 3px;
+    margin-right: 4px;
+  }
+}
+
+.dark-mode {
+  .with-love-text {
+    a {
+      img {
+        opacity: 1;
+      }
+    }
+  }
+}

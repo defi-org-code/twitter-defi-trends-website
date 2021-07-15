@@ -1,19 +1,27 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useRef } from "react";
 import images from "../../../constans/images";
+import useClickOutside from "../../../hooks/useClickOutside";
 import ImgComponent from "../../ImgComponent";
 import ThemeToggle from "../../ThemeToggle";
-
+import WithLoveText from "../../WithLoveText";
 interface IProps {
   showMenu: boolean;
-  toggleMenu: () => void;
+  openMenu: () => void;
+  hideMenu: () => void;
   isDarkMode: boolean;
 }
 const activeMenu: CSSProperties = { transform: "translate(0)" };
 
-function Menu({ showMenu, toggleMenu, isDarkMode }: IProps) {
+function Menu({ showMenu, openMenu, hideMenu, isDarkMode }: IProps) {
+  const conatiner = useRef<HTMLDivElement>(null);
+  useClickOutside(conatiner, () => hideMenu());
   return (
-    <div style={showMenu ? activeMenu : {}} className="navbar-mobile-menu">
-      <button className="navbar-mobile-menu-close" onClick={toggleMenu}>
+    <div
+      style={showMenu ? activeMenu : {}}
+      className="navbar-mobile-menu"
+      ref={conatiner}
+    >
+      <button className="navbar-mobile-menu-close" onClick={hideMenu}>
         X
       </button>
       <div className="navbar-mobile-menu-top flex">
@@ -31,17 +39,9 @@ function Menu({ showMenu, toggleMenu, isDarkMode }: IProps) {
           <p>{isDarkMode ? "Switch to light mode" : "Switch to dark mode"}</p>
           <ThemeToggle customClassName="mobile-toggle" />
         </section>
-        {/*<section>*/}
-        {/*  <a href="/">Privacy Policy</a>*/}
-        {/*</section>*/}
-        {/*<section>*/}
-        {/*  <a href="/">About us</a>*/}
-        {/*</section>*/}
       </div>
       <div className="navbar-mobile-menu-bottom">
-        <section>
-            Brought to you with <span style={{marginRight: "-2px"}}>❤️</span> by <a href="https://www.orbs.com/" target="_blank" rel="noreferrer">ORBS</a>
-        </section>
+        <WithLoveText />
       </div>
     </div>
   );

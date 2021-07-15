@@ -4,6 +4,7 @@ import Counter from "../../../../../../components/Counter";
 import useListItemUpdate from "../../../../hooks/useListItemUpdate";
 import UpdatedAnimation from "./UpdatedAnimation";
 import { IDatasetElement } from "../../../../types";
+import Tooltip from "../../../../../../components/Tooltip";
 interface IProps {
   style: any;
   item: IDatasetElement;
@@ -58,6 +59,7 @@ const ListItem = ({
     <animated.div className="card" style={style}>
       <div className={handleClassName(isOpen)}>
         <figure className="list-item-action" onClick={handleClick} />
+        {isUrl && <Tooltip content={`${symbol} ${extra}`} />}
         <div className="list-item-top">
           {isUrl ? (
             <p className="list-item-top-name">{`${symbol} ${extra}`}</p>

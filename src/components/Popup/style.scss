@@ -36,6 +36,7 @@
     width: fit-content;
     min-height: 200px;
     height: auto;
+    max-width: calc(100% - 20px);
   }
 }
 

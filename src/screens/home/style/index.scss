@@ -4,12 +4,14 @@
 @import "../components/ViewSelector/style.scss";
 @import "../components/ViewContainer/index.scss";
 @import "../components/ListsContainer/style.scss";
+@import "../components/Popups/VarifiedUsersPopup/style.scss";
 
 .flex {
   display: flex;
 }
 .home {
-  overflow-y: hidden;
+  position: relative;
+
   min-height: 100vh;
   transition: $theme-transition;
 }

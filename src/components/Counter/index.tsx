@@ -1,4 +1,6 @@
-import CountUp from "react-countup";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from "react";
+import { useCountUp } from "react-countup";
 
 interface IProps {
   value: number;
@@ -7,14 +9,18 @@ interface IProps {
 }
 
 const Counter = ({ value, duration = 3, start = 0 }: IProps) => {
-  return (
-    <CountUp
-      end={value}
-      start={start}
-      duration={duration}
-      separator=","
-      delay={0}
-    />
-  );
+  const { countUp, update } = useCountUp({
+    start,
+    end: value,
+    delay: 0,
+    duration,
+    separator: ",",
+  });
+
+  useEffect(() => {
+    update(value);
+  }, [value]);
+
+  return <>{countUp}</>;
 };
 export default Counter;
