@@ -22,7 +22,7 @@ function Menu({ showMenu, toggleMenu, isDarkMode }: IProps) {
           alt={images.twitterColor.alt}
         />
         <span className="navbar-color-text flex">
-          <strong>Realtime</strong> <p>DEFI</p>
+          <strong>Realtime</strong> <p>DeFi</p>
           <strong>Tweets</strong>
         </span>
       </div>
@@ -31,19 +31,17 @@ function Menu({ showMenu, toggleMenu, isDarkMode }: IProps) {
           <p>{isDarkMode ? "Switch to light mode" : "Switch to dark mode"}</p>
           <ThemeToggle customClassName="mobile-toggle" />
         </section>
-        <section>
-          <a href="/">Privacy Policy</a>
-        </section>
-        <section>
-          <a href="/">About us</a>
-        </section>
+        {/*<section>*/}
+        {/*  <a href="/">Privacy Policy</a>*/}
+        {/*</section>*/}
+        {/*<section>*/}
+        {/*  <a href="/">About us</a>*/}
+        {/*</section>*/}
       </div>
       <div className="navbar-mobile-menu-bottom">
         <section>
-          Brought to you with ❤️ by <a href="https://www.orbs.com/"> ORBS</a>
+            Brought to you with <span style={{marginRight: "-2px"}}>❤️</span> by <a href="https://www.orbs.com/" target="_blank" rel="noreferrer">ORBS</a>
         </section>
-        <p>V.3</p>
-        <p>All rights reserved DeFi | 2021</p>
       </div>
     </div>
   );

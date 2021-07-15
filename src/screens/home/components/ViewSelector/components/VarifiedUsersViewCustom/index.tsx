@@ -15,7 +15,7 @@ const VarifiedUsersViewCustom = () => {
       <button onClick={togglePopup} className="view-selector-custom-btn">
         <img src={images.questionMark.img} alt={images.questionMark.alt} />
       </button>
-      <Tooltip content="Only tweets from a verified list of user" />
+      <Tooltip content="Realtime tweets about DeFi by a verified list of users" />
     </div>
   );
 };

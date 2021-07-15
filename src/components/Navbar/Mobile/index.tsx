@@ -21,7 +21,7 @@ function MobileNavbar() {
           )}
         </button>
         <span className="navbar-color-text flex">
-          <strong>Realtime</strong> <p>DEFI</p>
+          <strong>Realtime</strong> <p>DeFi</p>
           <strong>Tweets</strong>
         </span>
       </div>

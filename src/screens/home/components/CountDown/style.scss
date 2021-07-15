@@ -51,13 +51,13 @@
     text-align: center;
   }
   &-text {
-    font-size: 0.5rem;
+    font-size: 0.625rem;
     letter-spacing: 0.006rem;
     color: #92929d;
   }
   &-title {
     @extend .text;
-    font-size: 0.688rem;
+    font-size: 0.875rem;
     margin-bottom: 10px;
   }
 }

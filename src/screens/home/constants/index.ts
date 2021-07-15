@@ -7,15 +7,14 @@ export const categortiesDictionary: { [key: string]: DATASET_TYPES } = {
   "3": DATASET_TYPES.MENTIONS,
 };
 
-export const LIST_ITEM_ANIMATION_TIMEOUT_SECONDS = 2;
-export const COUNT_TO_JUMP = 6;
-export const POSITIONS_TO_JUMP = 5;
-export const INTERVAL_DELAY_SECONDS = 4;
+export const LIST_ITEM_ANIMATION_TIMEOUT_SECONDS = 60;
+export const COUNT_TO_JUMP = 10;
+export const POSITIONS_TO_JUMP = 1;
+export const INTERVAL_DELAY_SECONDS = 60;
 export const LIST_ELEMENT_DEFAULT_HEIGHT = 51;
-export const LIST_ELEMENT_OPENED_HEIGHT = 245;
+export const LIST_ELEMENT_OPENED_HEIGHT = 285;
 export const LIST_ELEMENT_OPENED_HEIGHT_MOBILE = 353;
-export const API_ITEMS_LIMIT = 70;
-export const GET_HASHTAG_TWEETS_INTERVAL = 5;
+export const GET_HASHTAG_TWEETS_INTERVAL = 12;
 export const LISTS_AMOUNT = 4;
 export const MOBILE_LIST_LIMIT = 3;
 

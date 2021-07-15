@@ -15,7 +15,7 @@ const AllTweetsViewCustom = () => {
       <button onClick={togglePopup} className="view-selector-custom-btn">
         <img src={images.questionMark.img} alt={images.questionMark.alt} />
       </button>
-      <Tooltip content="Realtime tweets about DeFi excluding annoying bots" />
+      <Tooltip content="Realtime tweets about DeFi by everyone on Twitter excluding annoying bots" />
     </div>
   );
 };

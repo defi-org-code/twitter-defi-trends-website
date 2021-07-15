@@ -26,24 +26,12 @@ const CookiePolicy = () => {
     <div className="cookie-policy" ref={container}>
       <div className="cookie-policy-content flex">
         <p>
-          By clicking “Accept All Cookies”, you agree to the storing of cookies
-          on your device to enhance site navigation, analyze site usage, and
-          assist in our marketing efforts.
+          This website uses cookies only to help the website to function and also to track how you interact with it.
         </p>
         <section className="cookie-policy-content-btns flex">
           <Button
-            onClick={() => setCookiePolicy("disabled")}
-            text="Cancel"
-            customClassName="cookie-policy-content-btns-cancel"
-            style={{
-              background: "transparent",
-              height: "auto",
-              padding: "0px",
-            }}
-          />
-          <Button
             onClick={() => setCookiePolicy("enabled")}
-            text=" Accept All Cookies"
+            text="Got it"
           />
         </section>
       </div>

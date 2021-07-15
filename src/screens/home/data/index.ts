@@ -10,6 +10,7 @@ import Urls from "../components/ListsContainer/components/ListItemUrl";
 import AllTweetsViewCustom from "../components/ViewSelector/components/AllTweetsViewCustom";
 import HashtagsAndCashtags from "../components/ListsContainer/components/ListItemHashtagsCashtags";
 import InfluencersContainer from "../components/InfluencersContainer";
+import {COUNT_TO_JUMP, INTERVAL_DELAY_SECONDS, POSITIONS_TO_JUMP} from "../constants";
 
 declare var process: {
   env: {
@@ -27,9 +28,9 @@ export const views = [
     darkImage: images.allTweetsIconDark.img,
     SelectorCustomComponent: AllTweetsViewCustom,
     url: process.env.REACT_APP_TOP_ENTETIES_API,
-    apiIntervalSeconds: 60,
-    countForAnimation: 10,
-    positionsJumpForAnimation: 1,
+    apiIntervalSeconds: INTERVAL_DELAY_SECONDS,
+    countForAnimation: COUNT_TO_JUMP,
+    positionsJumpForAnimation: POSITIONS_TO_JUMP,
   },
   {
     title: "Tweets By Verified Users",
@@ -40,9 +41,9 @@ export const views = [
     SelectorCustomComponent: VarifiedUsersViewCustom,
     ListCustomComponent: InfluencersContainer,
     url: process.env.REACT_APP_TWEETS_BY_LIST_API,
-    apiIntervalSeconds: 60,
-    countForAnimation: 10,
-    positionsJumpForAnimation: 1,
+    apiIntervalSeconds: INTERVAL_DELAY_SECONDS,
+    countForAnimation: COUNT_TO_JUMP,
+    positionsJumpForAnimation: POSITIONS_TO_JUMP,
   },
 ];
 

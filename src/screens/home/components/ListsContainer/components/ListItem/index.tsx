@@ -60,9 +60,14 @@ const ListItem = ({
         <figure className="list-item-action" onClick={handleClick} />
         <div className="list-item-top">
           <section className="list-item-top-name flex">
-            <p>{symbol}</p>
-            <p>{name}</p>
-          </section>
+            {isUrl ?
+                  <>
+                    <p>{symbol}</p>
+                    <p>{name}</p>
+                  </> :
+              <p>{symbol}{name}</p>
+            }
+              </section>
           <p className="list-item-top-counter">
             <Counter
               value={count}

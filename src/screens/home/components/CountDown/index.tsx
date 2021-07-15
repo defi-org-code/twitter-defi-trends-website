@@ -42,7 +42,7 @@ var endOfDayDate = new Date(
 const CountDown = () => {
   return (
     <div className="countdown flex">
-      <p className="countdown-title">Time counter until new day</p>
+      <p className="countdown-title">Starting a new day in</p>
       <Countdown
         zeroPadDays={2}
         date={endOfDayDate.getTime()}

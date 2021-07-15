@@ -8,8 +8,10 @@ declare var process: {
 
 class Analytics {
   init() {
-    amplitude.getInstance().init(process.env.REACT_APP_AMPLITUDE);
-    console.log("analytics enabled");
+    if (process.env.REACT_APP_AMPLITUDE) {
+      amplitude.getInstance().init(process.env.REACT_APP_AMPLITUDE);
+      console.log("analytics enabled");
+    }
   }
   sendEvent(event: string, data?: any) {
     if (!data) {

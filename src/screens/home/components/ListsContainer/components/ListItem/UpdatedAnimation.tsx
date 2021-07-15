@@ -1,8 +1,8 @@
 import React from "react";
 import LottieAnimation from "../../../../../../components/LottieAnimation";
-import { lottieAnimations } from "../../../../../../constans/index";
+import { lottieAnimations } from "../../../../../../constans";
 
-const loaders = [...Array(11)];
+const loaders = [...Array(1)];
 function UpdatedAnimation() {
   return (
     <div className="list-item-update-animation flex">
