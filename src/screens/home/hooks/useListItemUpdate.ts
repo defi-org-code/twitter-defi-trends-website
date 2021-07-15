@@ -19,11 +19,6 @@ const useListItemUpdate = (
   const prevProcessed = useRef(0);
 
   const isCountAnimationAllowed = useCallback(() => {
-    if (!prevCount.current || !prevProcessed.current) {
-      prevCount.current = count;
-      prevProcessed.current = processed;
-      return;
-    }
     if (prevCount.current === count || prevProcessed.current === processed) {
       return;
     }
@@ -58,7 +53,7 @@ const useListItemUpdate = (
         setCountAnimation(false);
       }
     };
-    handleUpdate();
+    handleUpdate().then();
   }, [countAnimation, positionAnimation]);
 
   useEffect(() => {

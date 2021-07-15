@@ -75,7 +75,7 @@ const ListItem = ({
             />
           </p>
         </div>
-        {updated && !isOpen && <UpdatedAnimation />}
+        {updated && <UpdatedAnimation />}
         {isOpen && (
           <div className="list-item-custom">
             <ContentComponent item={item} symbol={symbol} />

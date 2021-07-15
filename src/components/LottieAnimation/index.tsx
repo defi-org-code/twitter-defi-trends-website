@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import lottie from "lottie-web";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 interface IProps {
   animation: any;
   customClassName?: string;
+  subframe?: boolean;
 }
-const LottieAnimation = ({ animation, customClassName }: IProps) => {
+const LottieAnimation = ({ animation, customClassName, subframe }: IProps) => {
   const container = useRef<any>(null);
 
   useEffect(() => {
@@ -16,12 +17,10 @@ const LottieAnimation = ({ animation, customClassName }: IProps) => {
       loop: true,
       autoplay: true,
       animationData: animation,
-      rendererSettings: {
-        preserveAspectRatio: "xMinYMin slice",
-        progressiveLoad: false,
-        hideOnTransparent: true,
-      },
     });
+    if (subframe) {
+      anim.setSubframe(true);
+    }
     anim.addEventListener("complete", () => {
       anim.destroy();
     });
@@ -31,7 +30,7 @@ const LottieAnimation = ({ animation, customClassName }: IProps) => {
   }, []);
 
   const className = customClassName ? `${customClassName} lottie` : "lottie";
-  return <div className={className} ref={container}></div>;
+  return <div className={className} ref={container}/>;
 };
 
 export default LottieAnimation;

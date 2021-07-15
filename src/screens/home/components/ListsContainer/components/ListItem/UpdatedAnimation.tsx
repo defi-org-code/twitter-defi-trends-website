@@ -7,7 +7,7 @@ function UpdatedAnimation() {
   return (
     <div className="list-item-update-animation flex">
       {loaders.map((e, i) => {
-        return <LottieAnimation key={i} animation={lottieAnimations.fire} />;
+        return <LottieAnimation key={i} animation={lottieAnimations.fire} subframe={true} />;
       })}
     </div>
   );
