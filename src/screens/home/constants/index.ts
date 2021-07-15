@@ -7,7 +7,7 @@ export const categortiesDictionary: { [key: string]: DATASET_TYPES } = {
   "3": DATASET_TYPES.MENTIONS,
 };
 
-export const LIST_ITEM_ANIMATION_TIMEOUT_SECONDS = 60;
+export const LIST_ITEM_ANIMATION_TIMEOUT_SECONDS = 59;
 export const COUNT_TO_JUMP = 10;
 export const POSITIONS_TO_JUMP = 1;
 export const INTERVAL_DELAY_SECONDS = 60;

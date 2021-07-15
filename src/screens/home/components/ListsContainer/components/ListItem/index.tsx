@@ -38,7 +38,7 @@ const ListItem = ({
   apiIntervalSeconds,
   isUrl,
 }: IProps) => {
-  const { name, count, processed } = item;
+  const { name, count, processed, extra } = item;
   const [updated] = useListItemUpdate(
     count,
     processed,
@@ -59,15 +59,12 @@ const ListItem = ({
       <div className={handleClassName(isOpen)}>
         <figure className="list-item-action" onClick={handleClick} />
         <div className="list-item-top">
-          <section className="list-item-top-name flex">
-            {isUrl ?
-                  <>
-                    <p>{symbol}</p>
-                    <p>{name}</p>
-                  </> :
-              <p>{symbol}{name}</p>
-            }
-              </section>
+          {isUrl ? (
+            <p className="list-item-top-name">{`${symbol} ${extra}`}</p>
+          ) : (
+            <p className="list-item-top-name">{`${symbol} ${name}`}</p>
+          )}
+
           <p className="list-item-top-counter">
             <Counter
               value={count}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Countdown from "react-countdown";
 
 interface IRenderProps {
@@ -35,19 +35,37 @@ const renderer = ({ hours, minutes, seconds, completed }: IRenderProps) => {
     );
   }
 };
-const date = new Date();
-var endOfDayDate = new Date(
-  Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59)
-);
+const createDate = () => {
+  const date = new Date();
+  const endOfDayDate = new Date(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59)
+  );
+  return endOfDayDate.getTime();
+};
 const CountDown = () => {
+  const [date, setDate] = useState(createDate());
+
+  const [hide, setHide] = useState(false);
+  const onComplete = () => {
+    setHide(true);
+    setDate(createDate());
+    setTimeout(() => {
+      setHide(false);
+    }, 0);
+  };
+
   return (
     <div className="countdown flex">
       <p className="countdown-title">Starting a new day in</p>
-      <Countdown
-        zeroPadDays={2}
-        date={endOfDayDate.getTime()}
-        renderer={renderer}
-      />
+      {!hide && (
+        <Countdown
+          autoStart
+          zeroPadDays={2}
+          date={date}
+          renderer={renderer}
+          onComplete={onComplete}
+        />
+      )}
     </div>
   );
 };

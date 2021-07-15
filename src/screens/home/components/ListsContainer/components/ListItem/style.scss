@@ -55,8 +55,7 @@
     z-index: 99;
   }
   &-top {
-    padding: 14px 21px 16px 12px;
-
+    padding: 10px 21px 16px 18px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -64,22 +63,23 @@
     &-name {
       margin-right: 20px;
       border-bottom: 1px solid transparent;
-      p {
-        font-weight: 600;
-        @extend .text;
-        font-size: 0.688rem;
-        &:first-child {
-          margin-left: 5px;
-        }
-        &:nth-child(2) {
-          margin-left: 5px;
-        }
-      }
+      font-weight: 600;
+      @extend .text;
+      font-size: 0.688rem;
+      white-space: nowrap;
+      flex: 1;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      text-overflow: ellipsis;
+      padding-top: 5px;
+      padding-bottom: 5px;
     }
     &-counter {
       font-size: 0.813rem;
       color: #92929d;
-      tgn: right;
+      text-align: right;
     }
   }
   &-active {

@@ -1,5 +1,4 @@
-import { CountUp } from "use-count-up";
-// import CountUp from "react-countup";
+import CountUp from "react-countup";
 
 interface IProps {
   value: number;
@@ -11,10 +10,10 @@ const Counter = ({ value, duration = 3, start = 0 }: IProps) => {
   return (
     <CountUp
       end={value}
-      isCounting
       start={start}
       duration={duration}
-      thousandsSeparator=","
+      separator=","
+      delay={0}
     />
   );
 };

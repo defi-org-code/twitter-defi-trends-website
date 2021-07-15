@@ -38,6 +38,10 @@ const useListItemUpdate = (
       prevIndex.current = index;
       return;
     }
+    if (index > prevIndex.current) {
+      prevIndex.current = index;
+      return;
+    }
     const isAllowed =
       numbersDiff(index, prevIndex.current) >= positionsJumpForAnimation;
     setPositionAnimation(isAllowed);
