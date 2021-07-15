@@ -16,16 +16,23 @@ declare var process: {
   };
 };
 
+const createUrl = (name: string, symbol: string, sinceId?: string) => {
+  const encodedParams = encodeURIComponent(`${symbol}${name}`);
+  if (sinceId) {
+    return `${process.env.REACT_APP_HASHTAG_TWEETS_API}/${encodedParams}/${sinceId}`;
+  } else {
+    return `${process.env.REACT_APP_HASHTAG_TWEETS_API}/${encodedParams}`;
+  }
+};
+
 const useTweetsData = (
   name: string,
   symbol: string
 ): [ITweet[], boolean, boolean] => {
-  const apiUrl = process.env.REACT_APP_HASHTAG_TWEETS_API;
   const [tweets, setTweets] = useState<ITweet[]>([]);
-  const sinceIdRef = useRef<string | null>(null);
-  const encodedParams = window.encodeURIComponent(`${symbol}${name}`);
-  const url = `${apiUrl}/${encodedParams}`;
-  const [data, fetch, error] = useFetch<IUseFetch>(url);
+  const sinceIdRef = useRef<string | undefined>(undefined);
+
+  const [data, fetch, error] = useFetch<IUseFetch>(createUrl(name, symbol));
   const mountRef = useRef(true);
   useEffect(() => {
     if (data) {
@@ -42,7 +49,9 @@ const useTweetsData = (
 
   const handleTweets = useCallback(
     (newTweets: ITweet[], sinceId: string) => {
-      sinceIdRef.current = sinceId;
+      if (sinceId) {
+        sinceIdRef.current = sinceId;
+      }
       const tweetsToInsert = newTweets.map((t: ITweet) => {
         return {
           ...t,
@@ -59,7 +68,8 @@ const useTweetsData = (
   );
 
   const fecthDataWithSinceId = () => {
-    const urlWithSiceId = encodeURI(`${apiUrl}/${name}/${sinceIdRef.current}`);
+    const urlWithSiceId = createUrl(name, symbol, sinceIdRef.current);
+
     if (!mountRef.current) return;
     fetch(urlWithSiceId);
   };
