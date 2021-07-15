@@ -17,7 +17,6 @@ const useListItemUpdate = (
   const prevIndex = useRef(0);
   const prevCount = useRef(0);
   const prevProcessed = useRef(0);
-  const t = useRef<any>(null);
 
   const isCountAnimationAllowed = useCallback(() => {
     if (!prevCount.current || !prevProcessed.current) {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from "react";
 import { APP_LOADER_ANIMATION_TIMEOUT, lottieAnimations } from "../../constans";
 import LottieAnimation from "../../components/LottieAnimation";

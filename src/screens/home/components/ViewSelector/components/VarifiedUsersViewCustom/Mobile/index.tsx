@@ -11,12 +11,11 @@ const VarifiedUsersViewCustomMobile = () => {
 
   const closePopup = () => {
     setIsPopup(false);
+    setShowToolip(false);
   };
 
   const handleClick = () => {
-    if (!showToolip) {
-      return setShowToolip(true);
-    }
+    setShowToolip(true);
     setIsPopup(true);
   };
 

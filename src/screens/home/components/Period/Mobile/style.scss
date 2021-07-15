@@ -5,10 +5,13 @@
   position: relative;
   background: transparent;
   margin-bottom: 10px;
+
   &-menu {
+    z-index: 99;
     position: absolute;
     top: 40px;
     left: 30px;
+    width: 150px;
     section {
       font-size: 0.75rem;
       @extend .text;

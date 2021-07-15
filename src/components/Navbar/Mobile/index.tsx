@@ -8,7 +8,7 @@ function MobileNavbar() {
   const { isDarkMode } = useContext(ThemeContext);
 
   return (
-    <div className="navbar-mobile">
+    <div className="navbar-mobile" style={{ zIndex: showMenu ? 9999 : 999 }}>
       <div className="navbar-mobile-top flex">
         <button
           className="navbar-mobile-top-open"
