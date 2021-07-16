@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/twitter-defi-trends-website/static/css/main.8a8a3bdc.chunk.css",
-    "main.js": "/twitter-defi-trends-website/static/js/main.20dc61ca.chunk.js",
-    "main.js.map": "/twitter-defi-trends-website/static/js/main.20dc61ca.chunk.js.map",
+    "main.js": "/twitter-defi-trends-website/static/js/main.feedb678.chunk.js",
+    "main.js.map": "/twitter-defi-trends-website/static/js/main.feedb678.chunk.js.map",
     "runtime-main.js": "/twitter-defi-trends-website/static/js/runtime-main.d5460435.js",
     "runtime-main.js.map": "/twitter-defi-trends-website/static/js/runtime-main.d5460435.js.map",
     "static/css/2.bf2ae6d5.chunk.css": "/twitter-defi-trends-website/static/css/2.bf2ae6d5.chunk.css",
@@ -47,6 +47,6 @@
     "static/css/2.bf2ae6d5.chunk.css",
     "static/js/2.ef91c125.chunk.js",
     "static/css/main.8a8a3bdc.chunk.css",
-    "static/js/main.20dc61ca.chunk.js"
+    "static/js/main.feedb678.chunk.js"
   ]
 }
