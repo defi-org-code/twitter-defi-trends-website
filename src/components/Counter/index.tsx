@@ -14,6 +14,7 @@ const Counter = ({value, duration = 3, start = 0}: IProps) => {
         start: start,
         duration: duration,
         autoResetKey: value,
+        easing: 'linear',
         thousandsSeparator: ","
     });
 
