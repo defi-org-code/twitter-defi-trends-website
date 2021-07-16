@@ -1,16 +1,14 @@
-import { useMemo } from "react";
+import React, {ReactElement, useMemo} from "react";
 import ImgComponent from "../../../../../../components/ImgComponent";
 import { ITweet } from "../../../../types";
 
 const handleText = (categoryTitle: string, text: string) => {
-  const splittedText = text.replaceAll("\n", " ").split(" ");
-  return splittedText.map((str: string, index: number) => {
-    if (str.toLowerCase().indexOf(`#${categoryTitle.toLowerCase()}`) === 0) {
-      return <strong key={index}>{`${str} `}</strong>;
-    } else {
-      return `${str} `;
-    }
+  const parts:Array<string | ReactElement<any, any>> = [];
+  text.split(new RegExp(`${categoryTitle}\\s`)).forEach((part: string, index: number) => {
+    parts.push(part);
+    parts.push(<strong key={index}> {categoryTitle} </strong>);
   });
+  return parts;
 };
 
 interface IProps {
@@ -38,7 +36,7 @@ const Tweet = ({ tweet, categoryTitle }: IProps) => {
           <p className="tweet-content-text">{memoizedText}</p>
         </section>
       </div>
-      <div className="tweet-margin"></div>
+      <div className="tweet-margin"/>
     </div>
   );
 };

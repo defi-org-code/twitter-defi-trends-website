@@ -13,6 +13,7 @@ import {
   CellMeasurerCache,
   List,
 } from "react-virtualized";
+import React from "react";
 interface IProps {
   item: IDatasetElement;
   symbol: string;
@@ -38,7 +39,7 @@ const ListItemHashtagsCashtags = ({ item, symbol }: IProps) => {
       >
         {({ measure, registerChild }) => (
           <div style={style} onLoad={measure} ref={registerChild as any}>
-            <Tweet tweet={tweet} categoryTitle={name} />
+            <Tweet tweet={tweet} categoryTitle={`${symbol}${name}`} />
           </div>
         )}
       </CellMeasurer>
@@ -70,7 +71,7 @@ const ListItemHashtagsCashtags = ({ item, symbol }: IProps) => {
                   rowCount={tweets.length}
                   overscanRowCount={3}
                   scrollAtIndex={tweets.length}
-                ></List>
+                />
               )}
             </AutoSizer>
           </LoadingHandler>
