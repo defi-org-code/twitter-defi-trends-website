@@ -2,8 +2,8 @@ import { useState } from "react";
 import Tooltip from "../../../../../../../components/Tooltip";
 import images from "../../../../../../../constans/images";
 import Popup from "../../../../../../../components/Popup";
-import VarifiedUsersPopup from "../../../../Popups/VarifiedUsersPopup";
-const VarifiedUsersViewCustom = () => {
+import VerifiedUsersPopup from "../../../../Popups/VerifiedUsersPopup";
+const VerifiedUsersViewCustom = () => {
   const [isPopup, setIsPopup] = useState(false);
 
   const togglePopup = () => {
@@ -15,7 +15,7 @@ const VarifiedUsersViewCustom = () => {
       <Popup
         close={togglePopup}
         show={isPopup}
-        ContentCoponent={VarifiedUsersPopup}
+        ContentCoponent={VerifiedUsersPopup}
       />
       <button onClick={togglePopup} className="view-selector-custom-btn">
         <img src={images.questionMark.img} alt={images.questionMark.alt} />
@@ -25,4 +25,4 @@ const VarifiedUsersViewCustom = () => {
   );
 };
 
-export default VarifiedUsersViewCustom;
+export default VerifiedUsersViewCustom;

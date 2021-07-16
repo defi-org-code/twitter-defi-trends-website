@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import useFetch from "../../../hooks/useFetch";
 import useInterval from "../../../hooks/useInterval";
-import { GET_HASHTAG_TWEETS_INTERVAL } from "../constants";
+import { GET_TAG_TWEETS_INTERVAL } from "../constants";
 import { ITweet } from "../types";
 import { v4 as uuidv4 } from "uuid";
 
@@ -74,7 +74,7 @@ const useTweetsData = (
     fetch(urlWithSiceId);
   };
 
-  useInterval(fecthDataWithSinceId, GET_HASHTAG_TWEETS_INTERVAL);
+  useInterval(fecthDataWithSinceId, GET_TAG_TWEETS_INTERVAL);
   return [tweets, !data, error];
 };
 

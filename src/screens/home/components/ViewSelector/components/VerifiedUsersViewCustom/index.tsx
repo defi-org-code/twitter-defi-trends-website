@@ -3,9 +3,9 @@ import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 import Mobile from "./Mobile";
 import Desktop from "./Desktop";
 
-const VarifiedUsersViewCustom = () => {
+const VerifiedUsersViewCustom = () => {
   const { isMobile } = useContext(ThemeContext);
   return isMobile ? <Mobile /> : <Desktop />;
 };
 
-export default VarifiedUsersViewCustom;
+export default VerifiedUsersViewCustom;

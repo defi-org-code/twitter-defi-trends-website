@@ -1,4 +1,4 @@
-.varified-users-popup {
+.verified-users-popup {
   max-width: 420px;
   padding: 20px;
   width: 100%;
@@ -24,6 +24,7 @@
     min-width: 190px;
   }
   span {
+    font-style: italic;
   }
   p {
     font-size: 0.75rem;

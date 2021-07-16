@@ -1,18 +1,18 @@
 import React from "react";
 import images from "../../../../../constans/images";
 import Button from "../../../../../components/Button";
-import { DEFI_ORG_URL, TWEET_TEXT } from "../../../constants";
+import {DEFI_ORG_URL, TWEET_TEXT, TWITTER_DEFI_ORG_HANDLE} from "../../../constants";
 
 interface IProps {
   onClick: () => void;
 }
-const VarifiedUsersPopup = ({ onClick }: IProps) => {
+const VerifiedUsersPopup = ({ onClick }: IProps) => {
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     onClick();
   };
   return (
-    <div className="varified-users-popup">
+    <div className="verified-users-popup">
       <img src={images.greenTwitter.img} alt={images.greenTwitter.alt} />
       <h4>Do you think you should be here?</h4>
       <p>
@@ -25,11 +25,7 @@ const VarifiedUsersPopup = ({ onClick }: IProps) => {
         >
           Tweet
         </a>
-        about
-        <a href={DEFI_ORG_URL} target="_blank" rel="noreferrer">
-          https://defi.org/hot
-        </a>
-        and mention <span>@defi_org</span> and we will consider adding you to
+          about <span>{DEFI_ORG_URL}</span> and mention <span>{TWITTER_DEFI_ORG_HANDLE}</span> and we will consider adding you to
         the verified list of users
       </p>
       <Button text="Close" onClick={handleClick} />
@@ -37,4 +33,4 @@ const VarifiedUsersPopup = ({ onClick }: IProps) => {
   );
 };
 
-export default VarifiedUsersPopup;
+export default VerifiedUsersPopup;

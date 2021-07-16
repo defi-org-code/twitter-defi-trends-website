@@ -7,16 +7,16 @@ export const categortiesDictionary: { [key: string]: DATASET_TYPES } = {
   "3": DATASET_TYPES.MENTIONS,
 };
 
-export const LIST_ITEM_ANIMATION_TIMEOUT_SECONDS = 59;
-export const COUNT_TO_JUMP = 10;
-export const POSITIONS_TO_JUMP = 1;
-export const INTERVAL_DELAY_SECONDS = 60;
+export const ON_FIRE_LIST_ITEM_ANIMATION_DURATION_SECONDS = 61;
+export const COUNT_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION = 90;
+export const POSITIONS_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION = 1;
+export const POLL_NEW_TWEETS_INTERVAL_DELAY_SECONDS = 61;
 export const LIST_ELEMENT_DEFAULT_HEIGHT = 51;
 export const LIST_ELEMENT_OPENED_HEIGHT = 285;
 export const LIST_ELEMENT_OPENED_HEIGHT_MOBILE = 353;
-export const GET_HASHTAG_TWEETS_INTERVAL = 12;
-export const LISTS_AMOUNT = 4;
-export const MOBILE_LIST_LIMIT = 3;
+export const GET_TAG_TWEETS_INTERVAL = 12;
+export const LISTS_AMOUNT_FOR_ANIMATION_IN_TAB = 4;
+export const MOBILE_LIST_LIMIT = 4;
 
 export const LIST_HIDE_ANIMATION_CONFIG = {
   [VIEW_SELECTOR_OPTIONS.ALL_TWEETS]: {
@@ -33,5 +33,6 @@ export const DEFAULT_API_RETRIES = 3;
 export const API_RETRIES_DELAY = 200;
 export const FETCH_VERIFIED_USERS_INTERVAL = 60;
 
-export const DEFI_ORG_URL = "https://defi.org/hot";
-export const TWEET_TEXT = "hello world";
+export const DEFI_ORG_URL = "https://twitter.defi.org";
+export const TWITTER_DEFI_ORG_HANDLE = "@defi_org";
+export const TWEET_TEXT = `I also want to be verified by ${TWITTER_DEFI_ORG_HANDLE} and appear on ${DEFI_ORG_URL}`;

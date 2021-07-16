@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 import Tooltip from "../../../../../../../components/Tooltip";
 import images from "../../../../../../../constans/images";
 import Popup from "../../../../../../../components/Popup";
-import VarifiedUsersPopup from "../../../../Popups/VarifiedUsersPopup";
+import VerifiedUsersPopup from "../../../../Popups/VerifiedUsersPopup";
 import useClickOutside from "../../../../../../../hooks/useClickOutside";
-const VarifiedUsersViewCustomMobile = () => {
+const VerifiedUsersViewCustomMobile = () => {
   const [isPopup, setIsPopup] = useState(false);
   const [showToolip, setShowToolip] = useState(false);
   const container = useRef<HTMLDivElement>(null);
@@ -26,7 +26,7 @@ const VarifiedUsersViewCustomMobile = () => {
       <Popup
         close={closePopup}
         show={isPopup}
-        ContentCoponent={VarifiedUsersPopup}
+        ContentCoponent={VerifiedUsersPopup}
       />
       <button onClick={handleClick} className="view-selector-custom-btn">
         <img src={images.questionMark.img} alt={images.questionMark.alt} />
@@ -39,4 +39,4 @@ const VarifiedUsersViewCustomMobile = () => {
   );
 };
 
-export default VarifiedUsersViewCustomMobile;
+export default VerifiedUsersViewCustomMobile;

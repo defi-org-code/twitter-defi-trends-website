@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import images from "../../../../../../constans/images";
 import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 import Popup from "../../../../../../components/Popup";
-import VarifiedUsersPopup from "../../../Popups/VarifiedUsersPopup";
+import VerifiedUsersPopup from "../../../Popups/VerifiedUsersPopup";
 
 const JoinBtn = () => {
   const { isDarkMode } = useContext(ThemeContext);
@@ -20,7 +20,7 @@ const JoinBtn = () => {
       <Popup
         close={() => setIsPopup(false)}
         show={isPopup}
-        ContentCoponent={VarifiedUsersPopup}
+        ContentCoponent={VerifiedUsersPopup}
       />
     </>
   );

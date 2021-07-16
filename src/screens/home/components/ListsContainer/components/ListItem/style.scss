@@ -29,7 +29,7 @@
     justify-content: flex-end;
     padding-right: 70px;
     position: absolute;
-    bottom: 0px;
+    top: -6px;
     width: 100%;
 
     .lottie {
@@ -68,7 +68,7 @@
     z-index: 99;
   }
   &-top {
-    padding: 10px 21px 16px 18px;
+    padding: 10px 21px 16px 21px;
     width: 100%;
     display: flex;
     justify-content: space-between;

@@ -2,7 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../../providers/ThemeProvider";
 import { sleep } from "../../../utils";
-import { LISTS_AMOUNT, LIST_HIDE_ANIMATION_CONFIG } from "../constants";
+import { LISTS_AMOUNT_FOR_ANIMATION_IN_TAB, LIST_HIDE_ANIMATION_CONFIG } from "../constants";
 import { IViewToHide, VIEW_SELECTOR_OPTIONS } from "../types";
 
 const handleDelay = async (viewToHide: IViewToHide, index: number) => {
@@ -16,10 +16,10 @@ const handleDelay = async (viewToHide: IViewToHide, index: number) => {
   if (isBigger) {
     return index / 10;
   }
-  if (index === LISTS_AMOUNT - 1) {
+  if (index === LISTS_AMOUNT_FOR_ANIMATION_IN_TAB - 1) {
     return 0;
   }
-  return (LISTS_AMOUNT - index - 1) / 10;
+  return (LISTS_AMOUNT_FOR_ANIMATION_IN_TAB - index - 1) / 10;
 };
 
 const useHideList = (
@@ -46,7 +46,7 @@ const useHideList = (
       if (isMobile) {
         hideMobile();
       } else {
-        hdeDesktop();
+        hdeDesktop().then();
       }
     }
   };

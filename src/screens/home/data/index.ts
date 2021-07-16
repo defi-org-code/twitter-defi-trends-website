@@ -3,14 +3,14 @@ import {
   DATASET_TYPES,
   IListCategories,
   VIEW_SELECTOR_OPTIONS,
-} from "./../types/index";
-import VarifiedUsersViewCustom from "../components/ViewSelector/components/VarifiedUsersViewCustom";
+} from "../types";
+import VerifiedUsersViewCustom from "../components/ViewSelector/components/VerifiedUsersViewCustom";
 import Mentions from "../components/ListsContainer/components/ListItemMentions";
 import Urls from "../components/ListsContainer/components/ListItemUrl";
 import AllTweetsViewCustom from "../components/ViewSelector/components/AllTweetsViewCustom";
 import HashtagsAndCashtags from "../components/ListsContainer/components/ListItemHashtagsCashtags";
 import InfluencersContainer from "../components/InfluencersContainer";
-import {COUNT_TO_JUMP, INTERVAL_DELAY_SECONDS, POSITIONS_TO_JUMP} from "../constants";
+import {COUNT_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION, POLL_NEW_TWEETS_INTERVAL_DELAY_SECONDS, POSITIONS_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION} from "../constants";
 
 declare var process: {
   env: {
@@ -28,9 +28,9 @@ export const views = [
     darkImage: images.allTweetsIconDark.img,
     SelectorCustomComponent: AllTweetsViewCustom,
     url: process.env.REACT_APP_TOP_ENTETIES_API,
-    apiIntervalSeconds: INTERVAL_DELAY_SECONDS,
-    countForAnimation: COUNT_TO_JUMP,
-    positionsJumpForAnimation: POSITIONS_TO_JUMP,
+    apiIntervalSeconds: POLL_NEW_TWEETS_INTERVAL_DELAY_SECONDS,
+    countForAnimation: COUNT_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION,
+    positionsJumpForAnimation: POSITIONS_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION,
   },
   {
     title: "Tweets By Verified Users",
@@ -38,12 +38,12 @@ export const views = [
     value: VIEW_SELECTOR_OPTIONS.INFLUENCERS,
     image: images.verifiedUsersSelect.img,
     darkImage: images.verifiedUsersSelectDark.img,
-    SelectorCustomComponent: VarifiedUsersViewCustom,
+    SelectorCustomComponent: VerifiedUsersViewCustom,
     ListCustomComponent: InfluencersContainer,
     url: process.env.REACT_APP_TWEETS_BY_LIST_API,
-    apiIntervalSeconds: INTERVAL_DELAY_SECONDS,
-    countForAnimation: COUNT_TO_JUMP,
-    positionsJumpForAnimation: POSITIONS_TO_JUMP,
+    apiIntervalSeconds: POLL_NEW_TWEETS_INTERVAL_DELAY_SECONDS,
+    countForAnimation: COUNT_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION,
+    positionsJumpForAnimation: POSITIONS_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION,
   },
 ];
 
@@ -80,8 +80,8 @@ export const categories: IListCategories = {
     image: images.urls.img,
     titleImg: images.urlsTitle.img,
     titleDarkImg: images.urlsTitleDark.img,
-    title: "Popular #URL’s",
-    shortName: "URL’s",
+    title: "Popular #URLs",
+    shortName: "URL",
     component: Urls,
   },
 };

@@ -47,6 +47,7 @@
         font-size: 0.625rem;
         line-height: 0.85rem;
         letter-spacing: 0.006rem;
+        word-break: break-word;
       }
       a {
         color: #ffc542;
@@ -56,6 +57,9 @@
       .img {
         width: 32px;
         height: 32px;
+        flex-grow: 0;     /* do not grow   - initial value: 0 */
+        flex-shrink: 0;   /* do not shrink - initial value: 1 */
+        flex-basis: 32px; /* width/height  - initial value: auto */
         border-radius: 50%;
         object-fit: contain;
         border: 1px solid rgba(0, 0, 0, 0.2);

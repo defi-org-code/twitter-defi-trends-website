@@ -64,7 +64,7 @@ const ListItem = ({
           {isUrl ? (
             <p className="list-item-top-name">{`${symbol} ${extra}`}</p>
           ) : (
-            <p className="list-item-top-name">{`${symbol} ${name}`}</p>
+            <p className="list-item-top-name">{`${symbol}${name}`}</p>
           )}
 
           <p className="list-item-top-counter">

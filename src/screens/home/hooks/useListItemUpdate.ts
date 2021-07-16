@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { sleep } from "../../../utils";
-import { LIST_ITEM_ANIMATION_TIMEOUT_SECONDS } from "../constants";
+import { ON_FIRE_LIST_ITEM_ANIMATION_DURATION_SECONDS } from "../constants";
 import { numbersDiff } from "../utils/numberUtil";
 
 const useListItemUpdate = (
@@ -47,7 +47,7 @@ const useListItemUpdate = (
     const handleUpdate = async () => {
       if (positionAnimation || countAnimation) {
         setUpdated(true);
-        await sleep(LIST_ITEM_ANIMATION_TIMEOUT_SECONDS * 1000);
+        await sleep(ON_FIRE_LIST_ITEM_ANIMATION_DURATION_SECONDS * 1000);
         setUpdated(false);
         setPositionAnimation(false);
         setCountAnimation(false);
