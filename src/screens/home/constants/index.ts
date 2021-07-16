@@ -34,5 +34,5 @@ export const API_RETRIES_DELAY = 200;
 export const FETCH_VERIFIED_USERS_INTERVAL = 60;
 
 export const DEFI_ORG_URL = "https://twitter.defi.org";
-export const TWITTER_DEFI_ORG_HANDLE = "@defi_org";
+export const TWITTER_DEFI_ORG_HANDLE = "@DefiOrg";
 export const TWEET_TEXT = `I also want to be verified by ${TWITTER_DEFI_ORG_HANDLE} and appear on ${DEFI_ORG_URL}`;
