@@ -11,6 +11,7 @@ class Analytics {
   init() {
     if (process.env.REACT_APP_AMPLITUDE && process.env.NODE_ENV !== "development") {
       amplitude.getInstance().init(process.env.REACT_APP_AMPLITUDE);
+      this.sendEvent('PAGE_VIEW');
     }
   }
   sendEvent(event: string, data?: any) {
