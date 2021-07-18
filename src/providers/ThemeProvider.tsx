@@ -2,6 +2,7 @@ import { createContext, useEffect } from "react";
 import { DARK_MODE } from "../constans";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useMobile from "../hooks/useMobile";
+import useThemeColor from "../hooks/useThemeColor";
 
 interface IState {
   isDarkMode: boolean;
@@ -23,19 +24,8 @@ interface IProps {
 
 const ThemeProvider = ({ children }: IProps) => {
   const [isMobile] = useMobile();
-  const [isDarkMode, setIsDarkMode] = useLocalStorage(DARK_MODE, "");
+  const [isDarkMode, toggleDarkMode] = useThemeColor();
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-  };
-
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
-  }, [isDarkMode]);
   const value = { isDarkMode, toggleDarkMode, isMobile };
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>

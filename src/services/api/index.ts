@@ -14,7 +14,8 @@ class Api {
           try {
             return JSON.parse(body);
           } catch (error) {
-            throw new Error(`Invalid response for url '${url}': ${body}`);
+            console.error(`Invalid response for url '${url}': ${body}`);
+            return null;
           }
         },
         { retries, delay: API_RETRIES_DELAY }

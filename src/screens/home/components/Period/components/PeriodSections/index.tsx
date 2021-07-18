@@ -8,13 +8,24 @@ interface IProps {
   data: IPeriodData[];
   title: string;
   toggle?: () => void;
+  selectedFromParent?: boolean;
 }
 
-const PeriodSections = ({ data, title, toggle }: IProps) => {
+const PeriodSections = ({
+  data,
+  title,
+  toggle,
+  selectedFromParent,
+}: IProps) => {
   const { isMobile } = useContext(ThemeContext);
 
   return isMobile ? (
-    <Mobile data={data} title={title} toggle={toggle} />
+    <Mobile
+      data={data}
+      title={title}
+      toggle={toggle}
+      selectedFromParent={selectedFromParent}
+    />
   ) : (
     <Desktop data={data} title={title} />
   );

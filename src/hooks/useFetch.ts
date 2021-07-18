@@ -14,17 +14,17 @@ const useFetch = <T>(
   const fetch = async (customUrl?: string) => {
     setLoading(true);
     setError(false);
-    api.get(customUrl || url).then((res) => {
+    api.get(customUrl || url).then((result) => {
       if (!mountedRef.current) return;
       setLoading(false);
-      if (!res) {
+      if (!result) {
         setError(true);
       }
       if (modifier) {
-        res = modifier(res);
+        result = modifier(result);
       }
 
-      setData(res);
+      setData(result);
     });
   };
 

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useFetch from "../../../hooks/useFetch";
 import useInterval from "../../../hooks/useInterval";
 import { GET_TAG_TWEETS_INTERVAL } from "../constants";
@@ -25,20 +25,57 @@ const createUrl = (name: string, symbol: string, sinceId?: string) => {
   }
 };
 
+const modifier = (data: IUseFetch) => {
+  const modifiedTweets = data.tweets.map((t: ITweet) => {
+    return {
+      ...t,
+      id: uuidv4(),
+    };
+  });
+
+  return { ...data, tweets: modifiedTweets };
+};
+
+const handleTweetsContainerUpdate = (
+  setTweets: () => void,
+  container: HTMLDivElement | undefined
+) => {
+  if (!container) {
+    setTweets();
+    return;
+  }
+  const curScrollPos = container.scrollTop;
+  const oldScroll = container.scrollHeight - container.clientHeight;
+
+  setTweets();
+  setTimeout(() => {
+    const newScroll = container.scrollHeight - container.clientHeight;
+    container.scrollTop = curScrollPos + (newScroll - oldScroll);
+  }, 0);
+};
+
 const useTweetsData = (
   name: string,
-  symbol: string
+  symbol: string,
+  container: HTMLDivElement | undefined
 ): [ITweet[], boolean, boolean] => {
   const [tweets, setTweets] = useState<ITweet[]>([]);
   const sinceIdRef = useRef<string | undefined>(undefined);
-
-  const [data, fetch, error] = useFetch<IUseFetch>(createUrl(name, symbol));
   const mountRef = useRef(true);
+  const [data, fetch, error] = useFetch<IUseFetch>(
+    createUrl(name, symbol),
+    modifier
+  );
+
   useEffect(() => {
-    if (data) {
-      handleTweets(data.tweets, data.sinceId);
+    if (!data) return;
+    const current = [...tweets];
+    current.unshift(...data.tweets);
+    handleTweetsContainerUpdate(() => setTweets(current), container);
+    if (data.sinceId) {
+      sinceIdRef.current = data.sinceId;
     }
-  }, [data]);
+  }, [data && data.sinceId]);
 
   useEffect(() => {
     fetch().then();
@@ -47,30 +84,12 @@ const useTweetsData = (
     };
   }, []);
 
-  const handleTweets = useCallback(
-    (newTweets: ITweet[], sinceId: string) => {
-      if (sinceId) {
-        sinceIdRef.current = sinceId;
-      }
-      const tweetsToInsert = newTweets.map((t: ITweet) => {
-        return {
-          ...t,
-          id: uuidv4(),
-        };
-      });
-      const currentTweets = [...tweets];
-      currentTweets.unshift(...tweetsToInsert);
-      if (mountRef.current) {
-        setTweets(currentTweets);
-      }
-    },
-    [tweets]
-  );
-
   const fecthDataWithSinceId = () => {
-    const urlWithSiceId = createUrl(name, symbol, sinceIdRef.current);
+    if (!sinceIdRef.current) return;
 
+    const urlWithSiceId = createUrl(name, symbol, sinceIdRef.current);
     if (!mountRef.current) return;
+
     fetch(urlWithSiceId);
   };
 

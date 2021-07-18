@@ -18,6 +18,7 @@ interface IProps {
 
 const PeriodMobile = ({ data, error }: IProps) => {
   const [showWeekly, setShowWeekly] = useState(false);
+  const [showChild, setShowChild] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const container = useRef<HTMLDivElement>(null);
   const toggle = () => {
@@ -26,12 +27,20 @@ const PeriodMobile = ({ data, error }: IProps) => {
 
   const selectWeekly = () => {
     setShowWeekly(false);
-    setShowMenu(false);
+    handleSelect();
   };
 
   const selectYesterday = () => {
     setShowWeekly(true);
+    handleSelect();
+  };
+
+  const handleSelect = () => {
     setShowMenu(false);
+    setShowChild(true);
+    setTimeout(() => {
+      setShowChild(false);
+    }, 0);
   };
 
   useClickOutside(container, () => setShowMenu(false));
@@ -52,6 +61,7 @@ const PeriodMobile = ({ data, error }: IProps) => {
             title="Weekly top"
             data={data?.weeklyTopEntities}
             toggle={toggle}
+            selectedFromParent={showChild}
           />
         </ErrorHandling>
       ) : (
@@ -60,6 +70,7 @@ const PeriodMobile = ({ data, error }: IProps) => {
             toggle={toggle}
             title="Yesterday's top"
             data={data?.yesterdayTopEntities}
+            selectedFromParent={showChild}
           />
         </ErrorHandling>
       )}

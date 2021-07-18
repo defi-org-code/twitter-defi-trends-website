@@ -4,6 +4,9 @@
   justify-content: space-between;
   opacity: 0;
   transition: 0.2s all;
+  .lottie {
+    width: 100%;
+  }
   &-active {
     opacity: 1;
   }
