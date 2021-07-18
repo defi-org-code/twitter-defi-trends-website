@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "https://twitter.defi.org/static/css/main.3da03447.chunk.css",
-    "main.js": "https://twitter.defi.org/static/js/main.9be3583f.chunk.js",
-    "main.js.map": "https://twitter.defi.org/static/js/main.9be3583f.chunk.js.map",
-    "runtime-main.js": "https://twitter.defi.org/static/js/runtime-main.f733751a.js",
-    "runtime-main.js.map": "https://twitter.defi.org/static/js/runtime-main.f733751a.js.map",
+    "main.css": "https://twitter.defi.org/static/css/main.df042d52.chunk.css",
+    "main.js": "https://twitter.defi.org/static/js/main.19975596.chunk.js",
+    "main.js.map": "https://twitter.defi.org/static/js/main.19975596.chunk.js.map",
+    "runtime-main.js": "https://twitter.defi.org/static/js/runtime-main.c9e80ac4.js",
+    "runtime-main.js.map": "https://twitter.defi.org/static/js/runtime-main.c9e80ac4.js.map",
     "static/css/2.bf2ae6d5.chunk.css": "https://twitter.defi.org/static/css/2.bf2ae6d5.chunk.css",
-    "static/js/2.ef91c125.chunk.js": "https://twitter.defi.org/static/js/2.ef91c125.chunk.js",
-    "static/js/2.ef91c125.chunk.js.map": "https://twitter.defi.org/static/js/2.ef91c125.chunk.js.map",
-    "static/js/3.23b0a9b8.chunk.js": "https://twitter.defi.org/static/js/3.23b0a9b8.chunk.js",
-    "static/js/3.23b0a9b8.chunk.js.map": "https://twitter.defi.org/static/js/3.23b0a9b8.chunk.js.map",
+    "static/js/2.f7dbf41e.chunk.js": "https://twitter.defi.org/static/js/2.f7dbf41e.chunk.js",
+    "static/js/2.f7dbf41e.chunk.js.map": "https://twitter.defi.org/static/js/2.f7dbf41e.chunk.js.map",
+    "static/js/3.15925940.chunk.js": "https://twitter.defi.org/static/js/3.15925940.chunk.js",
+    "static/js/3.15925940.chunk.js.map": "https://twitter.defi.org/static/js/3.15925940.chunk.js.map",
     "index.html": "https://twitter.defi.org/index.html",
     "static/css/2.bf2ae6d5.chunk.css.map": "https://twitter.defi.org/static/css/2.bf2ae6d5.chunk.css.map",
-    "static/css/main.3da03447.chunk.css.map": "https://twitter.defi.org/static/css/main.3da03447.chunk.css.map",
-    "static/js/2.ef91c125.chunk.js.LICENSE.txt": "https://twitter.defi.org/static/js/2.ef91c125.chunk.js.LICENSE.txt",
+    "static/css/main.df042d52.chunk.css.map": "https://twitter.defi.org/static/css/main.df042d52.chunk.css.map",
+    "static/js/2.f7dbf41e.chunk.js.LICENSE.txt": "https://twitter.defi.org/static/js/2.f7dbf41e.chunk.js.LICENSE.txt",
     "static/media/all-tweets-icon-dark.e842c131.svg": "https://twitter.defi.org/static/media/all-tweets-icon-dark.e842c131.svg",
     "static/media/all-tweets-icon.45bacce2.svg": "https://twitter.defi.org/static/media/all-tweets-icon.45bacce2.svg",
     "static/media/black-logo.c438e102.svg": "https://twitter.defi.org/static/media/black-logo.c438e102.svg",
@@ -43,10 +43,10 @@
     "static/media/verified-users-select.df1e9c96.svg": "https://twitter.defi.org/static/media/verified-users-select.df1e9c96.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f733751a.js",
+    "static/js/runtime-main.c9e80ac4.js",
     "static/css/2.bf2ae6d5.chunk.css",
-    "static/js/2.ef91c125.chunk.js",
-    "static/css/main.3da03447.chunk.css",
-    "static/js/main.9be3583f.chunk.js"
+    "static/js/2.f7dbf41e.chunk.js",
+    "static/css/main.df042d52.chunk.css",
+    "static/js/main.19975596.chunk.js"
   ]
 }
