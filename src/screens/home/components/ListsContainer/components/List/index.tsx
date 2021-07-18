@@ -44,7 +44,6 @@ const List = ({
     activeElement,
     showFullList
   );
-  // const [newEntities] = useCompare(dataset);
   const handleActiveElement = useCallback(
     (element: IDatasetElement) => {
       if (activeElement?.name === element.name) {
@@ -68,14 +67,12 @@ const List = ({
       <div className="list-flex" style={{ height }}>
         {transitions((style, item, t, index) => {
           const { name } = item;
-          // const isNew = newEntities.includes(name);
           return (
             <ListItem
               isOpen={activeElement?.name === name}
               setActiveElement={() => handleActiveElement(item)}
               item={item}
               symbol={symbol}
-              // isNew={isNew}
               index={index}
               isUrl={categoryName === DATASET_TYPES.URLS}
               ContentComponent={category.component}

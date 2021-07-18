@@ -1,16 +1,28 @@
 import { IPeriodData } from "../../../../../types/index";
 import PeriodSection from "../../PeriodSection";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AnimateHeight from "react-animate-height";
 
 interface IProps {
   data: IPeriodData[];
   title: string;
   toggle?: () => void;
+  selectedFromParent?: boolean;
 }
 
-const PeriodSectionsMobile = ({ data, title, toggle }: IProps) => {
+const PeriodSectionsMobile = ({
+  data,
+  title,
+  toggle,
+  selectedFromParent,
+}: IProps) => {
   const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    if (selectedFromParent) {
+      setActive(true);
+    }
+  }, [selectedFromParent]);
 
   const handleActive = () => {
     if (active) {
@@ -19,6 +31,7 @@ const PeriodSectionsMobile = ({ data, title, toggle }: IProps) => {
       setActive(true);
     }
   };
+
   return (
     <div className="period-sections-mobile">
       <section className="period-sections-mobile-header flex">
