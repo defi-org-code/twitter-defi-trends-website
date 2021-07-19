@@ -6,6 +6,7 @@ import Influencer from "../../Influencer/index";
 import { useState } from "react";
 import AnimateHeight from "react-animate-height";
 import useAnalytics from "../../../../../../../hooks/useAnalytics";
+import { ANALYTICS_EVENTS } from "../../../../../../../services/analytics/types";
 
 interface IProps {
   users: IUser[];
@@ -14,11 +15,14 @@ interface IProps {
 
 const InfluencersList = ({ users, error }: IProps) => {
   const [showAll, setShowAll] = useState(false);
-  const { tapOnViewAll } = useAnalytics();
+  const { sendEvent } = useAnalytics();
 
   const handleShowMore = () => {
     if (!showAll) {
-      tapOnViewAll(VIEW_SELECTOR_OPTIONS.VARIFIED_USERS);
+      sendEvent(
+        ANALYTICS_EVENTS.MOBILE_VIEW_ALL,
+        VIEW_SELECTOR_OPTIONS.VARIFIED_USERS
+      );
     }
     setShowAll((e) => !e);
   };

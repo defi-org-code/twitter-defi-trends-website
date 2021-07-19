@@ -7,6 +7,7 @@ import { DATASET_TYPES, IDatasetElement } from "../../../../types";
 import Tooltip from "../../../../../../components/Tooltip";
 
 import useAnalytics from "../../../../../../hooks/useAnalytics";
+import { ANALYTICS_EVENTS } from "../../../../../../services/analytics/types";
 interface IProps {
   style: any;
   item: IDatasetElement;
@@ -41,7 +42,7 @@ const ListItem = ({
   apiIntervalSeconds,
   categoryName,
 }: IProps) => {
-  const { tapOnEntity } = useAnalytics();
+  const { sendEventAndRunAction } = useAnalytics();
   const { name, count, processed, extra } = item;
   const isUrl = categoryName === DATASET_TYPES.URLS;
   const [updated] = useListItemUpdate(
@@ -52,21 +53,26 @@ const ListItem = ({
     positionsJumpForAnimation
   );
 
-  const handleClick = () => {
+  const handleSelect = () => {
     if (isUrl) {
-      tapOnEntity(categoryName);
-      return window.open(name);
-    }
-    setActiveElement();
-    if (!isOpen) {
-      tapOnEntity(categoryName);
+      window.open(name);
+    } else {
+      setActiveElement();
     }
   };
 
   return (
     <animated.div className="card" style={style}>
       <div className={handleClassName(isOpen)}>
-        <figure className="list-item-action" onClick={handleClick} />
+        <figure
+          className="list-item-action"
+          onClick={sendEventAndRunAction.bind(
+            null,
+            ANALYTICS_EVENTS.TAP_ON_ENTITY,
+            categoryName,
+            handleSelect
+          )}
+        />
         {isUrl && <Tooltip content={`${symbol} ${extra}`} />}
         <div className="list-item-top">
           {isUrl ? (
@@ -83,7 +89,7 @@ const ListItem = ({
             />
           </p>
         </div>
-        {updated && !isOpen && <UpdatedAnimation />}
+        {updated && <UpdatedAnimation />}
         {isOpen && (
           <div className="list-item-custom">
             <ContentComponent item={item} symbol={symbol} />

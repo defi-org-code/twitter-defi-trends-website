@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import AnimateHeight from "react-animate-height";
 import useAnalytics from "../../../../../../../hooks/useAnalytics";
 import useClickOutside from "../../../../../../../hooks/useClickOutside";
+import { ANALYTICS_EVENTS } from "../../../../../../../services/analytics/types";
 
 interface IProps {
   data: IPeriodData[];
@@ -20,7 +21,7 @@ const PeriodSectionsMobile = ({
   menuValue,
   menuText,
 }: IProps) => {
-  const { tapOnPeriodView } = useAnalytics();
+  const { sendEventAndRunAction } = useAnalytics();
   const [active, setActive] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const container = useRef<HTMLDivElement>(null);
@@ -34,9 +35,9 @@ const PeriodSectionsMobile = ({
     }
   };
 
-  const handleMenuSelect = (value: PERIODS) => {
-    tapOnPeriodView(value);
-    selectPeriod && selectPeriod(value);
+  const select = () => {
+    if (!menuValue) return;
+    selectPeriod?.(menuValue);
     setShowMenu(false);
     setActive(true);
   };
@@ -47,7 +48,12 @@ const PeriodSectionsMobile = ({
         <div
           className="period-mobile-menu"
           ref={container}
-          onClick={() => handleMenuSelect(menuValue)}
+          onClick={sendEventAndRunAction.bind(
+            null,
+            ANALYTICS_EVENTS.TAP_ON_PERIOD_VIEW,
+            menuValue,
+            select
+          )}
         >
           {menuText}
         </div>

@@ -7,12 +7,13 @@ import {
   TWITTER_DEFI_ORG_HANDLE,
 } from "../../../constants";
 import useAnalytics from "../../../../../hooks/useAnalytics";
+import { ANALYTICS_EVENTS } from "../../../../../services/analytics/types";
 
 interface IProps {
   onClick: () => void;
 }
 const VerifiedUsersPopup = ({ onClick }: IProps) => {
-  const { tapOnWantToBeMentionedTweet } = useAnalytics();
+  const { sendEventAndRunAction } = useAnalytics();
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
     onClick();
@@ -28,7 +29,12 @@ const VerifiedUsersPopup = ({ onClick }: IProps) => {
           )}`}
           target="_blank"
           rel="noreferrer"
-          onClick={tapOnWantToBeMentionedTweet}
+          onClick={sendEventAndRunAction.bind(
+            null,
+            ANALYTICS_EVENTS.TAP_ON_WANT_TO_BE_MENTIONED_TWEET,
+            undefined,
+            undefined
+          )}
         >
           Tweet
         </a>
