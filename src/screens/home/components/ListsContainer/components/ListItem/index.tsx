@@ -3,8 +3,10 @@ import { JSXElementConstructor, memo } from "react";
 import Counter from "../../../../../../components/Counter";
 import useListItemUpdate from "../../../../hooks/useListItemUpdate";
 import UpdatedAnimation from "./UpdatedAnimation";
-import { IDatasetElement } from "../../../../types";
+import { DATASET_TYPES, IDatasetElement } from "../../../../types";
 import Tooltip from "../../../../../../components/Tooltip";
+
+import useAnalytics from "../../../../../../hooks/useAnalytics";
 interface IProps {
   style: any;
   item: IDatasetElement;
@@ -16,7 +18,7 @@ interface IProps {
   countForAnimation: number;
   positionsJumpForAnimation: number;
   apiIntervalSeconds: number;
-  isUrl: boolean;
+  categoryName: DATASET_TYPES;
 }
 
 const handleClassName = (isOpen: boolean) => {
@@ -37,9 +39,11 @@ const ListItem = ({
   countForAnimation,
   positionsJumpForAnimation,
   apiIntervalSeconds,
-  isUrl,
+  categoryName,
 }: IProps) => {
+  const { tapOnEntity } = useAnalytics();
   const { name, count, processed, extra } = item;
+  const isUrl = categoryName === DATASET_TYPES.URLS;
   const [updated] = useListItemUpdate(
     count,
     processed,
@@ -50,9 +54,13 @@ const ListItem = ({
 
   const handleClick = () => {
     if (isUrl) {
+      tapOnEntity(categoryName);
       return window.open(name);
     }
     setActiveElement();
+    if (!isOpen) {
+      tapOnEntity(categoryName);
+    }
   };
 
   return (
@@ -75,7 +83,7 @@ const ListItem = ({
             />
           </p>
         </div>
-        {updated && <UpdatedAnimation />}
+        {updated && !isOpen && <UpdatedAnimation />}
         {isOpen && (
           <div className="list-item-custom">
             <ContentComponent item={item} symbol={symbol} />

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { forwardRef, useContext, useEffect, useRef } from "react";
+import useAnalytics from "../../../../../../hooks/useAnalytics";
 import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 import { IViewOption } from "../../../../types";
 
@@ -14,7 +15,7 @@ const ViewOption = forwardRef(
   ({ option, selected, select, isFirst }: IProps, indicatorRef: any) => {
     const ref = useRef<any>(0);
     const { isDarkMode, isMobile } = useContext(ThemeContext);
-
+    const { switchTab } = useAnalytics();
     const {
       title,
       value,
@@ -35,10 +36,10 @@ const ViewOption = forwardRef(
     }, []);
 
     const onClick = () => {
+      switchTab(option.value);
       handleIndicator();
       select();
     };
-
     const handleIndicator = () => {
       const left = ref.current.offsetLeft;
       const width = ref.current.getBoundingClientRect().width;

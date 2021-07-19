@@ -23,7 +23,7 @@ export const LIST_HIDE_ANIMATION_CONFIG = {
     animationDoneTimeout: 500,
     animationDelay: 0,
   },
-  [VIEW_SELECTOR_OPTIONS.INFLUENCERS]: {
+  [VIEW_SELECTOR_OPTIONS.VARIFIED_USERS]: {
     animationDoneTimeout: 700,
     animationDelay: 0.2,
   },

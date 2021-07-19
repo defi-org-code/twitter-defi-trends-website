@@ -7,7 +7,7 @@ export const DARK_MODE = "dark-mode";
 
 export const APP_LOADER_ANIMATION_TIMEOUT = 2000;
 export const MOBILE = 700;
-
+export const POLICY_COOKIE_LOCALE_STORAGE_NAME = "policy-approved";
 export const lottieAnimations = {
   fire,
   loadingBig,

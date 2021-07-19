@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../../../providers/ThemeProvider";
 import Mobile from "./Mobile";
 import Desktop from "./Desktop";

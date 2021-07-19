@@ -1,12 +1,11 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import LoadingHandler from "../../../../../../../components/LoadingHandler";
 import ErrorHandling from "../../../../../../../components/ErrorHandling";
 import Loader from "./Loader";
-
-import { IUser } from "../../../../../types";
+import { IUser, VIEW_SELECTOR_OPTIONS } from "../../../../../types";
 import Influencer from "../../Influencer/index";
 import { useState } from "react";
 import AnimateHeight from "react-animate-height";
+import useAnalytics from "../../../../../../../hooks/useAnalytics";
 
 interface IProps {
   users: IUser[];
@@ -15,6 +14,14 @@ interface IProps {
 
 const InfluencersList = ({ users, error }: IProps) => {
   const [showAll, setShowAll] = useState(false);
+  const { tapOnViewAll } = useAnalytics();
+
+  const handleShowMore = () => {
+    if (!showAll) {
+      tapOnViewAll(VIEW_SELECTOR_OPTIONS.VARIFIED_USERS);
+    }
+    setShowAll((e) => !e);
+  };
   return (
     <div className="influencers-list-mobile">
       <ErrorHandling showError={error} errorText="something went wrong...">
@@ -32,7 +39,7 @@ const InfluencersList = ({ users, error }: IProps) => {
               </div>
             </AnimateHeight>
 
-            <button onClick={() => setShowAll((e) => !e)}>
+            <button onClick={handleShowMore}>
               {showAll ? "Show Less" : "Show More"}
             </button>
           </>

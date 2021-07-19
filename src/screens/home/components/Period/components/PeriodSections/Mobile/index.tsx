@@ -1,28 +1,30 @@
-import { IPeriodData } from "../../../../../types/index";
+import { IPeriodData, PERIODS } from "../../../../../types/index";
 import PeriodSection from "../../PeriodSection";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import AnimateHeight from "react-animate-height";
+import useAnalytics from "../../../../../../../hooks/useAnalytics";
+import useClickOutside from "../../../../../../../hooks/useClickOutside";
 
 interface IProps {
   data: IPeriodData[];
   title: string;
-  toggle?: () => void;
-  selectedFromParent?: boolean;
+  selectPeriod?: (value: PERIODS) => void;
+  menuValue?: PERIODS;
+  menuText?: string;
 }
 
 const PeriodSectionsMobile = ({
   data,
   title,
-  toggle,
-  selectedFromParent,
+  selectPeriod,
+  menuValue,
+  menuText,
 }: IProps) => {
+  const { tapOnPeriodView } = useAnalytics();
   const [active, setActive] = useState(false);
-
-  useEffect(() => {
-    if (selectedFromParent) {
-      setActive(true);
-    }
-  }, [selectedFromParent]);
+  const [showMenu, setShowMenu] = useState(false);
+  const container = useRef<HTMLDivElement>(null);
+  useClickOutside(container, () => setShowMenu(false));
 
   const handleActive = () => {
     if (active) {
@@ -32,13 +34,29 @@ const PeriodSectionsMobile = ({
     }
   };
 
+  const handleMenuSelect = (value: PERIODS) => {
+    tapOnPeriodView(value);
+    selectPeriod && selectPeriod(value);
+    setShowMenu(false);
+    setActive(true);
+  };
+
   return (
     <div className="period-sections-mobile">
+      {menuValue && showMenu && (
+        <div
+          className="period-mobile-menu"
+          ref={container}
+          onClick={() => handleMenuSelect(menuValue)}
+        >
+          {menuText}
+        </div>
+      )}
       <section className="period-sections-mobile-header flex">
         <div className="flex">
           <h5>{title}</h5>
           <aside
-            onClick={toggle}
+            onClick={() => setShowMenu(true)}
             className="period-sections-mobile-toggle"
           ></aside>
         </div>

@@ -3,14 +3,20 @@ import images from "../../../../../../constans/images";
 import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 import Popup from "../../../../../../components/Popup";
 import VerifiedUsersPopup from "../../../Popups/VerifiedUsersPopup";
+import useAnalytics from "../../../../../../hooks/useAnalytics";
 
 const JoinBtn = () => {
   const { isDarkMode } = useContext(ThemeContext);
   const [isPopup, setIsPopup] = useState(false);
+  const { tapOnWantToBeMentioned } = useAnalytics();
 
+  const handleClick = () => {
+    tapOnWantToBeMentioned();
+    setIsPopup(true);
+  };
   return (
     <>
-      <button className="influencers-join" onClick={() => setIsPopup(true)}>
+      <button className="influencers-join" onClick={handleClick}>
         <p>Want to be mentioned here?</p>
         <img
           src={isDarkMode ? images.greenTwitter.img : images.twitterBlack.img}
