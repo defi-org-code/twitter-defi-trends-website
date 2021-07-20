@@ -15,17 +15,8 @@ interface IProps {
 
 const InfluencersList = ({ users, error }: IProps) => {
   const [showAll, setShowAll] = useState(false);
-  const { sendEvent } = useAnalytics();
+  const { sendEventAndRunAction } = useAnalytics();
 
-  const handleShowMore = () => {
-    if (!showAll) {
-      sendEvent(
-        ANALYTICS_EVENTS.MOBILE_VIEW_ALL,
-        VIEW_SELECTOR_OPTIONS.VARIFIED_USERS
-      );
-    }
-    setShowAll((e) => !e);
-  };
   return (
     <div className="influencers-list-mobile">
       <ErrorHandling showError={error} errorText="something went wrong...">
@@ -43,7 +34,14 @@ const InfluencersList = ({ users, error }: IProps) => {
               </div>
             </AnimateHeight>
 
-            <button onClick={handleShowMore}>
+            <button
+              onClick={sendEventAndRunAction.bind(
+                null,
+                ANALYTICS_EVENTS.MOBILE_VIEW_ALL,
+                VIEW_SELECTOR_OPTIONS.VARIFIED_USERS,
+                setShowAll.bind(null, (e) => !e)
+              )}
+            >
               {showAll ? "Show Less" : "Show More"}
             </button>
           </>

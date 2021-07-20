@@ -11,10 +11,6 @@ const JoinBtn = () => {
   const [isPopup, setIsPopup] = useState(false);
   const { sendEventAndRunAction } = useAnalytics();
 
-  const showPopup = () => {
-    setIsPopup(true);
-  };
-
   return (
     <>
       <button
@@ -23,7 +19,7 @@ const JoinBtn = () => {
           null,
           ANALYTICS_EVENTS.TAP_ON_WANT_TO_BE_MENTIONED,
           undefined,
-          showPopup
+          setIsPopup.bind(null, true)
         )}
       >
         <p>Want to be mentioned here?</p>
