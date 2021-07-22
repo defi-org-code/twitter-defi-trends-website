@@ -10,10 +10,11 @@ import {
 import ListItem from "../ListItem";
 import useHideList from "../../../../hooks/useHideList";
 import Title from "../Title";
+import MobileShowMore from "./MobileShowMore";
 interface IProps {
   dataset: IDatasetElement[];
   category: IListCategory;
-  categoryName: string;
+  categoryName: DATASET_TYPES;
   index: number;
   viewToHide: IViewToHide | null;
   viewOption: IViewOption;
@@ -28,7 +29,6 @@ const List = ({
   categoryName,
 }: IProps) => {
   const { title, symbol, titleImg, titleDarkImg } = category;
-
   const [activeElement, setActiveElement] = useState<IDatasetElement | null>(
     null
   );
@@ -74,7 +74,7 @@ const List = ({
               item={item}
               symbol={symbol}
               index={index}
-              isUrl={categoryName === DATASET_TYPES.URLS}
+              categoryName={categoryName}
               ContentComponent={category.component}
               countForAnimation={viewOption.countForAnimation}
               positionsJumpForAnimation={viewOption.positionsJumpForAnimation}
@@ -87,12 +87,11 @@ const List = ({
           );
         })}
       </div>
-      <button
-        className="list-mobile-toggle"
-        onClick={() => setshowFullList(!showFullList)}
-      >
-        {showFullList ? "Show less" : "Show more"}
-      </button>
+      <MobileShowMore
+        categoryName={categoryName}
+        showFullList={showFullList}
+        setshowFullList={setshowFullList}
+      />
     </div>
   );
 };

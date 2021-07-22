@@ -1,4 +1,4 @@
-import { IPeriodData } from "../../../../types/index";
+import { IPeriodData, PERIODS } from "../../../../types/index";
 import Mobile from "./Mobile";
 import Desktop from "./Desktop";
 import { useContext } from "react";
@@ -7,15 +7,17 @@ import { ThemeContext } from "../../../../../../providers/ThemeProvider";
 interface IProps {
   data: IPeriodData[];
   title: string;
-  toggle?: () => void;
-  selectedFromParent?: boolean;
+  selectPeriod?: (value: PERIODS) => void;
+  menuValue?: PERIODS;
+  menuText?: string;
 }
 
 const PeriodSections = ({
   data,
   title,
-  toggle,
-  selectedFromParent,
+  selectPeriod,
+  menuValue,
+  menuText,
 }: IProps) => {
   const { isMobile } = useContext(ThemeContext);
 
@@ -23,8 +25,9 @@ const PeriodSections = ({
     <Mobile
       data={data}
       title={title}
-      toggle={toggle}
-      selectedFromParent={selectedFromParent}
+      selectPeriod={selectPeriod}
+      menuValue={menuValue}
+      menuText={menuText}
     />
   ) : (
     <Desktop data={data} title={title} />

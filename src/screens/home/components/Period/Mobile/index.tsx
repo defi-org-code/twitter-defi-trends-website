@@ -2,9 +2,8 @@
 import CountDown from "../../CountDown";
 import ErrorHandling from "../../../../../components/ErrorHandling";
 import PeriodSections from "../components/PeriodSections";
-import { IPeriodData } from "../../../types";
-import { useRef, useState } from "react";
-import useClickOutside from "../../../../../hooks/useClickOutside";
+import { IPeriodData, PERIODS } from "../../../types";
+import { useState } from "react";
 
 interface IData {
   yesterdayTopEntities: IPeriodData[];
@@ -17,60 +16,32 @@ interface IProps {
 }
 
 const PeriodMobile = ({ data, error }: IProps) => {
-  const [showWeekly, setShowWeekly] = useState(false);
-  const [showChild, setShowChild] = useState(false);
-  const [showMenu, setShowMenu] = useState(false);
-  const container = useRef<HTMLDivElement>(null);
-  const toggle = () => {
-    setShowMenu(!showMenu);
+  const [periodSelected, setPeriodSelected] = useState(PERIODS.WEEK);
+
+  const selectPeriod = (period: PERIODS) => {
+    setPeriodSelected(period);
   };
 
-  const selectWeekly = () => {
-    setShowWeekly(false);
-    handleSelect();
-  };
-
-  const selectYesterday = () => {
-    setShowWeekly(true);
-    handleSelect();
-  };
-
-  const handleSelect = () => {
-    setShowMenu(false);
-    setShowChild(true);
-    setTimeout(() => {
-      setShowChild(false);
-    }, 0);
-  };
-
-  useClickOutside(container, () => setShowMenu(false));
   return (
     <div className="period period-mobile flex">
-      {showMenu && (
-        <div className="period-mobile-menu" ref={container}>
-          {showWeekly ? (
-            <section onClick={selectWeekly}>Yesterday's top </section>
-          ) : (
-            <section onClick={selectYesterday}>Weekly top</section>
-          )}
-        </div>
-      )}
-      {showWeekly ? (
+      {periodSelected === PERIODS.WEEK ? (
         <ErrorHandling showError={error} errorText="Fetch failed">
           <PeriodSections
+            menuValue={PERIODS.YESTERDAY}
+            menuText="Yesterday's top"
             title="Weekly top"
             data={data?.weeklyTopEntities}
-            toggle={toggle}
-            selectedFromParent={showChild}
+            selectPeriod={selectPeriod}
           />
         </ErrorHandling>
       ) : (
         <ErrorHandling showError={error} errorText="Fetch failed">
           <PeriodSections
-            toggle={toggle}
+            menuValue={PERIODS.WEEK}
+            menuText="Weekly top"
+            selectPeriod={selectPeriod}
             title="Yesterday's top"
             data={data?.yesterdayTopEntities}
-            selectedFromParent={showChild}
           />
         </ErrorHandling>
       )}

@@ -10,7 +10,11 @@ import Urls from "../components/ListsContainer/components/ListItemUrl";
 import AllTweetsViewCustom from "../components/ViewSelector/components/AllTweetsViewCustom";
 import HashtagsAndCashtags from "../components/ListsContainer/components/ListItemHashtagsCashtags";
 import InfluencersContainer from "../components/InfluencersContainer";
-import {COUNT_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION, POLL_NEW_TWEETS_INTERVAL_DELAY_SECONDS, POSITIONS_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION} from "../constants";
+import {
+  COUNT_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION,
+  POLL_NEW_TWEETS_INTERVAL_DELAY_SECONDS,
+  POSITIONS_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION,
+} from "../constants";
 
 declare var process: {
   env: {
@@ -35,7 +39,7 @@ export const views = [
   {
     title: "Tweets By Verified Users",
     mobileTitle: " Verified Tweets",
-    value: VIEW_SELECTOR_OPTIONS.INFLUENCERS,
+    value: VIEW_SELECTOR_OPTIONS.VARIFIED_USERS,
     image: images.verifiedUsersSelect.img,
     darkImage: images.verifiedUsersSelectDark.img,
     SelectorCustomComponent: VerifiedUsersViewCustom,

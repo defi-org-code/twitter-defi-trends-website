@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { forwardRef, useContext, useEffect, useRef } from "react";
+import useAnalytics from "../../../../../../hooks/useAnalytics";
 import { ThemeContext } from "../../../../../../providers/ThemeProvider";
+import { ANALYTICS_EVENTS } from "../../../../../../services/analytics/types";
 import { IViewOption } from "../../../../types";
 
 interface IProps {
@@ -14,7 +16,7 @@ const ViewOption = forwardRef(
   ({ option, selected, select, isFirst }: IProps, indicatorRef: any) => {
     const ref = useRef<any>(0);
     const { isDarkMode, isMobile } = useContext(ThemeContext);
-
+    const { sendEventAndRunAction } = useAnalytics();
     const {
       title,
       value,
@@ -34,7 +36,7 @@ const ViewOption = forwardRef(
       }
     }, []);
 
-    const onClick = () => {
+    const handleSelectOption = () => {
       handleIndicator();
       select();
     };
@@ -48,7 +50,15 @@ const ViewOption = forwardRef(
 
     return (
       <section className={className} ref={ref}>
-        <div className="flex" onClick={onClick}>
+        <div
+          className="flex"
+          onClick={sendEventAndRunAction.bind(
+            null,
+            ANALYTICS_EVENTS.SWITCH_TAB,
+            option.value,
+            handleSelectOption
+          )}
+        >
           <img
             src={isDarkMode ? darkImage : image}
             alt="view select"

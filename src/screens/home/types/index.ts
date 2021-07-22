@@ -8,6 +8,16 @@ export interface IDatasetElement {
   lastUpdateTime: string;
 }
 
+export enum PERIODS {
+  WEEK = "week",
+  YESTERDAY = "yesterday",
+}
+
+export enum THEMES {
+  DARK = "dark",
+  LIGHT = "light",
+}
+
 export enum DATASET_TYPES {
   HASHTAGS = "hashtags",
   CASHTAGS = "cashtags",
@@ -97,7 +107,7 @@ export interface IViewOption {
 
 export enum VIEW_SELECTOR_OPTIONS {
   ALL_TWEETS = "all_tweets",
-  INFLUENCERS = "influencers",
+  VARIFIED_USERS = "varified_users",
 }
 
 export interface IViewToHide {

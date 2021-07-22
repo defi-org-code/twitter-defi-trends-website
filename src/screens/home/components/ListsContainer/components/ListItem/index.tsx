@@ -3,8 +3,11 @@ import { JSXElementConstructor, memo } from "react";
 import Counter from "../../../../../../components/Counter";
 import useListItemUpdate from "../../../../hooks/useListItemUpdate";
 import UpdatedAnimation from "./UpdatedAnimation";
-import { IDatasetElement } from "../../../../types";
+import { DATASET_TYPES, IDatasetElement } from "../../../../types";
 import Tooltip from "../../../../../../components/Tooltip";
+
+import useAnalytics from "../../../../../../hooks/useAnalytics";
+import { ANALYTICS_EVENTS } from "../../../../../../services/analytics/types";
 interface IProps {
   style: any;
   item: IDatasetElement;
@@ -16,7 +19,7 @@ interface IProps {
   countForAnimation: number;
   positionsJumpForAnimation: number;
   apiIntervalSeconds: number;
-  isUrl: boolean;
+  categoryName: DATASET_TYPES;
 }
 
 const handleClassName = (isOpen: boolean) => {
@@ -37,9 +40,11 @@ const ListItem = ({
   countForAnimation,
   positionsJumpForAnimation,
   apiIntervalSeconds,
-  isUrl,
+  categoryName,
 }: IProps) => {
+  const { sendEventAndRunAction } = useAnalytics();
   const { name, count, processed, extra } = item;
+  const isUrl = categoryName === DATASET_TYPES.URLS;
   const [updated] = useListItemUpdate(
     count,
     processed,
@@ -48,17 +53,26 @@ const ListItem = ({
     positionsJumpForAnimation
   );
 
-  const handleClick = () => {
+  const handleSelect = () => {
     if (isUrl) {
-      return window.open(name);
+      window.open(name);
+    } else {
+      setActiveElement();
     }
-    setActiveElement();
   };
 
   return (
     <animated.div className="card" style={style}>
       <div className={handleClassName(isOpen)}>
-        <figure className="list-item-action" onClick={handleClick} />
+        <figure
+          className="list-item-action"
+          onClick={sendEventAndRunAction.bind(
+            null,
+            ANALYTICS_EVENTS.TAP_ON_ENTITY,
+            categoryName,
+            handleSelect
+          )}
+        />
         {isUrl && <Tooltip content={`${symbol} ${extra}`} />}
         <div className="list-item-top">
           {isUrl ? (

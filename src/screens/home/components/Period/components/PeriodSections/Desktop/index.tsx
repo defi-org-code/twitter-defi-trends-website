@@ -17,8 +17,8 @@ const PeriodSectionsDesktop = ({ data, title }: IProps) => {
         <h5 className="period-sections-desktop-title">{title}</h5>
         <div className="flex period-sections-desktop-list">
           {data &&
-            data.map((element: IPeriodData) => {
-              return <PeriodSection key={element.name} element={element} />;
+            data.map((element: IPeriodData, index: number) => {
+              return <PeriodSection key={index} element={element} />;
             })}
         </div>
       </div>
