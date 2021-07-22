@@ -9,10 +9,13 @@ declare const process: {
 };
 
 class Analytics {
+
+  isInProd: boolean = true;
+
   init() {
+    this.isInProd = process.env.NODE_ENV !== "development";
     if (
-      process.env.REACT_APP_AMPLITUDE &&
-      process.env.NODE_ENV !== "development"
+      process.env.REACT_APP_AMPLITUDE && this.isInProd
     ) {
       amplitude.getInstance().init(process.env.REACT_APP_AMPLITUDE);
       this.sendEvent(ANALYTICS_EVENTS.PAGE_VIEW);
@@ -20,10 +23,14 @@ class Analytics {
   }
 
   sendEvent(event: ANALYTICS_EVENTS, data?: IEventProperties) {
-    if (!data) {
-      amplitude.getInstance().logEvent(event);
+    if (this.isInProd) {
+      if (!data) {
+        amplitude.getInstance().logEvent(event);
+      } else {
+        amplitude.getInstance().logEvent(event, data);
+      }
     } else {
-      amplitude.getInstance().logEvent(event, data);
+      console.log(event, data);
     }
   }
 

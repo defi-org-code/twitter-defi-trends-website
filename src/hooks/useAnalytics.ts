@@ -1,4 +1,4 @@
-import { ANALYTICS_EVENTS, EventTypes } from "./../services/analytics/types";
+import { ANALYTICS_EVENTS, EventTypes } from "../services/analytics/types";
 import analytics from "../services/analytics";
 import { useContext } from "react";
 import { ThemeContext } from "../providers/ThemeProvider";
@@ -30,11 +30,18 @@ function useAnalytics(): AnalyticsProvider {
   };
 
   const sendEvent = (event: ANALYTICS_EVENTS, type?: EventTypes) => {
-    console.log(event, type);
-    analytics.sendEvent(event, {
-      type,
+    const data:{
+      type?: any,
+      isMobile: boolean
+    } = {
       isMobile,
-    });
+    };
+
+    if (type) {
+      data.type = type;
+    }
+
+    analytics.sendEvent(event, data);
   };
 
   return {
