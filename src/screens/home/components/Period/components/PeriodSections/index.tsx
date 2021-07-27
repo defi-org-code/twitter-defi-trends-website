@@ -10,6 +10,7 @@ interface IProps {
   selectPeriod?: (value: PERIODS) => void;
   menuValue?: PERIODS;
   menuText?: string;
+  hideView: boolean;
 }
 
 const PeriodSections = ({
@@ -18,6 +19,7 @@ const PeriodSections = ({
   selectPeriod,
   menuValue,
   menuText,
+  hideView,
 }: IProps) => {
   const { isMobile } = useContext(ThemeContext);
 
@@ -30,7 +32,7 @@ const PeriodSections = ({
       menuText={menuText}
     />
   ) : (
-    <Desktop data={data} title={title} />
+    <Desktop data={data} title={title} hideView={hideView} />
   );
 };
 

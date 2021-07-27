@@ -62,10 +62,7 @@ const useTweetsData = (
   const [tweets, setTweets] = useState<ITweet[]>([]);
   const sinceIdRef = useRef<string | undefined>(undefined);
   const mountRef = useRef(true);
-  const [data, fetch, error] = useFetch<IUseFetch>(
-    createUrl(name, symbol),
-    modifier
-  );
+  const [data, getData, error] = useFetch<IUseFetch>(modifier);
 
   useEffect(() => {
     if (!data) return;
@@ -78,7 +75,9 @@ const useTweetsData = (
   }, [data && data.sinceId]);
 
   useEffect(() => {
-    fetch().then();
+    getData(createUrl(name, symbol)).then(() => {
+      set();
+    });
     return () => {
       mountRef.current = false;
     };
@@ -86,14 +85,15 @@ const useTweetsData = (
 
   const fecthDataWithSinceId = () => {
     if (!sinceIdRef.current) return;
-
     const urlWithSiceId = createUrl(name, symbol, sinceIdRef.current);
     if (!mountRef.current) return;
-
-    fetch(urlWithSiceId);
+    getData(urlWithSiceId);
   };
 
-  useInterval(fecthDataWithSinceId, GET_TAG_TWEETS_INTERVAL);
+  const [_clear, set] = useInterval(
+    fecthDataWithSinceId,
+    GET_TAG_TWEETS_INTERVAL
+  );
   return [tweets, !data, error];
 };
 

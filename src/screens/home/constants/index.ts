@@ -18,17 +18,6 @@ export const GET_TAG_TWEETS_INTERVAL = 12;
 export const LISTS_AMOUNT_FOR_ANIMATION_IN_TAB = 4;
 export const MOBILE_LIST_LIMIT = 4;
 
-export const LIST_HIDE_ANIMATION_CONFIG = {
-  [VIEW_SELECTOR_OPTIONS.ALL_TWEETS]: {
-    animationDoneTimeout: 500,
-    animationDelay: 0,
-  },
-  [VIEW_SELECTOR_OPTIONS.VARIFIED_USERS]: {
-    animationDoneTimeout: 700,
-    animationDelay: 0.2,
-  },
-};
-
 export const DEFAULT_API_RETRIES = 3;
 export const API_RETRIES_DELAY = 200;
 export const FETCH_VERIFIED_USERS_INTERVAL = 121;

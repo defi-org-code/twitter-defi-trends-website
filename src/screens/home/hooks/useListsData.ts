@@ -5,24 +5,11 @@ import useFetch from "../../../hooks/useFetch";
 import useInterval from "../../../hooks/useInterval";
 import { useEffect } from "react";
 
-// const modifier = (data: any) => {
-//   return data;
-// };
 const useListsData = (
   url: string,
   apiIntervalSeconds: number
 ): [IDatasets | null, boolean] => {
-  const [data, fetch, error] = useFetch<IDatasets>(url);
-  const [clear, set] = useInterval(fetch, apiIntervalSeconds);
-
-  const handleBackToView = () => {
-    fetch();
-    set();
-  };
-
-  useEffect(() => {
-    fetch().then();
-  }, []);
+  const [data, getData, error] = useFetch<IDatasets>();
 
   useEffect(() => {
     if (error) {
@@ -30,7 +17,20 @@ const useListsData = (
     }
   }, [error]);
 
-  useVisibilityChange(handleBackToView, clear);
+  const getListData = () => {
+    getData(url).then(() => {
+      set();
+    });
+  };
+
+  useEffect(() => {
+    getListData();
+  }, []);
+
+  const [clear, set] = useInterval(getData.bind(null, url), apiIntervalSeconds);
+
+  useVisibilityChange(getListData, clear);
+
   return [data, error];
 };
 

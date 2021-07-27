@@ -3,6 +3,7 @@
 @import "./components/ViewOption/style.scss";
 
 .view-selector {
+  order: 3;
   border-bottom: 2px solid #f1f1f1;
   justify-content: center;
   width: fit-content;
@@ -56,12 +57,21 @@
 
 @media only screen and (max-width: $mobile) {
   .view-selector {
-    z-index: 999;
+    z-index: 9999999;
     background: #fafafb;
     position: sticky;
     top: 42px;
+    display: block;
+
     width: 100%;
+    overflow: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
     height: 50px;
+
+    &-indicator {
+      bottom: 0px;
+    }
     .view-selector-custom {
       position: static;
       .tooltip {

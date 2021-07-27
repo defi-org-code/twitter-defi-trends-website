@@ -11,26 +11,28 @@ interface IUseFetch {
   yesterdayTopEntities: IPeriodData[];
   weeklyTopEntities: IPeriodData[];
 }
-declare var process: {
-  env: {
-    REACT_APP_PERIOD_ENTITIES_API: string;
-  };
-};
 
-const Period = () => {
-  const [data, fetch, error] = useFetch<IUseFetch>(
-    process.env.REACT_APP_PERIOD_ENTITIES_API
-  );
+interface IProps {
+  url: string;
+  hideView: boolean;
+}
+
+const Period = ({ url, hideView }: IProps) => {
+  const [data, getData, error] = useFetch<IUseFetch>();
   useEffect(() => {
-    fetch();
+    getPeriod();
   }, []);
 
-  useVisibilityChange(fetch);
+  const getPeriod = () => {
+    getData(url);
+  };
+
+  useVisibilityChange(getPeriod);
   const { isMobile } = useContext(ThemeContext);
   return isMobile ? (
-    <Mobile data={data} error={error} />
+    <Mobile data={data} error={error} hideView={hideView} />
   ) : (
-    <Desktop error={error} data={data} />
+    <Desktop error={error} data={data} hideView={hideView} />
   );
 };
 

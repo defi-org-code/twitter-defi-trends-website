@@ -2,7 +2,6 @@
 @import "../components/CountDown/style.scss";
 @import "../components/Period/style.scss";
 @import "../components/ViewSelector/style.scss";
-@import "../components/ViewContainer/index.scss";
 @import "../components/ListsContainer/style.scss";
 @import "../components/Popups/VerifiedUsersPopup/style.scss";
 
@@ -11,7 +10,8 @@
 }
 .home {
   position: relative;
-
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   transition: $theme-transition;
 }

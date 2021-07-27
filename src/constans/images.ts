@@ -1,8 +1,8 @@
 import questionMarkImg from "../assets/images/question-mark.svg";
 import verifiedUsersSelectImg from "../assets/images/verified-users-select.svg";
 import verifiedUsersSelectDarkImg from "../assets/images/verified-users-select-dark.svg";
-import allTweetsIcon from "../assets/images/all-tweets-icon.svg";
-import allTweetsIconDark from "../assets/images/all-tweets-icon-dark.svg";
+import allRetweetsIcon from "../assets/images/all-retweets.svg";
+import allRetweetsIconDark from "../assets/images/all-tweets-icon-dark.svg";
 
 import CashtagImg from "../assets/images/cashtags.svg";
 import HashtagImg from "../assets/images/hashtags.svg";
@@ -29,6 +29,7 @@ import MenuDots from "../assets/images/menu-dots.svg";
 import MenuDotsDark from "../assets/images/menu-dots-dark.svg";
 import BlackLogo from "../assets/images/black-logo.svg";
 import Logo from "../assets/images/logo.svg";
+import noRetweetsIcon from "../assets/images/no-retweets.svg";
 
 const images = {
   coinsImg: {
@@ -115,12 +116,16 @@ const images = {
     img: greenTwitterImg,
     alt: "twitter",
   },
-  allTweetsIcon: {
-    img: allTweetsIcon,
+  allRetweetsIcon: {
+    img: allRetweetsIcon,
     alt: "twitter",
   },
-  allTweetsIconDark: {
-    img: allTweetsIconDark,
+  allRetweetsIconDark: {
+    img: allRetweetsIconDark,
+    alt: "twitter",
+  },
+  noRetweetsIcon: {
+    img: noRetweetsIcon,
     alt: "twitter",
   },
   menuDots: {

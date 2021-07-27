@@ -5,8 +5,6 @@ const useInterval = (callback: () => void, delay: number) => {
   let t = useRef<any>(null);
 
   useEffect(() => {
-    window.clearInterval(t.current);
-    set();
     return () => {
       window.clearInterval(t.current);
     };

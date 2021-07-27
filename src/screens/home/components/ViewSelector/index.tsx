@@ -6,7 +6,7 @@ import Option from "./components/ViewOption";
 
 interface IProps {
   options: IViewOption[];
-  handleViewSelectDesktop: (name: VIEW_SELECTOR_OPTIONS) => void;
+  handleViewSelectDesktop: (name: VIEW_SELECTOR_OPTIONS, delay: number) => void;
   handleViewSelectMobile: (name: VIEW_SELECTOR_OPTIONS) => void;
 }
 
@@ -19,12 +19,12 @@ const ViewSelector = ({
   const indicatorRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useContext(ThemeContext);
 
-  const select = (option: VIEW_SELECTOR_OPTIONS) => {
-    setSelected(option);
+  const select = (option: IViewOption) => {
+    setSelected(option.value);
     if (isMobile) {
-      return handleViewSelectMobile(option);
+      return handleViewSelectMobile(option.value);
     }
-    handleViewSelectDesktop(option);
+    handleViewSelectDesktop(option.value, option.animatiomEndTimeout);
   };
 
   return (
@@ -37,7 +37,7 @@ const ViewSelector = ({
               key={option.value}
               option={option}
               selected={selected}
-              select={() => select(option.value)}
+              select={() => select(option)}
               isFirst={index === 0}
             />
           );

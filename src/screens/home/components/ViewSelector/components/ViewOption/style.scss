@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 240px;
+  height: 100%;
   padding: 0px 40px;
   text-align: center;
   position: relative;
@@ -21,12 +21,14 @@
   &-name {
     @extend .text;
     font-size: 0.813rem;
+    white-space: nowrap;
+    text-transform: none !important;
   }
   &-img {
     margin-right: 0.375rem;
     object-fit: contain;
-    height: 20px;
-    width: 20px;
+    transform: scale(1.15);
+    transform-origin: bottom;
   }
   &-active {
     .view-selector-option-name {
@@ -38,8 +40,13 @@
 @media only screen and (max-width: $mobile) {
   .view-selector-option {
     min-width: auto;
-    width: 50%;
+    width: auto;
     padding-left: 0px;
     padding-right: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    &-name {
+      white-space: nowrap;
+    }
   }
 }

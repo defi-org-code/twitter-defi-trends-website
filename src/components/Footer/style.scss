@@ -1,29 +1,12 @@
 .footer {
   justify-content: space-between;
-  margin-top: 16px;
-  margin-bottom: 22px;
-  * {
-  }
-  &-policy {
-    height: 14px;
-    align-items: center;
-    a {
-      position: relative;
-      text-decoration: none;
-      &:first-child {
-        margin-right: 30px;
-        &:after {
-          position: absolute;
-          content: "";
-          top: 50%;
-          transform: translate(0, -50%);
-          height: 120%;
-          right: -15px;
-          background: #000000;
-          width: 1px;
-          opacity: 0.5;
-        }
-      }
-    }
+  margin-top: 22px;
+  margin-bottom: 30px;
+  position: relative;
+  .privacy-policy {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }

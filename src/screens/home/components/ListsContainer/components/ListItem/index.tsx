@@ -12,7 +12,7 @@ interface IProps {
   style: any;
   item: IDatasetElement;
   isOpen: boolean;
-  setActiveElement: () => void;
+  setActiveElement: (item: IDatasetElement) => void;
   symbol: string;
   index: number;
   ContentComponent: JSXElementConstructor<any>;
@@ -57,7 +57,7 @@ const ListItem = ({
     if (isUrl) {
       window.open(name);
     } else {
-      setActiveElement();
+      setActiveElement(item);
     }
   };
 

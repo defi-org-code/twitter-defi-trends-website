@@ -1,10 +1,9 @@
-import { memo, useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import useListItemTransition from "../../../../hooks/useListItemTransition";
 import {
   IListCategory,
   IDatasetElement,
   IViewOption,
-  IViewToHide,
   DATASET_TYPES,
 } from "../../../../types";
 import ListItem from "../ListItem";
@@ -16,14 +15,16 @@ interface IProps {
   category: IListCategory;
   categoryName: DATASET_TYPES;
   index: number;
-  viewToHide: IViewToHide | null;
   viewOption: IViewOption;
+  hideView: boolean;
+  hideListsDirection: string;
 }
 
 const List = ({
   dataset,
   category,
-  viewToHide,
+  hideView,
+  hideListsDirection,
   viewOption,
   index,
   categoryName,
@@ -32,12 +33,11 @@ const List = ({
   const [activeElement, setActiveElement] = useState<IDatasetElement | null>(
     null
   );
+
   const [showFullList, setshowFullList] = useState(false);
-  const [hideList, delay, translate] = useHideList(
-    viewToHide,
-    index,
-    viewOption.value
-  );
+  let container = useRef<HTMLDivElement>(null);
+
+  useHideList(hideView, index, hideListsDirection, container);
 
   const { transitions, height } = useListItemTransition(
     dataset,
@@ -55,22 +55,14 @@ const List = ({
   );
 
   return (
-    <div
-      className="list"
-      style={{
-        transform: hideList ? `translate(${translate})` : "none",
-        transitionDelay: `${delay}s`,
-        opacity: hideList ? 0 : 1,
-      }}
-    >
+    <div className="list" ref={container}>
       <Title image={titleImg} darkImage={titleDarkImg} title={title} />
       <div className="list-flex" style={{ height }}>
         {transitions((style, item, t, index) => {
-          const { name } = item;
           return (
             <ListItem
-              isOpen={activeElement?.name === name}
-              setActiveElement={() => handleActiveElement(item)}
+              isOpen={activeElement?.name === item.name}
+              setActiveElement={handleActiveElement}
               item={item}
               symbol={symbol}
               index={index}
@@ -96,4 +88,4 @@ const List = ({
   );
 };
 
-export default memo(List);
+export default List;
