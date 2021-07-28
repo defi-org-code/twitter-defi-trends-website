@@ -30,7 +30,7 @@ const InfluencersList = () => {
     getInfluencers();
   }, []);
 
-  const [clear, set] = useInterval(
+  const { clear, set } = useInterval(
     getData.bind(null, apiUrl),
     FETCH_VERIFIED_USERS_INTERVAL
   );

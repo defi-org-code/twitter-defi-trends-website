@@ -2,7 +2,7 @@ import questionMarkImg from "../assets/images/question-mark.svg";
 import verifiedUsersSelectImg from "../assets/images/verified-users-select.svg";
 import verifiedUsersSelectDarkImg from "../assets/images/verified-users-select-dark.svg";
 import allRetweetsIcon from "../assets/images/all-retweets.svg";
-import allRetweetsIconDark from "../assets/images/all-tweets-icon-dark.svg";
+import allRetweetsIconDark from "../assets/images/all-tweets-dark.svg";
 
 import CashtagImg from "../assets/images/cashtags.svg";
 import HashtagImg from "../assets/images/hashtags.svg";
@@ -30,6 +30,7 @@ import MenuDotsDark from "../assets/images/menu-dots-dark.svg";
 import BlackLogo from "../assets/images/black-logo.svg";
 import Logo from "../assets/images/logo.svg";
 import noRetweetsIcon from "../assets/images/no-retweets.svg";
+import noRetweetsIconDark from "../assets/images/all-tweets-icon-dark.svg";
 
 const images = {
   coinsImg: {
@@ -126,6 +127,10 @@ const images = {
   },
   noRetweetsIcon: {
     img: noRetweetsIcon,
+    alt: "twitter",
+  },
+  noRetweetsDarkIcon: {
+    img: noRetweetsIconDark,
     alt: "twitter",
   },
   menuDots: {

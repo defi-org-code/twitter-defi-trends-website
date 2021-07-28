@@ -47,8 +47,8 @@ class DataGenerator {
         : i;
       return {
         name: `item-${i + 1}`,
-        count: num,
-        processed: num - 100,
+        count: num + 100,
+        processed: num,
       };
     });
   }

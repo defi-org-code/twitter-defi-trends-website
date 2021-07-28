@@ -98,6 +98,7 @@ export interface IViewOption {
   image: string;
   url: string;
   periodApiUrl: string;
+  tweetsUrl: string;
   SelectorCustomComponent?: JSXElementConstructor<any>;
   ListCustomComponent?: JSXElementConstructor<any>;
   darkImage: string;

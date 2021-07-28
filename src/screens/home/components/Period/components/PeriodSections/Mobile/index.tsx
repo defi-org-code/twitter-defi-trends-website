@@ -74,7 +74,7 @@ const PeriodSectionsMobile = ({
         <div className="flex period-sections-mobile-list">
           {data &&
             data.map((element: IPeriodData) => {
-              return <PeriodSection key={element.name} element={element} />;
+              return <PeriodSection key={element.type} element={element} />;
             })}
         </div>
       </AnimateHeight>

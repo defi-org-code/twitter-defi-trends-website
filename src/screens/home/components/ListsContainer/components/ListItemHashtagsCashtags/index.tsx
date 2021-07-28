@@ -11,16 +11,18 @@ import { useRef } from "react";
 interface IProps {
   item: IDatasetElement;
   symbol: string;
+  apiUrl: string;
 }
 
-const ListItemHashtagsCashtags = ({ item, symbol }: IProps) => {
+const ListItemHashtagsCashtags = ({ item, symbol, apiUrl }: IProps) => {
   const { name } = item;
-  const container = useRef<any>(null);
+  const container = useRef<HTMLDivElement>(null);
 
   const [tweets, loading, error] = useTweetsData(
+    apiUrl,
     name,
     symbol,
-    container.current
+    container
   );
   return (
     <div className="list-item-hashtags">

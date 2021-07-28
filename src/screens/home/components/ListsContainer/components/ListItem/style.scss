@@ -11,6 +11,22 @@
   display: flex;
   flex-direction: column;
   transition: $theme-transition;
+
+  &-bg {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background: #e8c456;
+    opacity: 0;
+
+    transition: 0.15s all;
+    transform-origin: bottom;
+    &-active {
+      opacity: 1;
+    }
+  }
   &-wrapper {
     position: relative;
   }
@@ -46,17 +62,6 @@
     }
   }
 
-  &-flame {
-    width: 90%;
-    height: auto;
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    transform: translate(-50%);
-    opacity: 0;
-    pointer-events: none;
-    transition: 0.2s all;
-  }
   &-custom {
     position: relative;
 
@@ -66,22 +71,20 @@
     padding-right: 15px;
     padding-bottom: 10px;
   }
-  &-action {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    cursor: pointer;
-    width: 100%;
-    height: 45px;
-    z-index: 99;
-  }
+
   &-top {
-    padding: 10px 21px 16px 21px;
+    height: 43px;
+    padding-left: 20px;
+    padding-right: 20px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 15px;
     &-name {
       margin-right: 30px;
       border-bottom: 1px solid transparent;
@@ -90,19 +93,22 @@
       font-size: 0.688rem;
       white-space: nowrap;
       flex: 1;
-      height: 100%;
-      overflow: hidden;
 
+      overflow: hidden;
+      position: relative;
       align-items: center;
       text-overflow: ellipsis;
       padding-top: 5px;
       padding-bottom: 5px;
+      z-index: 1;
     }
 
     &-counter {
+      z-index: 1;
       font-size: 0.813rem;
       color: #92929d;
       text-align: right;
+      position: relative;
     }
   }
   &-active {

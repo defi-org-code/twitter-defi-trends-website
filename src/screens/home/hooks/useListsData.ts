@@ -27,7 +27,10 @@ const useListsData = (
     getListData();
   }, []);
 
-  const [clear, set] = useInterval(getData.bind(null, url), apiIntervalSeconds);
+  const { clear, set } = useInterval(
+    getData.bind(null, url),
+    apiIntervalSeconds
+  );
 
   useVisibilityChange(getListData, clear);
 

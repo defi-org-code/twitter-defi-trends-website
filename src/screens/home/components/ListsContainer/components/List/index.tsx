@@ -68,9 +68,8 @@ const List = ({
               index={index}
               categoryName={categoryName}
               ContentComponent={category.component}
-              countForAnimation={viewOption.countForAnimation}
-              positionsJumpForAnimation={viewOption.positionsJumpForAnimation}
               apiIntervalSeconds={viewOption.apiIntervalSeconds}
+              tweetsUrl={viewOption.tweetsUrl}
               style={{
                 zIndex: dataset.length - index,
                 ...style,

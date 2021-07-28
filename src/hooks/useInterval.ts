@@ -31,7 +31,7 @@ const useInterval = (callback: () => void, delay: number) => {
     }, delay * 1000);
   };
 
-  return [clear, set, reset];
+  return { clear, set, reset };
 };
 
 export default useInterval;

@@ -1,13 +1,12 @@
 import { animated } from "@react-spring/web";
-import { JSXElementConstructor, memo } from "react";
+import { JSXElementConstructor, memo, useRef } from "react";
 import Counter from "../../../../../../components/Counter";
-import useListItemUpdate from "../../../../hooks/useListItemUpdate";
-import UpdatedAnimation from "./UpdatedAnimation";
 import { DATASET_TYPES, IDatasetElement } from "../../../../types";
 import Tooltip from "../../../../../../components/Tooltip";
-
 import useAnalytics from "../../../../../../hooks/useAnalytics";
 import { ANALYTICS_EVENTS } from "../../../../../../services/analytics/types";
+
+import useBackground from "./useBackground";
 interface IProps {
   style: any;
   item: IDatasetElement;
@@ -16,18 +15,10 @@ interface IProps {
   symbol: string;
   index: number;
   ContentComponent: JSXElementConstructor<any>;
-  countForAnimation: number;
-  positionsJumpForAnimation: number;
   apiIntervalSeconds: number;
   categoryName: DATASET_TYPES;
+  tweetsUrl: string;
 }
-
-const handleClassName = (isOpen: boolean) => {
-  if (isOpen) {
-    return "list-item list-item-open";
-  }
-  return "list-item";
-};
 
 const ListItem = ({
   style,
@@ -35,23 +26,16 @@ const ListItem = ({
   setActiveElement,
   isOpen,
   symbol,
-  index,
   ContentComponent,
-  countForAnimation,
-  positionsJumpForAnimation,
   apiIntervalSeconds,
   categoryName,
+  tweetsUrl,
 }: IProps) => {
   const { sendEventAndRunAction } = useAnalytics();
   const { name, count, processed, extra } = item;
   const isUrl = categoryName === DATASET_TYPES.URLS;
-  const [updated] = useListItemUpdate(
-    count,
-    processed,
-    countForAnimation,
-    index,
-    positionsJumpForAnimation
-  );
+  const bgElement = useRef<HTMLDivElement>(null);
+  const [handleCounterChange] = useBackground(bgElement);
 
   const handleSelect = () => {
     if (isUrl) {
@@ -63,36 +47,36 @@ const ListItem = ({
 
   return (
     <animated.div className="card" style={style}>
-      <div className={handleClassName(isOpen)}>
-        <figure
-          className="list-item-action"
+      <div className={isOpen ? "list-item list-item-open" : "list-item"}>
+        {isUrl && <Tooltip content={`${symbol} ${extra}`} />}
+        <div
+          className="list-item-top"
           onClick={sendEventAndRunAction.bind(
             null,
             ANALYTICS_EVENTS.TAP_ON_ENTITY,
             categoryName,
             handleSelect
           )}
-        />
-        {isUrl && <Tooltip content={`${symbol} ${extra}`} />}
-        <div className="list-item-top">
+        >
           {isUrl ? (
             <p className="list-item-top-name">{`${symbol} ${extra}`}</p>
           ) : (
             <p className="list-item-top-name">{`${symbol}${name}`}</p>
           )}
-
+          {!isOpen && <div className="list-item-bg" ref={bgElement}></div>}
           <p className="list-item-top-counter">
             <Counter
               value={count}
               duration={apiIntervalSeconds}
               start={processed}
+              changeFunc={handleCounterChange}
             />
           </p>
         </div>
-        {updated && <UpdatedAnimation />}
+
         {isOpen && (
           <div className="list-item-custom">
-            <ContentComponent item={item} symbol={symbol} />
+            <ContentComponent item={item} symbol={symbol} apiUrl={tweetsUrl} />
           </div>
         )}
       </div>
