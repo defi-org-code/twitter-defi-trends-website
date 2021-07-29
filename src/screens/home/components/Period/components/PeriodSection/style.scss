@@ -13,6 +13,9 @@
   &:nth-child(1) {
     padding-left: 0px;
   }
+  &-tooltip {
+    word-break: break-all;
+  }
   &::after {
     position: absolute;
     right: 0px;
@@ -43,6 +46,7 @@
   a {
     cursor: pointer;
   }
+
   &-name {
     width: 45%;
     cursor: default;
@@ -57,19 +61,7 @@
     pointer-events: none;
     transition: 0.2s all;
   }
-  .tooltip {
-    top: calc(100%);
-    padding: 5px 15px;
-    &::after {
-      left: 10px;
-    }
-  }
 
-  &:hover {
-    .tooltip {
-      opacity: 1;
-    }
-  }
   img {
     margin-right: 5px;
     background-size: 10px 10px;

@@ -25,4 +25,4 @@ export const FETCH_VERIFIED_USERS_INTERVAL = 121;
 export const DEFI_ORG_URL = "https://twitter.defi.org";
 export const TWITTER_DEFI_ORG_HANDLE = "@DefiOrg";
 export const TWEET_TEXT = `I also want to be verified by ${TWITTER_DEFI_ORG_HANDLE} and appear on ${DEFI_ORG_URL}`;
-export const LIST_ITEM_BACKGROUND_ANIMATION_DURATION = 300;
+export const LIST_ITEM_BACKGROUND_ANIMATION_DURATION = 600;

@@ -37,36 +37,32 @@ const PeriodSection = ({ element }: { element: IPeriodData }) => {
     window.open(url);
   };
 
-  const returnTooltip = (content: string) => {
-    return isMobile ? (
-      <Tooltip content={content} style={{ opacity: showTooltip ? 1 : 0 }} />
-    ) : (
-      <Tooltip content={content} />
-    );
-  };
-
   return (
     <section className="period-element" ref={container}>
       <h4 className="period-element-title">{category.shortName}</h4>
       <span className="flex period-element-content">
-        {isLink ? (
-          <>
+        <Tooltip
+          className="period-element-tooltip"
+          content={
+            isLink ? (
+              <p className="word-break">
+                {category.symbol} {extra}
+              </p>
+            ) : (
+              `${category.symbol} ${name}`
+            )
+          }
+          btnContent={
             <p
               className="period-element-name"
-              onClick={() => handleLinkClick(name)}
+              onClick={() => isLink && handleLinkClick(name)}
             >
               <img src={category.image} alt="" />
-              LINK
+              {isLink ? "LINK" : name}
             </p>
-            {returnTooltip(`${category.symbol} ${extra}`)}
-          </>
-        ) : (
-          <>
-            <img src={category.image} alt="" />
-            <p className="period-element-name">{name}</p>
-            {returnTooltip(`${category.symbol} ${name}`)}
-          </>
-        )}
+          }
+        />
+
         <p className="period-element-count">{count.toLocaleString()}</p>
       </span>
     </section>

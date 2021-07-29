@@ -17,3 +17,28 @@
     width: 1px;
   }
 }
+
+@media only screen and (max-width: $mobile) {
+  .privacy-policy {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    a,
+    span {
+      font-size: 9px;
+    }
+
+    span {
+      &:last-of-type {
+        display: none;
+      }
+    }
+
+    a {
+      width: 40%;
+      &:last-of-type {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  }
+}

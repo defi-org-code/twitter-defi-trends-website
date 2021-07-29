@@ -14,3 +14,5 @@ export const lottieAnimations = {
   loadingSmall,
   placeholderLoading,
 };
+
+export const ORBS_EMAIL = "twitter@defi.org";

@@ -1,26 +1,30 @@
 import { useState } from "react";
-import Tooltip from "../../../../../../../components/Tooltip";
 import images from "../../../../../../../constans/images";
-import Popup from "../../../../../../../components/Popup";
+import CustomModal from "../../../../../../../components/CustomModal";
 import VerifiedUsersPopup from "../../../../Popups/VerifiedUsersPopup";
+import Tooltip from "../../../../../../../components/Tooltip";
 const VerifiedUsersViewCustom = () => {
   const [isPopup, setIsPopup] = useState(false);
-
   const togglePopup = () => {
     setIsPopup((p) => !p);
   };
 
   return (
     <div className="view-selector-custom view-selector-custom-desktop">
-      <Popup
-        close={togglePopup}
-        show={isPopup}
-        ContentCoponent={VerifiedUsersPopup}
+      <CustomModal
+        closePopup={togglePopup}
+        isOpen={isPopup}
+        content={<VerifiedUsersPopup onClick={togglePopup} />}
       />
-      <button onClick={togglePopup} className="view-selector-custom-btn">
-        <img src={images.questionMark.img} alt={images.questionMark.alt} />
-      </button>
-      <Tooltip content="Realtime tweets about DeFi by a verified list of users" />
+
+      <Tooltip
+        content="Realtime tweets about DeFi by a verified list of users"
+        className="view-selector-custom-btn"
+        onClick={() => togglePopup()}
+        btnContent={
+          <img src={images.questionMark.img} alt={images.questionMark.alt} />
+        }
+      />
     </div>
   );
 };

@@ -11,31 +11,12 @@
   margin-right: auto;
   position: relative;
   transition: $theme-transition;
-  &-indicator {
-    border-bottom: 2px solid #ffc542;
-    height: 2px;
-    position: absolute;
-    bottom: -2px;
-    transition: 0.15s all;
+  .MuiTabs-root {
+    margin-bottom: -2px;
   }
   .view-selector-custom {
     position: relative;
     margin-left: 10px;
-    .tooltip {
-      top: calc(100% + 20px);
-      left: -20px;
-      padding: 10px;
-      &::after {
-        left: 20px;
-      }
-    }
-    &-desktop {
-      &:hover {
-        .tooltip {
-          opacity: 1;
-        }
-      }
-    }
 
     &-btn {
       width: 15px;
@@ -62,23 +43,13 @@
     position: sticky;
     top: 42px;
     display: block;
-
     width: 100%;
-    overflow: auto;
-    overflow-y: hidden;
+
     justify-content: flex-start;
     height: 50px;
 
-    &-indicator {
-      bottom: 0px;
-    }
     .view-selector-custom {
       position: static;
-      .tooltip {
-        left: 50%;
-        transform: translate(-50%);
-        width: calc(100% - 10px);
-      }
     }
   }
   .dark-mode {

@@ -44,7 +44,9 @@ a {
     opacity: 0.2;
   }
 }
-
+.word-break {
+  word-break: break-all;
+}
 .dark-mode {
   background: $dark-mode-bg;
   .loader {

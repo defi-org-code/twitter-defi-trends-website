@@ -36,7 +36,7 @@ export const views = [
     apiIntervalSeconds: POLL_NEW_TWEETS_INTERVAL_DELAY_SECONDS,
     countForAnimation: COUNT_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION,
     positionsJumpForAnimation: POSITIONS_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION,
-    animatiomEndTimeout: 650,
+    animatiomEndTimeout: 600,
   },
 
   {
@@ -52,7 +52,7 @@ export const views = [
     apiIntervalSeconds: POLL_NEW_TWEETS_INTERVAL_DELAY_SECONDS,
     countForAnimation: COUNT_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION,
     positionsJumpForAnimation: POSITIONS_TO_JUMP_TO_SHOW_ON_FIRE_ANIMATION,
-    animatiomEndTimeout: 750,
+    animatiomEndTimeout: 600,
   },
   {
     title: "Tweets By Verified Users",

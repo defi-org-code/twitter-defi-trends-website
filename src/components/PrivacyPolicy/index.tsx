@@ -1,3 +1,5 @@
+import { ORBS_EMAIL } from "../../constans";
+
 function PrivacyPolicy() {
   return (
     <div className="privacy-policy flex">
@@ -15,6 +17,10 @@ function PrivacyPolicy() {
         rel="noreferrer"
       >
         All rights reserved DeFi
+      </a>
+      <span></span>
+      <a href={`mailto:${ORBS_EMAIL}`} target="_blank" rel="noreferrer">
+        Contact us
       </a>
     </div>
   );
