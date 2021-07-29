@@ -3,6 +3,8 @@ import { sleep } from "../../utils";
 import ListsContainer from "./components/ListsContainer";
 import ViewSelector from "./components/ViewSelector";
 import { views } from "./data/views";
+import Footer from "../../components/Footer";
+import AppLoader from "../../components/AppLoader";
 import {
   VIEW_SELECTOR_OPTIONS,
   IViewOption,
@@ -43,26 +45,31 @@ const Home = () => {
     setCurrentView(nextView);
   };
   return (
-    <div className="home">
-      <ViewSelector
-        options={views}
-        handleViewSelectDesktop={handleViewSelectDesktop}
-        handleViewSelectMobile={handleViewSelectMobile}
-      />
-      {views.map((viewOption: IViewOption) => {
-        if (currentView === viewOption.value) {
-          return (
-            <ListsContainer
-              key={viewOption.title}
-              hideView={hideCurrentView}
-              hideListsDirection={hideListsDirection}
-              viewOption={viewOption}
-            />
-          );
-        }
-        return null;
-      })}
-    </div>
+    <AppLoader>
+      <div className="home">
+        <div className="home-flex">
+          <ViewSelector
+            options={views}
+            handleViewSelectDesktop={handleViewSelectDesktop}
+            handleViewSelectMobile={handleViewSelectMobile}
+          />
+          {views.map((viewOption: IViewOption) => {
+            if (currentView === viewOption.value) {
+              return (
+                <ListsContainer
+                  key={viewOption.title}
+                  hideView={hideCurrentView}
+                  hideListsDirection={hideListsDirection}
+                  viewOption={viewOption}
+                />
+              );
+            }
+            return null;
+          })}
+        </div>
+        <Footer />
+      </div>
+    </AppLoader>
   );
 };
 

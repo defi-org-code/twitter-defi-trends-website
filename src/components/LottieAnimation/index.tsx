@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import lottie from "lottie-web";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 interface IProps {
   animation: any;
@@ -30,7 +30,7 @@ const LottieAnimation = ({ animation, customClassName, subframe }: IProps) => {
   }, []);
 
   const className = customClassName ? `${customClassName} lottie` : "lottie";
-  return <div className={className} ref={container}/>;
+  return <div className={className} ref={container} />;
 };
 
 export default LottieAnimation;

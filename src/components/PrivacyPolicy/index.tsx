@@ -1,23 +1,17 @@
-import { ORBS_EMAIL } from "../../constans";
+import { ORBS_EMAIL, routes } from "../../constans";
+import { Link } from "react-router-dom";
 
 function PrivacyPolicy() {
   return (
     <div className="privacy-policy flex">
-      <a
-        href="https://drive.google.com/file/d/1wezw2x5U-hPrGrviXc7nx9XHDjtzjcKw/view"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <Link to={routes.privacyPolicy} target="_blank" rel="noreferrer">
         Policy Privacy
-      </a>
+      </Link>
       <span></span>
-      <a
-        href="https://drive.google.com/file/d/1YEYFE76uHIU_7atuG-ahD8hIHy6ur975/view"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <Link to={routes.termsOfUse} target="_blank" rel="noreferrer">
         All rights reserved DeFi
-      </a>
+      </Link>
+
       <span></span>
       <a href={`mailto:${ORBS_EMAIL}`} target="_blank" rel="noreferrer">
         Contact us

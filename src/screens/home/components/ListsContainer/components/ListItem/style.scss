@@ -7,7 +7,7 @@
   box-shadow: inset 0px -1px 0px #dcdce0;
   border-radius: 15px;
   border: none;
-  border: 0.3px solid transparent;
+  border: 1px solid transparent;
   display: flex;
   flex-direction: column;
   transition: $theme-transition;
@@ -95,7 +95,7 @@
     opacity: 1;
   }
   &-open {
-    border: 0.3px solid #ffc542;
+    border: 1px solid #ffc542;
     box-shadow: inset 0px -1px 0px #dcdce0;
     .list-item-content {
       &-name {
@@ -105,7 +105,7 @@
   }
 
   &:hover {
-    border: 0.3px solid #ffc542;
+    border: 1px solid #ffc542;
   }
   &-active {
     .list-item-flame {

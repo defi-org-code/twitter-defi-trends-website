@@ -5,7 +5,6 @@ import Tweet from "./Tweet";
 import ListItemLoader from "../ListItemLoader";
 import ErrorHandling from "../../../../../../components/ErrorHandling";
 import LoadingHandler from "../../../../../../components/LoadingHandler";
-import "react-virtualized/styles.css";
 
 import { useRef } from "react";
 interface IProps {

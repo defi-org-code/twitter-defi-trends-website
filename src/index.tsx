@@ -2,15 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import AppLoader from "./components/AppLoader";
 import { ThemeProvider } from "./providers/ThemeProvider";
+import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-      <AppLoader>
+      <Router>
         <App />
-      </AppLoader>
+      </Router>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
