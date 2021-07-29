@@ -40,11 +40,11 @@ function Menu({ showMenu, openMenu, hideMenu, isDarkMode }: IProps) {
           <p>{isDarkMode ? "Switch to light mode" : "Switch to dark mode"}</p>
           <ThemeToggle customClassName="mobile-toggle" />
         </section>
+        <PrivacyPolicy />
       </div>
       <div className="navbar-mobile-menu-bottom">
         <WithLoveText />
       </div>
-      <PrivacyPolicy />
     </div>
   );
 }

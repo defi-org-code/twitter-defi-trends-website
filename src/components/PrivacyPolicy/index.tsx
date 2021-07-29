@@ -9,7 +9,7 @@ function PrivacyPolicy() {
       </Link>
       <span></span>
       <Link to={routes.termsOfUse} target="_blank" rel="noreferrer">
-        All rights reserved DeFi
+        Terms of use
       </Link>
 
       <span></span>

@@ -59,12 +59,9 @@ const PeriodSectionsMobile = ({
         </div>
       )}
       <section className="period-sections-mobile-header flex">
-        <div className="flex">
+        <div className="flex" onClick={() => setShowMenu(!showMenu)}>
           <h5>{title}</h5>
-          <aside
-            onClick={() => setShowMenu(true)}
-            className="period-sections-mobile-toggle"
-          ></aside>
+          <aside className="period-sections-mobile-toggle"></aside>
         </div>
         {data && (
           <button onClick={handleActive}>{active ? "X Close" : "View"}</button>

@@ -2,46 +2,24 @@ import { categortiesDictionary } from "../../../../constants";
 import { categories } from "../../../../data";
 import { DATASET_TYPES, IPeriodData } from "../../../../types";
 import Tooltip from "../../../../../../components/Tooltip";
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import { ThemeContext } from "../../../../../../providers/ThemeProvider";
-import useClickOutside from "../../../../../../hooks/useClickOutside";
 
 const PeriodSection = ({ element }: { element: IPeriodData }) => {
   const { isMobile } = useContext(ThemeContext);
   const container = useRef<HTMLDivElement>(null);
 
-  const [showTooltip, setShowTooltip] = useState(false);
-  useClickOutside(
-    container,
-    isMobile ? () => setShowTooltip(false) : undefined
-  );
   const { type, name, count, extra } = element;
   const categoryKey = categortiesDictionary[type];
   const category = categories[categoryKey];
   const isLink = categoryKey === DATASET_TYPES.URLS;
-
-  const handleLinkClick = (url: string) => {
-    if (isMobile) {
-      handleMobileLinkClick(url);
-      return;
-    }
-    window.open(url);
-  };
-
-  const handleMobileLinkClick = (url: string) => {
-    if (!showTooltip) {
-      setShowTooltip(true);
-      return;
-    }
-    setShowTooltip(false);
-    window.open(url);
-  };
 
   return (
     <section className="period-element" ref={container}>
       <h4 className="period-element-title">{category.shortName}</h4>
       <span className="flex period-element-content">
         <Tooltip
+          onClick={() => isLink && window.open(extra)}
           className="period-element-tooltip"
           content={
             isLink ? (
@@ -53,12 +31,9 @@ const PeriodSection = ({ element }: { element: IPeriodData }) => {
             )
           }
           btnContent={
-            <p
-              className="period-element-name"
-              onClick={() => isLink && handleLinkClick(name)}
-            >
+            <p className="period-element-name">
               <img src={category.image} alt="" />
-              {isLink ? "LINK" : name}
+              {isLink && isMobile ? name : isLink ? "LINK" : name}
             </p>
           }
         />

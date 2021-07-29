@@ -31,18 +31,30 @@ function ListItemTop({
   const [handleCounterChange] = useBackground(bgElement);
 
   const { name, extra, count, processed } = item;
-  return (
-    <div
-      className="list-item-top"
-      onClick={sendEventAndRunAction.bind(
+
+  const select = () => {
+    if (isUrl) {
+      sendEventAndRunAction.bind(
+        null,
+        ANALYTICS_EVENTS.TAP_ON_ENTITY,
+        categoryName,
+        window.open.bind(null, name)
+      )();
+    } else {
+      sendEventAndRunAction.bind(
         null,
         ANALYTICS_EVENTS.TAP_ON_ENTITY,
         categoryName,
         handleSelect.bind(null, item)
-      )}
-    >
+      )();
+    }
+  };
+
+  return (
+    <div className="list-item-top" onClick={!isUrl ? select : () => {}}>
       {isUrl && (
         <Tooltip
+          onClick={select}
           content={
             <p className="word-break">
               {symbol} {extra}
