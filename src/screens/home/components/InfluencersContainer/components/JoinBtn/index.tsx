@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import images from "../../../../../../constans/images";
 import { ThemeContext } from "../../../../../../providers/ThemeProvider";
-import Popup from "../../../../../../components/Popup";
 import VerifiedUsersPopup from "../../../Popups/VerifiedUsersPopup";
 import useAnalytics from "../../../../../../hooks/useAnalytics";
 import { ANALYTICS_EVENTS } from "../../../../../../services/analytics/types";
+import CustomModal from "../../../../../../components/CustomModal";
 
 const JoinBtn = () => {
   const { isDarkMode } = useContext(ThemeContext);
@@ -28,10 +28,11 @@ const JoinBtn = () => {
           alt={isDarkMode ? images.twitterBlack.alt : images.greenTwitter.alt}
         />
       </button>
-      <Popup
-        close={() => setIsPopup(false)}
-        show={isPopup}
-        ContentCoponent={VerifiedUsersPopup}
+
+      <CustomModal
+        closePopup={setIsPopup.bind(null, false)}
+        isOpen={isPopup}
+        content={<VerifiedUsersPopup onClick={setIsPopup.bind(null, false)} />}
       />
     </>
   );

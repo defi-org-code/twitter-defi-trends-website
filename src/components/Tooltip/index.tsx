@@ -1,19 +1,75 @@
-import React, { CSSProperties } from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import Tooltip from "@material-ui/core/Tooltip";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import { useContext, useState } from "react";
+import { CSSProperties } from "@material-ui/core/styles/withStyles";
+import { ThemeContext } from "../../providers/ThemeProvider";
+import Fade from "@material-ui/core/Fade";
 
 interface IProps {
   content: any;
+  btnContent: JSX.Element;
+  className?: string;
+  triggerOnClick?: boolean;
+  onClick?: () => void;
   style?: CSSProperties;
-  customClassName?: string;
 }
-const Tooltip = ({ content, style, customClassName }: IProps) => {
-  return (
-    <div
-      className={customClassName ? `${customClassName} tooltip` : "tooltip"}
-      style={style}
-    >
-      <p>{content}</p>
-    </div>
-  );
-};
 
-export default Tooltip;
+function FloatingTooltip({
+  btnContent,
+  content,
+  className,
+  onClick,
+  style,
+}: IProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const { isMobile } = useContext(ThemeContext);
+
+  const handleClick = () => {
+    if (!isOpen) {
+      setIsOpen(true);
+      return;
+    }
+    if (onClick) {
+      onClick();
+    }
+    setIsOpen(!isOpen);
+  };
+  return (
+    <>
+      {isMobile ? (
+        <ClickAwayListener onClickAway={setIsOpen.bind(null, false)}>
+          <Tooltip
+            TransitionComponent={Fade}
+            className={className ? `${className} tooltip` : "tooltip"}
+            title={content}
+            onClick={handleClick}
+            arrow
+            open={isOpen}
+            disableFocusListener
+            disableHoverListener
+            disableTouchListener
+            style={style}
+            enterDelay={0}
+          >
+            {btnContent}
+          </Tooltip>
+        </ClickAwayListener>
+      ) : (
+        <Tooltip
+          TransitionComponent={Fade}
+          className={className ? `${className} tooltip` : "tooltip"}
+          title={content}
+          onClick={onClick && onClick}
+          arrow
+          style={style}
+          enterDelay={0}
+        >
+          {btnContent}
+        </Tooltip>
+      )}
+    </>
+  );
+}
+
+export default FloatingTooltip;

@@ -9,14 +9,11 @@ declare const process: {
 };
 
 class Analytics {
-
   isInProd: boolean = true;
 
   init() {
     this.isInProd = process.env.NODE_ENV !== "development";
-    if (
-      process.env.REACT_APP_AMPLITUDE && this.isInProd
-    ) {
+    if (process.env.REACT_APP_AMPLITUDE && this.isInProd) {
       amplitude.getInstance().init(process.env.REACT_APP_AMPLITUDE);
       this.sendEvent(ANALYTICS_EVENTS.PAGE_VIEW);
     }

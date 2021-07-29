@@ -14,3 +14,11 @@ export const lottieAnimations = {
   loadingSmall,
   placeholderLoading,
 };
+
+export const ORBS_EMAIL = "twitter@defi.org";
+
+export const routes = {
+  root: "/",
+  privacyPolicy: "/privacy-policy",
+  termsOfUse: "/terms-of-use",
+};

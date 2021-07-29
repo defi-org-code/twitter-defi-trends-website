@@ -1,35 +1,20 @@
 .tooltip {
-  position: relative;
-
-  transition: 0.2s all;
-  position: absolute;
-  max-width: 250px;
-  width: max-content;
-  background: #171725;
-  color: white;
-  font-size: 0.625rem;
-  line-height: 1.125rem;
+  font-size: 0.7rem !important;
+  max-width: 280px;
+  line-height: 1.2rem;
   text-align: left;
-  z-index: 100;
-  opacity: 0;
-  pointer-events: none;
+}
 
-  &::after {
-    position: absolute;
-    bottom: 100%;
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-
-    border-bottom: 6px solid #171725;
-    content: "";
+.MuiTooltip {
+  &-arrow {
+    color: #171725 !important;
   }
-  p,
-  span {
-    width: fit-content;
-    color: white;
-    font-size: 0.625rem;
-    line-height: 1.125rem;
+  &-tooltip {
+    display: flex;
+    background-color: #171725 !important;
+    font-family: "Poppins", sans-serif !important;
+    font-size: 0.688rem !important;
+    line-height: 1.2rem !important;
+    font-weight: 400 !important;
   }
 }

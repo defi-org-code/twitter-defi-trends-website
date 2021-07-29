@@ -2,6 +2,7 @@ import { CSSProperties, useRef } from "react";
 import images from "../../../constans/images";
 import useClickOutside from "../../../hooks/useClickOutside";
 import ImgComponent from "../../ImgComponent";
+import PrivacyPolicy from "../../PrivacyPolicy";
 import ThemeToggle from "../../ThemeToggle";
 import WithLoveText from "../../WithLoveText";
 interface IProps {
@@ -39,6 +40,7 @@ function Menu({ showMenu, openMenu, hideMenu, isDarkMode }: IProps) {
           <p>{isDarkMode ? "Switch to light mode" : "Switch to dark mode"}</p>
           <ThemeToggle customClassName="mobile-toggle" />
         </section>
+        <PrivacyPolicy />
       </div>
       <div className="navbar-mobile-menu-bottom">
         <WithLoveText />

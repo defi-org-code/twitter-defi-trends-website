@@ -2,7 +2,6 @@
 @import "../components/CountDown/style.scss";
 @import "../components/Period/style.scss";
 @import "../components/ViewSelector/style.scss";
-@import "../components/ViewContainer/index.scss";
 @import "../components/ListsContainer/style.scss";
 @import "../components/Popups/VerifiedUsersPopup/style.scss";
 
@@ -14,6 +13,14 @@
 
   min-height: 100vh;
   transition: $theme-transition;
+  &-flex {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .footer {
+    order: 5;
+  }
 }
 
 /* width */

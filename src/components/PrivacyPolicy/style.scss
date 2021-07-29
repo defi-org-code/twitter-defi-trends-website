@@ -1,0 +1,38 @@
+.privacy-policy {
+  height: 20px;
+  align-items: center;
+  a,
+  span {
+    color: #92929d;
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+  span {
+    margin-left: 10px;
+    margin-right: 10px;
+    background: black;
+    opacity: 0.5;
+    height: 100%;
+
+    width: 1px;
+  }
+}
+
+@media only screen and (max-width: $mobile) {
+  .privacy-policy {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 10px;
+    span {
+      display: none;
+      justify-content: flex-start;
+    }
+    a {
+      color: #171725;
+      margin-bottom: 20px;
+      &:last-child {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}

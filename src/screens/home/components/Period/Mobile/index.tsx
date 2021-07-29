@@ -13,9 +13,10 @@ interface IData {
 interface IProps {
   data: IData;
   error: boolean;
+  hideView: boolean;
 }
 
-const PeriodMobile = ({ data, error }: IProps) => {
+const PeriodMobile = ({ data, error, hideView }: IProps) => {
   const [periodSelected, setPeriodSelected] = useState(PERIODS.WEEK);
 
   const selectPeriod = (period: PERIODS) => {
@@ -32,6 +33,7 @@ const PeriodMobile = ({ data, error }: IProps) => {
             title="Weekly top"
             data={data?.weeklyTopEntities}
             selectPeriod={selectPeriod}
+            hideView={hideView}
           />
         </ErrorHandling>
       ) : (
@@ -42,6 +44,7 @@ const PeriodMobile = ({ data, error }: IProps) => {
             selectPeriod={selectPeriod}
             title="Yesterday's top"
             data={data?.yesterdayTopEntities}
+            hideView={hideView}
           />
         </ErrorHandling>
       )}

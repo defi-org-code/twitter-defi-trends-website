@@ -97,20 +97,24 @@ export interface IViewOption {
   value: VIEW_SELECTOR_OPTIONS;
   image: string;
   url: string;
+  periodApiUrl: string;
+  tweetsUrl: string;
   SelectorCustomComponent?: JSXElementConstructor<any>;
   ListCustomComponent?: JSXElementConstructor<any>;
   darkImage: string;
   apiIntervalSeconds: number;
   countForAnimation: number;
   positionsJumpForAnimation: number;
+  animatiomEndTimeout: number;
 }
 
 export enum VIEW_SELECTOR_OPTIONS {
   ALL_TWEETS = "all_tweets",
   VARIFIED_USERS = "varified_users",
+  NO_RETWEETS = "no_retweets",
 }
 
-export interface IViewToHide {
-  view: VIEW_SELECTOR_OPTIONS;
-  isBigger: boolean;
+export enum HIDE_LISTS_DIRECTION {
+  LEFT = "LEFT",
+  RIGHT = "RIGHT",
 }

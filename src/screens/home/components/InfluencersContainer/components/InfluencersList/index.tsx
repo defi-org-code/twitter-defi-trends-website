@@ -18,18 +18,24 @@ declare const process: {
 const InfluencersList = () => {
   const apiUrl = process.env.REACT_APP_ACTIVE_USERS_API;
   const { isMobile } = useContext(ThemeContext);
-  const [users, fetch, error] = useFetch<IUser[]>(apiUrl);
-  const [clear, set] = useInterval(fetch, FETCH_VERIFIED_USERS_INTERVAL);
-  useEffect(() => {
-    fetch();
-  }, []);
+  const [users, getData, error] = useFetch<IUser[]>();
 
-  const getData = () => {
-    fetch();
-    set();
+  const getInfluencers = () => {
+    getData(apiUrl).then(() => {
+      set();
+    });
   };
 
-  useVisibilityChange(getData, clear);
+  useEffect(() => {
+    getInfluencers();
+  }, []);
+
+  const { clear, set } = useInterval(
+    getData.bind(null, apiUrl),
+    FETCH_VERIFIED_USERS_INTERVAL
+  );
+
+  useVisibilityChange(getInfluencers, clear);
 
   return (
     <div className="influencers-list flex">

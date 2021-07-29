@@ -7,8 +7,9 @@
 @import "./components/ListItemLoader/style.scss";
 
 .lists {
+  order: 4;
   width: 100%;
-  margin: auto;
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

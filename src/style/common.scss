@@ -1,8 +1,10 @@
+$main-font: "Poppins", sans-serif;
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: $main-font;
   background: $light-mode-bg;
   transition: $theme-transition;
 }
+
 .text {
   transition: $theme-transition;
   color: $main-text-color;
@@ -44,7 +46,9 @@ a {
     opacity: 0.2;
   }
 }
-
+.word-break {
+  word-break: break-all;
+}
 .dark-mode {
   background: $dark-mode-bg;
   .loader {

@@ -1,4 +1,4 @@
-import { DATASET_TYPES, VIEW_SELECTOR_OPTIONS } from "../types";
+import { DATASET_TYPES } from "../types";
 
 export const categortiesDictionary: { [key: string]: DATASET_TYPES } = {
   "0": DATASET_TYPES.CASHTAGS,
@@ -18,17 +18,6 @@ export const GET_TAG_TWEETS_INTERVAL = 12;
 export const LISTS_AMOUNT_FOR_ANIMATION_IN_TAB = 4;
 export const MOBILE_LIST_LIMIT = 4;
 
-export const LIST_HIDE_ANIMATION_CONFIG = {
-  [VIEW_SELECTOR_OPTIONS.ALL_TWEETS]: {
-    animationDoneTimeout: 500,
-    animationDelay: 0,
-  },
-  [VIEW_SELECTOR_OPTIONS.VARIFIED_USERS]: {
-    animationDoneTimeout: 700,
-    animationDelay: 0.2,
-  },
-};
-
 export const DEFAULT_API_RETRIES = 3;
 export const API_RETRIES_DELAY = 200;
 export const FETCH_VERIFIED_USERS_INTERVAL = 121;
@@ -36,3 +25,4 @@ export const FETCH_VERIFIED_USERS_INTERVAL = 121;
 export const DEFI_ORG_URL = "https://twitter.defi.org";
 export const TWITTER_DEFI_ORG_HANDLE = "@DefiOrg";
 export const TWEET_TEXT = `I also want to be verified by ${TWITTER_DEFI_ORG_HANDLE} and appear on ${DEFI_ORG_URL}`;
+export const LIST_ITEM_BACKGROUND_ANIMATION_DURATION = 600;

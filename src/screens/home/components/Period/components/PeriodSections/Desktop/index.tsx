@@ -5,12 +5,13 @@ import PeriodSectionsLoader from "../../PeriodLoader/PeriodLoaderDesktop";
 interface IProps {
   data: IPeriodData[];
   title: string;
+  hideView: boolean;
 }
 
-const PeriodSectionsDesktop = ({ data, title }: IProps) => {
+const PeriodSectionsDesktop = ({ data, title, hideView }: IProps) => {
   return (
     <LoadingHandler
-      isLoading={!data}
+      isLoading={!data || hideView}
       LoadingComponent={<PeriodSectionsLoader />}
     >
       <div className="period-sections-desktop">
