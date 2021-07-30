@@ -33,7 +33,7 @@ const PeriodSection = ({ element }: { element: IPeriodData }) => {
           btnContent={
             <p className="period-element-name">
               <img src={category.image} alt="" />
-              {isLink && isMobile ? name : isLink ? "LINK" : name}
+              {isLink && isMobile ? name : isLink ? "URL" : name}
             </p>
           }
         />

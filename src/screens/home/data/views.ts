@@ -1,7 +1,7 @@
 import images from "../../../constans/images";
 import InfluencersContainer from "../components/InfluencersContainer";
 import AllTweetsViewCustom from "../components/ViewSelector/components/AllTweetsViewCustom";
-import RetweetsViewCustom from "../components/ViewSelector/components/RetweetsViewCustom/Desktop";
+import WithoutRetweetsViewCustom from "../components/ViewSelector/components/WithoutRetweetsViewCustom/Desktop";
 import VerifiedUsersViewCustom from "../components/ViewSelector/components/VerifiedUsersViewCustom";
 import {
   POLL_NEW_TWEETS_INTERVAL_DELAY_SECONDS,
@@ -45,7 +45,7 @@ export const views = [
     value: VIEW_SELECTOR_OPTIONS.NO_RETWEETS,
     image: images.noRetweetsIcon.img,
     darkImage: images.noRetweetsDarkIcon.img,
-    SelectorCustomComponent: RetweetsViewCustom,
+    SelectorCustomComponent: WithoutRetweetsViewCustom,
     url: process.env.REACT_APP_NO_RETWEETS_API,
     periodApiUrl: process.env.REACT_APP_PERIOD_ENTITIES_WITHOUT_RETWEETS_API,
     tweetsUrl: process.env.REACT_APP_TWEETS_BY_TAG_NO_RETWEETS_API,

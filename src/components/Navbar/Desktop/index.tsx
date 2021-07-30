@@ -8,7 +8,7 @@ function DesktopNavbar() {
       <span className="navbar-color-text flex">
        <strong>Realtime</strong> <p>DeFi</p>
         <strong>Tweets</strong>
-        on what really going on in crypto
+        on what's really going on in crypto
       </span>
       <ThemeToggle customClassName="desktop-toggle" />
     </div>
