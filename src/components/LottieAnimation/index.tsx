@@ -8,9 +8,10 @@ interface IProps {
   subframe?: boolean;
 }
 const LottieAnimation = ({ animation, customClassName, subframe }: IProps) => {
-  const container = useRef<any>(null);
+  const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!container.current) return;
     const anim = lottie.loadAnimation({
       container: container.current,
       renderer: "svg",

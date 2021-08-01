@@ -74,6 +74,14 @@
     padding-left: 0px;
     padding-right: 0px;
     width: calc(50% - 15px);
+    &-bottom {
+      span {
+        flex-direction: column;
+        strong {
+          margin-bottom: 3px;
+        }
+      }
+    }
     &:nth-child(even) {
       margin-left: auto;
       &:after {

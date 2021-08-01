@@ -42,3 +42,13 @@
     margin-bottom: 20px;
   }
 }
+
+.dark-mode {
+  .verified-users-popup {
+    background: #3b3b3b;
+    box-shadow: none;
+    p {
+      color: white;
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import { animated } from "@react-spring/web";
-import { JSXElementConstructor, memo } from "react";
+import { JSXElementConstructor, memo, useRef } from "react";
 import { DATASET_TYPES, IDatasetElement } from "../../../../types";
 import ListItemTop from "./ListItemTop";
+import useBackground from "./useBackground";
 
 interface IProps {
   style: any;
@@ -27,28 +28,24 @@ const ListItem = ({
   categoryName,
   tweetsUrl,
 }: IProps) => {
-  const { name } = item;
-  const isUrl = categoryName === DATASET_TYPES.URLS;
+  const container = useRef<HTMLDivElement>(null);
 
-  const handleSelect = () => {
-    if (isUrl) {
-      window.open(name);
-    } else {
-      setActiveElement(item);
-    }
-  };
+  const [handleCounterChange] = useBackground(container);
 
   return (
     <animated.div className="card" style={style}>
-      <div className={isOpen ? "list-item list-item-open" : "list-item"}>
+      <div
+        ref={container}
+        className={isOpen ? "list-item list-item-open" : "list-item"}
+      >
+        <div className="list-item-bg"></div>
         <ListItemTop
-          handleSelect={handleSelect}
+          setActiveElement={setActiveElement}
           item={item}
-          isOpen={isOpen}
           symbol={symbol}
           apiIntervalSeconds={apiIntervalSeconds}
           categoryName={categoryName}
-          isUrl={isUrl}
+          handleCounterChange={handleCounterChange}
         />
         {isOpen && (
           <div className="list-item-custom">

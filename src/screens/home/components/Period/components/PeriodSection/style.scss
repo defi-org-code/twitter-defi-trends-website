@@ -48,8 +48,9 @@
   }
 
   &-name {
-    width: 45%;
     cursor: default;
+    flex: 1;
+    padding-right: 6px;
   }
   &-full {
     position: absolute;
@@ -75,14 +76,13 @@
     margin-bottom: 7px;
   }
   &-count {
-    flex: 1;
     text-align: right;
     color: #92929d;
+
     font-size: 0.675rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 50%;
   }
   .flex {
     align-items: center;
@@ -93,7 +93,4 @@
 }
 
 @media only screen and (max-width: $mobile) {
-  .period-element-name {
-    width: 55%;
-  }
 }
