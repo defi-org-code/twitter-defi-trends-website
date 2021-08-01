@@ -20,9 +20,9 @@ function useBackground(element: RefObject<HTMLDivElement>) {
   const handleBg = (bool: boolean) => {
     if (!element || !element.current) return;
     if (bool) {
-      element.current.classList.add("list-item-bg-active");
+      element.current.classList.add("list-item-active");
     } else {
-      element.current.classList.remove("list-item-bg-active");
+      element.current.classList.remove("list-item-active");
     }
   };
 

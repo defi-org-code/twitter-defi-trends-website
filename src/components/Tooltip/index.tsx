@@ -4,7 +4,6 @@ import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import { useContext, useState } from "react";
 import { CSSProperties } from "@material-ui/core/styles/withStyles";
 import { ThemeContext } from "../../providers/ThemeProvider";
-import Fade from "@material-ui/core/Fade";
 
 interface IProps {
   content: any;
@@ -24,7 +23,6 @@ function FloatingTooltip({
 }: IProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { isMobile } = useContext(ThemeContext);
-
   const handleClick = () => {
     if (!isOpen) {
       setIsOpen(true);
@@ -40,7 +38,6 @@ function FloatingTooltip({
       {isMobile ? (
         <ClickAwayListener onClickAway={setIsOpen.bind(null, false)}>
           <Tooltip
-            TransitionComponent={Fade}
             className={className ? `${className} tooltip` : "tooltip"}
             title={content}
             onClick={handleClick}
@@ -57,7 +54,6 @@ function FloatingTooltip({
         </ClickAwayListener>
       ) : (
         <Tooltip
-          TransitionComponent={Fade}
           className={className ? `${className} tooltip` : "tooltip"}
           title={content}
           onClick={onClick && onClick}

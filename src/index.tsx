@@ -6,13 +6,11 @@ import { ThemeProvider } from "./providers/ThemeProvider";
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider>
-      <Router>
-        <App />
-      </Router>
-    </ThemeProvider>
-  </React.StrictMode>,
+  <ThemeProvider>
+    <Router>
+      <App />
+    </Router>
+  </ThemeProvider>,
   document.getElementById("root")
 );
 

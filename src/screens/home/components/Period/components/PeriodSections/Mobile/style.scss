@@ -53,14 +53,20 @@
       }
       &-title {
         margin-bottom: 0px;
-        width: 100px;
+        width: 80px;
       }
       &-count {
         font-size: 0.875rem;
       }
+      &-content {
+        width: calc(100% - 80px);
+        justify-content: space-between;
+      }
+
       &-name {
         font-size: 0.813rem;
         line-height: 1.219rem;
+        padding-right: 20px;
       }
       h4 {
         align-self: center;

@@ -1,6 +1,5 @@
 import images from "../../../constans/images";
 import { DATASET_TYPES, IListCategories } from "../types";
-import Mentions from "../components/ListsContainer/components/ListItemMentions";
 import Urls from "../components/ListsContainer/components/ListItemUrl";
 import HashtagsAndCashtags from "../components/ListsContainer/components/ListItemHashtagsCashtags";
 
@@ -30,7 +29,7 @@ export const categories: IListCategories = {
     titleDarkImg: images.mentionsTitleDark.img,
     title: "Popular @Mentions",
     shortName: "Mentions",
-    component: Mentions,
+    component: HashtagsAndCashtags,
   },
   [DATASET_TYPES.URLS]: {
     symbol: "🔗",

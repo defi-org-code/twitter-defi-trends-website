@@ -1,53 +1,38 @@
-import { useRef } from "react";
 import Counter from "../../../../../../components/Counter";
 import Tooltip from "../../../../../../components/Tooltip";
 import useAnalytics from "../../../../../../hooks/useAnalytics";
 import { ANALYTICS_EVENTS } from "../../../../../../services/analytics/types";
 import { IDatasetElement, DATASET_TYPES } from "../../../../types";
-import useBackground from "./useBackground";
 
 interface IProps {
   item: IDatasetElement;
-  isOpen: boolean;
-  handleSelect: (item: IDatasetElement) => void;
+  setActiveElement: (item: IDatasetElement) => void;
   symbol: string;
   apiIntervalSeconds: number;
   categoryName: DATASET_TYPES;
-  isUrl: boolean;
+  handleCounterChange: () => void;
 }
 
 function ListItemTop({
   item,
-  handleSelect,
-  isOpen,
+  setActiveElement,
   symbol,
   apiIntervalSeconds,
   categoryName,
-  isUrl,
+  handleCounterChange,
 }: IProps) {
   const { sendEventAndRunAction } = useAnalytics();
-  const bgElement = useRef<HTMLDivElement>(null);
-
-  const [handleCounterChange] = useBackground(bgElement);
+  const isUrl = categoryName === DATASET_TYPES.URLS;
 
   const { name, extra, count, processed } = item;
 
   const select = () => {
-    if (isUrl) {
-      sendEventAndRunAction.bind(
-        null,
-        ANALYTICS_EVENTS.TAP_ON_ENTITY,
-        categoryName,
-        window.open.bind(null, name)
-      )();
-    } else {
-      sendEventAndRunAction.bind(
-        null,
-        ANALYTICS_EVENTS.TAP_ON_ENTITY,
-        categoryName,
-        handleSelect.bind(null, item)
-      )();
-    }
+    sendEventAndRunAction.bind(
+      null,
+      ANALYTICS_EVENTS.TAP_ON_ENTITY,
+      categoryName,
+      isUrl ? window.open.bind(null, name) : setActiveElement.bind(null, item)
+    )();
   };
 
   return (
@@ -63,12 +48,10 @@ function ListItemTop({
           btnContent={<div className="list-item-top-tooltip-btn"></div>}
         />
       )}
-      {isUrl ? (
-        <p className="list-item-top-name">{`${symbol} ${extra}`}</p>
-      ) : (
-        <p className="list-item-top-name">{`${symbol}${name}`}</p>
-      )}
-      {!isOpen && <div className="list-item-bg" ref={bgElement}></div>}
+      <p className="list-item-top-name">{`${symbol} ${
+        isUrl ? extra : name
+      }`}</p>
+
       <p className="list-item-top-counter">
         <Counter
           value={count}

@@ -1,7 +1,6 @@
 @import "./components/ListLoader/style.scss";
 @import "./components/List/style.scss";
 @import "./components/ListItemHashtagsCashtags/style.scss";
-@import "./components/ListItemMentions/style.scss";
 @import "./components/ListItemUrl/style.scss";
 @import "./components/ListItem/style.scss";
 @import "./components/ListItemLoader/style.scss";
@@ -9,7 +8,6 @@
 .lists {
   order: 4;
   width: 100%;
-
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -37,6 +35,6 @@
 
 @media only screen and (max-width: $mobile) {
   .lists {
-    padding: 23px 11px 14px 11px;
+    padding: 23px 0px 14px 0px;
   }
 }
