@@ -25,7 +25,7 @@ const InfluencersList = ({ users, error }: IProps) => {
           LoadingComponent={<Loader />}
         >
           <>
-            <AnimateHeight duration={300} height={showAll ? "auto" : 128}>
+            <AnimateHeight duration={300} height={showAll ? "auto" : 140}>
               <div className="influencers-list-mobile-grid flex">
                 {users &&
                   users.map((user: IUser) => {

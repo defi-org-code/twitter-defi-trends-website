@@ -2,7 +2,7 @@ import questionMarkImg from "../assets/images/question-mark.svg";
 import verifiedUsersSelectImg from "../assets/images/verified-users-select.svg";
 import verifiedUsersSelectDarkImg from "../assets/images/verified-users-select-dark.svg";
 import allRetweetsIcon from "../assets/images/all-retweets.svg";
-import allRetweetsIconDark from "../assets/images/all-tweets-dark.svg";
+import allRetweetsIconDark from "../assets/images/twitterdark.svg";
 
 import CashtagImg from "../assets/images/cashtags.svg";
 import HashtagImg from "../assets/images/hashtags.svg";
